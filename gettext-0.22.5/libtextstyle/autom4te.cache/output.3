@@ -12450,7 +12450,56 @@ printf "%s\n" "$gl_cv_next_fcntl_h" >&6; }
     
 
         
-  
+       for gl_func in fcntl openat; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <fcntl.h>
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
 
@@ -12783,7 +12832,56 @@ fi
 
 
       
-  
+       for gl_func in chmod fchmodat fstat fstatat futimens getumask lchmod lstat     mkdirat mkfifo mkfifoat mknod mknodat stat utimensat; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <sys/stat.h>
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -15046,7 +15144,56 @@ printf "%s\n" "@%:@define GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU 1" >>confdefs.h
   
 
         
-  
+       for gl_func in dprintf fpurge fseeko ftello getdelim getline gets pclose popen     renameat snprintf tmpfile vdprintf vsnprintf; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <stdio.h>
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -15638,7 +15785,65 @@ printf "%s\n" "$gl_cv_next_stdlib_h" >&6; }
 
 
         
-  
+       for gl_func in _Exit aligned_alloc atoll canonicalize_file_name free     getloadavg getprogname getsubopt grantpt     initstate initstate_r mbstowcs mbtowc mkdtemp mkostemp mkostemps mkstemp     mkstemps posix_memalign posix_openpt ptsname ptsname_r qsort_r     random random_r reallocarray realpath rpmatch secure_getenv setenv     setstate setstate_r srandom srandom_r     strtod strtol strtold strtoll strtoul strtoull unlockpt unsetenv; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <stdlib.h>
+#if HAVE_SYS_LOADAVG_H
+/* OpenIndiana has a bug: <sys/time.h> must be included before
+   <sys/loadavg.h>.  */
+# include <sys/time.h>
+# include <sys/loadavg.h>
+#endif
+#if HAVE_RANDOM_H
+# include <random.h>
+#endif
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -16345,7 +16550,56 @@ printf "%s\n" "$gl_cv_next_string_h" >&6; }
 
 
         
-  
+       for gl_func in explicit_bzero ffsl ffsll memmem mempcpy memrchr memset_explicit      rawmemchr stpcpy stpncpy strchrnul      strdup strncat strndup strnlen strpbrk strsep strcasestr strtok_r      strerror_r strerrorname_np sigabbrev_np sigdescr_np strsignal strverscmp; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <string.h>
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -16752,7 +17006,57 @@ printf "%s\n" "$gl_cv_next_time_h" >&6; }
   
 
       
-  
+       for gl_func in        asctime asctime_r ctime ctime_r gmtime_r localtime localtime_r mktime       nanosleep strftime strptime time timegm timespec_get timespec_getres tzset     ; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#include <time.h>
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -16961,7 +17265,68 @@ printf "%s\n" "$gl_cv_next_unistd_h" >&6; }
     
 
       
-  
+       for gl_func in access chdir chown copy_file_range dup dup2 dup3 environ euidaccess     execl execle execlp execv execve execvp execvpe     faccessat fchdir     fchownat fdatasync fsync ftruncate getcwd getdomainname getdtablesize     getentropy getgroups gethostname getlogin getlogin_r getpagesize getpass     getusershell setusershell endusershell     group_member isatty lchown link linkat lseek pipe pipe2 pread pwrite     readlink readlinkat rmdir sethostname sleep symlink symlinkat     truncate ttyname_r unlink unlinkat usleep; do
+       as_gl_Symbol=`printf "%s\n" "gl_cv_have_raw_decl_$gl_func" | sed "$as_sed_sh"`
+                                   ac_saved_ac_compile="$ac_compile"
+       if test -n "$ac_compile_for_check_decl"; then
+         ac_compile="$ac_compile_for_check_decl"
+       fi
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
+printf %s "checking whether $gl_func is declared without a macro... " >&6; }
+if eval test \${$as_gl_Symbol+y}
+then :
+  printf %s "(cached) " >&6
+else case e in @%:@(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#if HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+/* Some systems declare various items in the wrong headers.  */
+#if !(defined __GLIBC__ && !defined __UCLIBC__)
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# if defined _WIN32 && ! defined __CYGWIN__
+#  include <io.h>
+# endif
+#endif
+    
+int
+main (void)
+{
+#undef $gl_func
+  (void) $gl_func;
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$as_gl_Symbol=yes"
+else case e in @%:@(
+  e) eval "$as_gl_Symbol=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+eval ac_res=\$$as_gl_Symbol
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+       ac_compile="$ac_saved_ac_compile"
+       if eval test \"x\$"$as_gl_Symbol"\" = x"yes"
+then :
+  cat >>confdefs.h <<_ACEOF
+@%:@define `printf "%s\n" "HAVE_RAW_DECL_$gl_func" | sed "$as_sed_cpp"` 1
+_ACEOF
+
+                                                            eval "ac_cv_have_decl_$gl_func=yes"
+         
+fi
+            done
+    
 
 
   
@@ -30525,6 +30890,8 @@ printf "%s\n" "@%:@define VERSION \"$VERSION\"" >>confdefs.h
 
     
  #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
+ # 동적 라이브러리 및 정적 라이브러리 생성을 관리
+ # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
 #output:checking whether build environment is sane... yes
 #output:checking for x86_64-w64-mingw32-strip... no
 #output:checking for strip... strip
@@ -35614,6 +35981,8 @@ ac_config_files="$ac_config_files tests/Makefile"
 
 ac_config_files="$ac_config_files adhoc-tests/Makefile"
 
+ac_config_files="$ac_config_files po/Makefile.in"
+
 
 case " $LIB@&t@OBJS " in
   *" color.$ac_objext "* ) ;;
@@ -37065,6 +37434,7 @@ do
     "lib/textstyle/woe32dll.h") CONFIG_FILES="$CONFIG_FILES lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "adhoc-tests/Makefile") CONFIG_FILES="$CONFIG_FILES adhoc-tests/Makefile" ;;
+    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "po/stamp-it") CONFIG_COMMANDS="$CONFIG_COMMANDS po/stamp-it" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;
@@ -38736,4 +39106,3 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 printf "%s\n" "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
-   

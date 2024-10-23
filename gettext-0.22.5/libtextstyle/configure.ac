@@ -123,6 +123,8 @@ AC_CONFIG_MACRO_DIRS([m4])
 . $srcdir/version.sh
 gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
 AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
+#AC_PROG_LIBTOOL # 동적 라이브러리 및 정적 라이브러리 생성을 관리 => LT_INIT
+AM_PROG_CC_C_O # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
 #output:checking whether build environment is sane... yes
 #output:checking for x86_64-w64-mingw32-strip... no
 #output:checking for strip... strip
@@ -735,6 +737,7 @@ AC_CONFIG_FILES([lib/textstyle/version.h:lib/textstyle/version.in.h])
 AC_CONFIG_FILES([lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h])
 AC_CONFIG_FILES([tests/Makefile])
 AC_CONFIG_FILES([adhoc-tests/Makefile])
+AC_CONFIG_FILES([po/Makefile.in])
 
 AC_LIBOBJ([color])
 AC_LIBOBJ([gl_array_list])

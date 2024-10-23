@@ -30525,6 +30525,8 @@ printf "%s\n" "@%:@define VERSION \"$VERSION\"" >>confdefs.h
 
     
  #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
+#AC_PROG_LIBTOOL # 동적 라이브러리 및 정적 라이브러리 생성을 관리 => LT_INIT
+ # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
 #output:checking whether build environment is sane... yes
 #output:checking for x86_64-w64-mingw32-strip... no
 #output:checking for strip... strip
@@ -35614,6 +35616,8 @@ ac_config_files="$ac_config_files tests/Makefile"
 
 ac_config_files="$ac_config_files adhoc-tests/Makefile"
 
+ac_config_files="$ac_config_files po/Makefile.in"
+
 
 case " $LIB@&t@OBJS " in
   *" color.$ac_objext "* ) ;;
@@ -37065,6 +37069,7 @@ do
     "lib/textstyle/woe32dll.h") CONFIG_FILES="$CONFIG_FILES lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "adhoc-tests/Makefile") CONFIG_FILES="$CONFIG_FILES adhoc-tests/Makefile" ;;
+    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "po/stamp-it") CONFIG_COMMANDS="$CONFIG_COMMANDS po/stamp-it" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;
@@ -38736,3 +38741,4 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 printf "%s\n" "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+   

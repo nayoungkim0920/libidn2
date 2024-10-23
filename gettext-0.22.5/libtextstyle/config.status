@@ -389,7 +389,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile doc/Makefile lib/Makefile lib/exported.sh lib/textstyle/version.h:lib/textstyle/version.in.h lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h tests/Makefile adhoc-tests/Makefile"
+config_files=" Makefile doc/Makefile lib/Makefile lib/exported.sh lib/textstyle/version.h:lib/textstyle/version.in.h lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h tests/Makefile adhoc-tests/Makefile po/Makefile.in"
 config_headers=" config.h lib/argz.h"
 config_commands=" po-directories libtool depfiles libtextstyle-config.h po/stamp-it"
 
@@ -841,6 +841,7 @@ do
     "lib/textstyle/woe32dll.h") CONFIG_FILES="$CONFIG_FILES lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "adhoc-tests/Makefile") CONFIG_FILES="$CONFIG_FILES adhoc-tests/Makefile" ;;
+    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "po/stamp-it") CONFIG_COMMANDS="$CONFIG_COMMANDS po/stamp-it" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;
