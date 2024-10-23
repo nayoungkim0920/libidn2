@@ -1,0 +1,6 @@
+/* Define extern linkage */
+#ifdef __cplusplus
+# define _GL_EXTERN_C extern "C"
+#else
+# define _GL_EXTERN_C extern
+#endif

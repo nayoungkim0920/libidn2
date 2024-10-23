@@ -1,0 +1,18 @@
+/* lib/argz.h - Automatically generated argz header. */
+
+#ifndef ARGZ_H
+#define ARGZ_H
+
+#include <stddef.h>  // size_t 정의
+
+// argz 구조체의 정의와 관련된 내용 작성
+typedef struct {
+    char *data;
+    size_t len;
+} argz_t;
+
+// argz 함수 선언 작성
+void argz_add(argz_t *argz, const char *entry);
+void argz_remove(argz_t *argz, size_t index);
+
+#endif /* ARGZ_H */

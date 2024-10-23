@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"color.h": "c",
+		"stdbool.h": "c",
+		"term-ostream.h": "c",
+		"config.h": "c",
+		"ostream.h": "c",
+		"concat-filename.h": "c",
+		"filename.h": "c",
+		"stat.h": "c"
+	}
+}

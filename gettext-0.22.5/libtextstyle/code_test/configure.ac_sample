@@ -1,0 +1,877 @@
+dnl Configuration for the toplevel directory of GNU libtextstyle
+dnl Copyright (C) 2009-2023 Free Software Foundation, Inc.
+dnl
+dnl This program is free software: you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 3 of the License, or
+dnl (at your option) any later version.
+dnl
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU General Public License
+dnl along with this program.  If not, see <https://www.gnu.org/licenses/>.
+dnl Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])  # Autoconf 버전 요구사항
+
+AC_INIT([libtextstyle], [1.0], [bug-libtextstyle@example.com])
+
+#멈춤구간주석처리
+#AC_USE_SYSTEM_EXTENSIONS # AC_INIT 보다 먼저 호출하면 안됨
+#AC_CONFIG_HEADERS([config.h.in:config.h lib/argz.h.in:lib/argz.h])
+#m4_pattern_allow([AC_CAN_COMPILE])
+#m4_ifdef([GL_REQUIRE_VERSION], [GL_REQUIRE_VERSION([2.0])])
+#LT_CONFIG_LTDL_DIR([libltdl])
+#LT_INIT([win32-dll], [dlopen disable-static]) #dlopen을 활성화하고 정적 라이브러리를 비활성화
+#LTDL_INIT
+#AM_GNU_GETTEXT([external]) # GNU Gettext의 사용을 활성화, AC_INIT 바로 아래에 위치
+
+AM_GNU_GETTEXT_VERSION([0.22.4]) 
+#output: autopoint: *** AM_GNU_GETTEXT without 'external' argument is no longer supported in version 0.22.4
+
+#멈춤구간주석처리
+#IT_PROG_INTLTOOL([0.50]) # intltool의 버전을 확인하고 필요한 경우 설치
+
+GTK_DOC_CHECK([1.34])  # Gtkdoc 버전 요구 사항을 설정합니다.
+
+AC_ARG_WITH([libintl-prefix],
+            [AS_HELP_STRING([--with-libintl-prefix=DIR],
+                            [Specify the installation directory of libintl])],
+            [libintl_prefix="$withval"], [libintl_prefix="/c/msys64/mingw64"])
+
+AC_CANONICAL_HOST
+
+if test "$host" != "$build"; then
+    AC_MSG_NOTICE([Cross-compiling for $host])
+    CC=x86_64-w64-mingw32-gcc
+    CXX=x86_64-w64-mingw32-g++
+else
+    AC_MSG_NOTICE([Not cross-compiling])
+fi
+#output : Not cross-compiling
+
+#멈춤구간주석처리
+#AC_CHECK_HEADERS([stdlib.h stdio.h xalloc.h string.h unistd.h stdint.h])
+AC_MSG_NOTICE(-3========================================================)
+#멈춤구간주석처리
+#AC_PREREQ([2.64])  # Autoconf minimum version
+AC_MSG_NOTICE(-2========================================================)
+AC_CONFIG_SRCDIR([lib/color.c])  # Primary source file
+AC_MSG_NOTICE(-1========================================================)
+AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory
+AC_MSG_NOTICE(0========================================================)
+# 컴파일러 설정
+#멈춤구간주석처리
+#AC_PROG_CC
+AC_MSG_NOTICE(1========================================================)
+#AC_PROG_CPP
+AC_MSG_NOTICE(2========================================================)
+#AC_PROG_CXX
+AC_MSG_NOTICE(3========================================================)
+AC_PROG_INSTALL
+#output:checking for a BSD-compatible install... /usr/bin/install -c
+AC_MSG_NOTICE(4========================================================)
+AC_PROG_MKDIR_P
+#output:checking for a race-free mkdir -p... /usr/bin/mkdir -p
+AC_MSG_NOTICE(5========================================================)
+AC_CONFIG_MACRO_DIRS([m4])
+AC_MSG_NOTICE(6========================================================)
+. $srcdir/version.sh
+AC_MSG_NOTICE(7========================================================)
+gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
+AC_MSG_NOTICE(8========================================================)
+AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
+#output:checking whether build environment is sane... yes
+#output:checking for x86_64-w64-mingw32-strip... no
+#output:checking for strip... strip
+#output:checking for gawk... gawk
+#output:checking whether make sets $(MAKE)... yes
+#output:checking whether make supports nested variables... yes
+AC_MSG_NOTICE(9========================================================)
+LT_LANG([C])
+AC_MSG_NOTICE(10========================================================)
+#멈춤구간주석처리
+#LT_LANG([C++])
+AC_MSG_NOTICE(11========================================================)
+#멈춤구간주석처리
+#LT_LANG([Windows Resource])
+AC_MSG_NOTICE(12========================================================)
+m4_ifdef([AX_PREFIX_CONFIG_H], [AX_PREFIX_CONFIG_H])
+AC_MSG_NOTICE(13========================================================)
+
+AC_LANG(C)
+AC_MSG_NOTICE(14========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([  
+#    AC_LANG_SOURCE([[  // C 프로그램을 정의
+#        #include <stdio.h>
+#        #include <stdlib.h>
+#        #include <stdalign.h>
+#
+#        int main(void) {
+#            // C11에서 도입된 _Alignas를 사용하여 16바이트 정렬된 변수 선언
+#            _Alignas(16) char buffer[32];  // 16바이트 정렬된 배열
+#
+#            // static_assert로 C11 지원 여부 확인
+#            _Static_assert(1, "C11 is supported.");  // 항상 참인 조건
+#
+#            printf("C11 is supported.\n");  // 출력 메시지
+#            return 0; // 성공
+#        }
+#    ]])
+#], [
+#	CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가
+#	AC_DEFINE([HAVE_C11], [1], [Define to 1 if C11 is supported.])
+#    AC_MSG_NOTICE([C11 지원: CFLAGS: $CFLAGS])
+#], [
+#	AC_MSG_NOTICE([C11 지원안함: CFLAGS: $CFLAGS])
+#    AC_MSG_ERROR([c11 지원 없습니다.])
+#])
+AC_MSG_NOTICE(15========================================================)
+# C++ 컴파일러가 -std=c++17 플래그를 지원하는지 확인
+AC_LANG(C++)
+AC_MSG_NOTICE(16========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([  
+#    AC_LANG_SOURCE([[  // C++ 프로그램을 정의
+#        #include <iostream>
+#		#include <string_view>  // C++17에서 추가된 std::string_view 사용
+#
+#		int main() {
+#			// C++17에서 추가된 static_assert로 지원 여부를 확인합니다.
+#			static_assert(true, "C++17 is supported.");
+#
+#			// C++17에서 추가된 std::string_view 사용
+#			std::string_view message = "C++17 is supported.";
+#
+#			// 메시지를 출력
+#			std::cout << message << std::endl;
+#
+#			return 0;
+#		}
+#    ]])
+#], [
+#    CXXFLAGS="$CXXFLAGS -std=c++17"  # C++17 플래그 추가
+#    AC_DEFINE([HAVE_CPP17], [1], [Define to 1 if C++17 is supported.])
+#    AC_MSG_NOTICE([C++17 지원: CXXFLAGS: $CXXFLAGS])
+#], [
+#    AC_MSG_NOTICE([C++17 지원안함: CXXFLAGS: $CXXFLAGS])
+#    AC_MSG_ERROR([C++17 지원이 없습니다.])
+#])
+#AC_CROSS_COMPILER
+#AC_DEFINE([CROSS_COMPILING], [1], [Define if we are cross compiling])
+#AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
+#AC_CHECK_TOOL([LD], [/mingw64/bin/ld.exe], [ld]) #2.43.1
+#AC_CHECK_TOOL([AR], [/mingw64/bin/ar.exe], [ar]) #2.43.1
+#AC_DEFUN([AC_LIBTOOL_PROG_CC_C_O], [dnl  
+#])
+#AC_DEFUN([AC_LIBTOOL_SYS_HARD_LINK_LOCKS], [dnl  
+#])
+#AC_DEFUN([AC_LIBTOOL_OBJDIR], [dnl  
+#])
+AC_MSG_NOTICE(17========================================================)
+AC_DEFUN([CHECK_WINDOWS_CONSOLES], [
+  if test -f /mingw64/include/windows.h; then
+    AC_DEFINE([HAVE_WINDOWS_CONSOLES], [1], [Define to 1 if you have Windows consoles.])
+    AC_MSG_RESULT([yes])
+  else
+    AC_MSG_RESULT([no])
+  fi
+])
+AC_MSG_NOTICE(18========================================================)
+CHECK_WINDOWS_CONSOLES
+#output:checking for Windows consoles... yes
+AC_MSG_NOTICE(19========================================================)
+#멈춤구간주석처리
+#AC_CHECK_HEADERS([wchar.h])
+AC_MSG_NOTICE(20========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNCS([getprogname printf malloc fsync], [GL_COND_OBJ_FSYNC=1])
+AC_MSG_NOTICE(21========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNCS([xmalloc xrealloc rpl_stpcpy xalloc_die], [], [
+#    AC_MSG_ERROR([Failed to define necessary memory allocation functions.])
+#])
+AC_MSG_NOTICE(22========================================================)
+GNULIB_MODULES="
+    ncurses \
+    terminfo \
+	rpl_stpcpy \
+	xalloc \
+	xalloc_die \
+    xmalloc \
+    xrealloc \
+    xgethostname \
+    _gl_nothrow_get_osfhandle \
+	fsync \
+	getprogname \
+	_get_osfhandle \
+	strlcpy \
+	argz \
+	can-compile
+"
+AC_MSG_NOTICE(23========================================================)
+#오류
+#AC_GNU_LIB_TOOL
+#output : ./configure: line 5693: AC_GNU_LIB_TOOL: command not found
+AC_MSG_NOTICE(24========================================================)
+m4_ifdef([GNULIB_INIT], [GNULIB_INIT])
+AC_MSG_NOTICE(25========================================================)
+m4_pattern_allow([^AC_GNU_LIB_TOOL$])
+AC_MSG_NOTICE(26========================================================)
+m4_pattern_allow([AC_CROSS_COMPILER])
+AC_MSG_NOTICE(27========================================================)
+m4_pattern_allow([GL_REQUIRE_VERSION])
+AC_MSG_NOTICE(28========================================================)
+m4_pattern_allow([GNULIB_MODULES])
+AC_MSG_NOTICE(29========================================================)
+m4_pattern_allow([AC_MSG_WARN])
+AC_MSG_NOTICE(30========================================================)
+m4_pattern_allow([_LT_LIBOBJS])
+AC_MSG_NOTICE(31========================================================)
+#멈춤구간주석처리
+#AC_CHECK_LIB([ncurses], [tputs], [initscr])
+AC_MSG_NOTICE(32========================================================)
+m4_pattern_allow([gl_CC_GNULIB_WARNINGS])
+AC_MSG_NOTICE(33========================================================)
+m4_pattern_allow([AC_CHECK_FUNCS])
+AC_MSG_NOTICE(34========================================================)
+m4_pattern_allow([gl_INIT])
+AC_MSG_NOTICE(35========================================================)
+m4_pattern_allow([gl_EARLY])
+AC_MSG_NOTICE(36========================================================)
+m4_pattern_allow([gl_COMMON])
+AC_MSG_NOTICE(37========================================================)
+m4_pattern_allow([gl_PROG_AR_RANLIB])
+AC_MSG_NOTICE(38========================================================)
+m4_pattern_allow([AC_CONFIG_RPATH])
+AC_MSG_NOTICE(39========================================================)
+m4_pattern_allow([AC_CONFIG_LIBS])
+AC_MSG_NOTICE(40========================================================)
+m4_pattern_allow([AC_DEFINE])
+AC_MSG_NOTICE(41========================================================)
+m4_pattern_allow([gl_MODULES])
+AC_MSG_NOTICE(42========================================================)
+m4_pattern_allow([m4_ifndef])
+AC_MSG_NOTICE(43========================================================)
+#멈춤구간주석처리
+#gl_EARLY
+AC_MSG_NOTICE(44========================================================)
+#멈춤구간주석처리
+#gl_INIT
+AC_MSG_NOTICE(45========================================================)
+gl_MODULES([xalloc])
+AC_MSG_NOTICE(46========================================================)
+gl_MODULES([xalloc-die])
+AC_MSG_NOTICE(47========================================================)
+gl_MODULES([xmalloca])
+AC_MSG_NOTICE(48========================================================)
+gl_MODULES([fsync])
+AC_MSG_NOTICE(49========================================================)
+gl_MODULES([xstrdup])
+AC_MSG_NOTICE(50========================================================)
+gl_MODULES([xsize])
+AC_MSG_NOTICE(51========================================================)
+gl_MODULES([size_max])
+AC_MSG_NOTICE(52========================================================)
+AC_DEFINE([_GL_ASYNC_SAFE], [], [Define to enable async safe functions])
+AC_MSG_NOTICE(53========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE(
+#    [AC_LANG_PROGRAM([[]], [[
+#        void* xmalloc(size_t) __attribute__((__alloc_size__(1)));
+#    ]])],
+#    [AC_DEFINE([_GL_HAS_ATTRIBUTE_ALLOC_SIZE], [1], [Define if compiler supports __attribute__((__alloc_size__))])],
+#    [AC_DEFINE([_GL_HAS_ATTRIBUTE_ALLOC_SIZE], [0], [Define if compiler does not support __attribute__((__alloc_size__))])]
+#)
+AC_MSG_NOTICE(54========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([AC_LANG_SOURCE([#include <unistd.h>
+#                                    int main() {
+#                                        int fd = 0; 
+#                                        fsync(fd);
+#                                        return 0;
+#                                    }])],
+#[AC_DEFINE([HAVE_FSYNC], [1], [Define to 1 if you have the fsync' function.])],
+#[AC_DEFINE([HAVE_FLUSH_FILE_BUFFERS], [1], [Define to 1 if using FlushFileBuffers on Windows.])])
+AC_MSG_NOTICE(55========================================================)
+AC_DEFUN([CHECK_HAS_ATTRIBUTE], [
+    AC_COMPILE_IFELSE([
+        AC_LANG_PROGRAM([[#ifdef __cplusplus
+                         #define _GL_HAS_ATTRIBUTE(x) __has_attribute(x)
+                         #else
+                         #define _GL_HAS_ATTRIBUTE(x) 0
+                         #endif]], [])
+    ], [
+        AC_SUBST([_GL_HAS_ATTRIBUTE], [__has_attribute])
+    ], [
+        AC_SUBST([_GL_HAS_ATTRIBUTE], [0])
+    ])
+])
+AC_MSG_NOTICE(56========================================================)
+#멈춤구간주석처리
+#CHECK_HAS_ATTRIBUTE
+AC_MSG_NOTICE(57========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE(
+#    [AC_LANG_PROGRAM([[]], [[
+#        #ifdef __cplusplus
+#        void* test_returns_nonnull(void) __attribute__((returns_nonnull));
+#        #else
+#        void* test_returns_nonnull(void);
+#        #endif
+#    ]])],
+#    [AC_DEFINE([_GL_HAS_ATTRIBUTE_RETURNS_NONNULL], [1], [Define if compiler supports __attribute__((returns_nonnull))])],
+#    [AC_DEFINE([_GL_HAS_ATTRIBUTE_RETURNS_NONNULL], [0], [Define if compiler does not support __attribute__((returns_nonnull))])]
+#)
+AC_MSG_NOTICE(58========================================================)
+AC_SUBST([IN_LIBTEXTSTYLE], [1])
+AC_MSG_NOTICE(59========================================================)
+#멈춤구간주석처리
+#AC_DEFINE([_GL_INLINE],[inline],[Define for inline])
+AC_MSG_NOTICE(60========================================================)
+AC_DEFINE([_GL_INLINE_HEADER_BEGIN], [], [Define for inline header start])
+AC_MSG_NOTICE(61========================================================)
+AC_DEFINE([_GL_INLINE_HEADER_END], [], [Define for inline header end])
+AC_MSG_NOTICE(62========================================================)
+AC_DEFINE([_GL_CONFIG_H_INCLUDED], [1], [Define to prevent multiple inclusion])
+AC_MSG_NOTICE(63========================================================)
+AC_DEFINE([_GL_LIST_INLINE], [inline], [Define for list inline])
+AC_MSG_NOTICE(64========================================================)
+AC_DEFINE([GNULIB_XALLOC], [1], [Define for gnulib xalloc])
+AC_MSG_NOTICE(65========================================================)
+AC_DEFINE([GNULIB_XALLOC_DIE], [1], [Define if xalloc_die is available])
+AC_MSG_NOTICE(66========================================================)
+AC_DEFINE([GNULIB_XSTRDUP], [1], [Define if xstrdup module is used])
+AC_MSG_NOTICE(67========================================================)
+AC_DEFINE([GNULIB_TPUTS], [1], [Define if tputs module is used])
+AC_MSG_NOTICE(68========================================================)
+AC_DEFINE([GNULIB_SAFE_WRITE], [1], [Define if safe-write module is used])
+AC_MSG_NOTICE(69========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ 
+#    void __attribute__((__pure__)) test_function(int* ptr) {
+#        (void)ptr;
+#    }
+#    int main() {
+#        int a = 0;
+#        test_function(&a);
+#        return 0;
+#    }
+#]])],
+#[AC_MSG_RESULT([yes])
+# AC_DEFINE([HAVE_ATTRIBUTE_PURE], [1], [Define if compiler supports __attribute__((__pure__))])],
+#[AC_MSG_RESULT([no])
+# AC_DEFINE([HAVE_ATTRIBUTE_PURE], [0], [Define if compiler does not support __attribute__((__pure__))])])
+#AC_MSG_NOTICE(70========================================================)
+#if test "$HAVE_ATTRIBUTE_PURE" = 1; then
+#    AC_DEFINE([_GL_ATTRIBUTE_PURE], [__attribute__((__pure__))], [Define to use __attribute__((__pure__))])
+#else
+#    AC_DEFINE([_GL_ATTRIBUTE_PURE], [], [Define as empty if __attribute__((__pure__)) is not supported])
+#fi
+AC_MSG_NOTICE(71========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ 
+#    void __attribute__((nonnull(1))) test_function(int* ptr) {
+#        (void)ptr;
+#    }
+#
+#    int main() {
+#        int a = 0;
+#        test_function(&a);
+#        return 0;
+#    }
+#]])],
+#[AC_MSG_RESULT([yes])
+# AC_DEFINE([HAVE_ATTRIBUTE_NONNULL], [1], [Define if compiler supports __attribute__((nonnull))])],
+#[AC_MSG_RESULT([no])
+# AC_DEFINE([HAVE_ATTRIBUTE_NONNULL], [0], [Define if compiler does not support __attribute__((nonnull))])])
+AC_MSG_NOTICE(72========================================================)
+if test "$HAVE_ATTRIBUTE_NONNULL" = 1; then
+    AC_DEFINE([_GL_ARG_NONNULL_1_2], [__attribute__((nonnull(1,2)))], [Define to use __attribute__((nonnull(1,2)))])
+	AC_DEFINE([_GL_ARG_NONNULL_1], [__attribute__((nonnull(1)))], [Define to use __attribute__((nonnull(1)))])
+	AC_DEFINE([_GL_ARG_NONNULL_1_3], [__attribute__((nonnull(1,3)))], [Define to use __attribute__((nonnull(1,3)))])
+	AC_DEFINE([_GL_ARG_NONNULL_3], [__attribute__((nonnull(3)))], [Define to use __attribute__((nonnull(3)))])
+else
+    AC_DEFINE([_GL_ARG_NONNULL_1_2], [], [Define as empty if __attribute__((nonnull(1,2))) is not supported])
+	AC_DEFINE([_GL_ARG_NONNULL_1], [], [Define as empty if __attribute__((nonnull(1))) is not supported])
+	AC_DEFINE([_GL_ARG_NONNULL_1_3], [], [Define as empty if __attribute__((nonnull(1,3))) is not supported])
+	AC_DEFINE([_GL_ARG_NONNULL_3], [], [Define as empty if __attribute__((nonnull(3))) is not supported])
+fi
+AC_MSG_NOTICE(73========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ 
+#    void __attribute__((__malloc__)) test_function(int* ptr) {
+#        (void)ptr;
+#    }
+#    int main() {
+#        int a = 0;
+#        test_function(&a);
+#        return 0;
+#    }
+#]])],
+#[AC_MSG_RESULT([yes])
+# AC_DEFINE([HAVE_ATTRIBUTE_MALLOC], [1], [Define if compiler supports __attribute__((__malloc__))])],
+#[AC_MSG_RESULT([no])
+# AC_DEFINE([HAVE_ATTRIBUTE_MALLOC], [0], [Define if compiler does not support __attribute__((__malloc__))])])
+AC_MSG_NOTICE(74========================================================)
+if test "$HAVE_ATTRIBUTE_MALLOC" = 1; then
+    AC_DEFINE([_GL_ATTRIBUTE_MALLOC], [__attribute__((__malloc__))], [Define to use __attribute__((__malloc__))])
+else
+    AC_DEFINE([_GL_ATTRIBUTE_MALLOC], [], [Define as empty if __attribute__((__malloc__)) is not supported])
+fi
+AC_MSG_NOTICE(75========================================================)
+if test "$HAVE_ATTRIBUTE_DEALLOC" = 1; then
+    AC_DEFINE([_GL_ATTRIBUTE_DEALLOC(f, i)], [__attribute__((__malloc__ (f, i)))], [Define to use __attribute__((__malloc__ (f, i)))])
+else
+    AC_DEFINE([_GL_ATTRIBUTE_DEALLOC(f, i)], [], [Define as empty if __attribute__((__malloc__ (f, i))) is not supported])
+fi
+AC_MSG_NOTICE(76========================================================)
+#멈춤구간주석처리
+#AC_COMPILE_IFELSE(
+#    [AC_LANG_PROGRAM([[]], [[__attribute__((noreturn)) void x();]])],
+#    [AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_NORETURN], [__attribute__((noreturn))], [Define for attribute noreturn])],
+#    [AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_NORETURN], [], [Define for attribute noreturn])]
+#)
+AC_MSG_NOTICE(77========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_MAYBE_UNUSED], [__attribute__((unused))], [Define to __attribute__((unused))])
+AC_MSG_NOTICE(78========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_COLD], [__attribute__((cold))], [Define to __attribute__((cold))])
+AC_MSG_NOTICE(79========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_SPEC_PRINTF_ERROR], [__attribute__((format(printf, 3, 4)))], [Define to __attribute__((format(printf, 3, 4)))])
+AC_MSG_NOTICE(80========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT], [_GL_ATTRIBUTE_SPEC_PRINTF_ERROR], [Define to _GL_ATTRIBUTE_SPEC_PRINTF_ERROR])
+AC_MSG_NOTICE(81========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_ERROR_AT_LINE], [__attribute__((format(printf, 5, 6)))], [Define for format attribute with index 5, 6])
+AC_MSG_NOTICE(82========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR], [__attribute__((format(printf, 3, 0)))], [Define for format attribute with index 3, 0])
+AC_MSG_NOTICE(83========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR_AT_LINE], [__attribute__((format(printf, 5, 0)))], [Define for format attribute with index 5, 0])
+AC_MSG_NOTICE(84========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_1_2], [__attribute__((format(printf, 1, 2)))], [Define to use printf format attribute with parameters (1, 2)])
+AC_MSG_NOTICE(85========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_0], [__attribute__((format(printf, 2, 0)))], [Define to use printf format attribute with parameters (2, 0)])
+AC_MSG_NOTICE(86========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_3], [__attribute__((format(printf, 2, 3)))], [Define to use printf format attribute with parameters (2, 3)])
+AC_MSG_NOTICE(87========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_0], [__attribute__((format(printf, 3, 0)))], [Define to use printf format attribute with parameters (3, 0)])
+AC_MSG_NOTICE(88========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_4], [__attribute__((format(printf, 3, 4)))], [Define to use printf format attribute with parameters (3, 4)])
+AC_MSG_NOTICE(89========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_2_3], [__attribute__((format(printf, 2, 3)))], [Define to use printf format attribute with parameters (2, 3)])
+AC_MSG_NOTICE(90========================================================)
+AC_DEFINE_UNQUOTED([_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_1_0], [__attribute__((format(printf, 1, 0)))], [Define to use printf format attribute with parameters (1, 0)])
+AC_MSG_NOTICE(91========================================================)
+if test "$host_os" = "mingw32"; then
+    AC_DEFINE([DLL_VARIABLE], [__declspec(dllexport)], [Define to __declspec(dllexport)])
+else
+    AC_DEFINE([DLL_VARIABLE], [], [Define to nothing for non-Windows platforms])
+fi
+AC_MSG_NOTICE(92========================================================)
+AC_SUBST([DLL_VARIABLE]) # DLL_VARIABLE macro setting
+AC_MSG_NOTICE(93========================================================)
+#멈춤구간주석처리
+#AC_CHECK_TYPE([wchar_t],
+#  [HAVE_WCHAR_T=1],
+#  [HAVE_WCHAR_T=0]
+#)
+AC_MSG_NOTICE(94========================================================)
+AC_SUBST([HAVE_WCHAR_T])
+AC_MSG_NOTICE(95========================================================)
+AC_SUBST([LIBS], [-ltextstyle])
+AC_MSG_NOTICE(96========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNCS([_get_osfhandle],
+# [AC_DEFINE([_GL_NOTHROW_GET_OSFHANDLE], [1], [Define if _get_osfhandle is available])],
+# [AC_DEFINE([_GL_NOTHROW_GET_OSFHANDLE], [0], [Define if _get_osfhandle is not available])
+#  AC_MSG_WARN([_get_osfhandle not found. Defining _gl_nothrow_get_osfhandle as a no-op.])
+#	# Provide a fallback implementation
+#	AC_MSG_NOTICE([Providing a fallback implementation for _gl_nothrow_get_osfhandle])
+#
+#	# Create the fallback code in conftest.c
+#	cat >> conftest.c <<END 
+#	#include <stdio.h>
+#	#include <stdlib.h>
+#
+#	// Fallback implementation
+#	int _gl_nothrow_get_osfhandle(int fd) {
+#		fprintf(stderr, "Warning: _get_osfhandle is not available. Returning -1 as a fallback.\n");
+#		return -1; // Return -1 or any appropriate error code
+#	}
+#END
+#])
+AC_MSG_NOTICE(97========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNC([xmalloc], [], [
+#    AC_MSG_NOTICE([Defining xmalloc as a placeholder])
+#    AC_LANG_PUSH([C])
+#    AC_COMPILE_IFELSE([ 
+#        AC_LANG_PROGRAM([ 
+#            #include <stdlib.h>
+#            void *xmalloc(size_t size) {
+#                void *ptr = malloc(size);
+#                if (!ptr) {
+#                    exit(EXIT_FAILURE);
+#                }
+#                return ptr;
+#            }
+#        ])
+#    ], [], [
+#        AC_MSG_ERROR([Failed to define xmalloc])
+#    ])
+#    AC_LANG_POP
+#])
+AC_MSG_NOTICE(98========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNC([xrealloc], [], [
+#    AC_MSG_NOTICE([Defining xrealloc as a placeholder])
+#    AC_LANG_PUSH([C])
+#    AC_COMPILE_IFELSE([ 
+#        AC_LANG_PROGRAM([ 
+#            #include <stdlib.h>
+#            void *xrealloc(void *ptr, size_t size) {
+#                void *new_ptr = realloc(ptr, size);
+#                if (!new_ptr) {
+#                    exit(EXIT_FAILURE);
+#                }
+#                return new_ptr;
+#            }
+#        ])
+#    ], [], [
+#        AC_MSG_ERROR([Failed to define xrealloc])
+#    ])
+#    AC_LANG_POP
+#])
+AC_MSG_NOTICE(99========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNC([rpl_stpcpy], [], [
+#    AC_MSG_NOTICE([Defining rpl_stpcpy as a placeholder])
+#    AC_LANG_PUSH([C])
+#    AC_COMPILE_IFELSE([ 
+#        AC_LANG_PROGRAM([ 
+#            #include <string.h>
+#            char *rpl_stpcpy(char *dest, const char *src) {
+#                return stpcpy(dest, src);
+#            }
+#        ])
+#    ], [], [
+#        AC_MSG_ERROR([Failed to define rpl_stpcpy])
+#    ])
+#    AC_LANG_POP
+#])
+AC_MSG_NOTICE(100========================================================)
+#멈춤구간주석처리
+#AC_CHECK_FUNC([xalloc_die], [], [
+#    AC_MSG_NOTICE([Defining xalloc_die as a placeholder])
+#    AC_LANG_PUSH([C])
+#    AC_COMPILE_IFELSE([ 
+#        AC_LANG_PROGRAM([ 
+#            #include <stdio.h>
+#            void xalloc_die(void) {
+#                fprintf(stderr, "Memory allocation failed\n");
+#                exit(EXIT_FAILURE);
+#            }
+#        ])
+#    ], [], [
+#        AC_MSG_ERROR([Failed to define xalloc_die])
+#    ])
+#    AC_LANG_POP
+#])
+AC_MSG_NOTICE(101========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([safe_write], [], [
+#    AC_MSG_NOTICE([Defining safe_write as a placeholder])
+#    AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             #include <unistd.h>
+#             ssize_t safe_write(int fd, const void *buf, size_t count) {
+#                 ssize_t result = write(fd, buf, count);
+#                 if (result < 0) {
+#                     // handle error
+#                 }
+#                 return result;
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define safe_write])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(102========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([at_fatal_signal], [], [
+#     AC_MSG_NOTICE([Defining at_fatal_signal as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             #include <signal.h>
+#             void at_fatal_signal(void (*handler)(int)) {
+#                 signal(SIGTERM, handler);
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define at_fatal_signal])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(103========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([styled_ostream_create], [], [
+#     AC_MSG_NOTICE([Defining styled_ostream_create as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void *styled_ostream_create(void) {
+#                 return NULL; // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define styled_ostream_create])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(104========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([styled_ostream_begin_use_class], [], [
+#     AC_MSG_NOTICE([Defining styled_ostream_begin_use_class as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void styled_ostream_begin_use_class(void) {
+#                 // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define styled_ostream_begin_use_class])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(105========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([styled_ostream_set_hyperlink], [], [
+#     AC_MSG_NOTICE([Defining styled_ostream_set_hyperlink as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void styled_ostream_set_hyperlink(void *stream, const char *url) {
+#                 // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define styled_ostream_set_hyperlink])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(106========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([file_ostream_create], [], [
+#     AC_MSG_NOTICE([Defining file_ostream_create as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void *file_ostream_create(const char *filename) {
+#                 return NULL; // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define file_ostream_create])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(107========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([html_styled_ostream_create], [], [
+#     AC_MSG_NOTICE([Defining html_styled_ostream_create as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void *html_styled_ostream_create(void) {
+#                 return NULL; // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define html_styled_ostream_create])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(108========================================================)
+# 멈춤구간주석처리
+# AC_CHECK_FUNC([get_fatal_signals], [], [
+#     AC_MSG_NOTICE([Defining get_fatal_signals as a placeholder])
+#     AC_LANG_PUSH([C])
+#     AC_COMPILE_IFELSE([ 
+#         AC_LANG_PROGRAM([ 
+#             void get_fatal_signals(void) {
+#                 // placeholder implementation
+#             }
+#         ])
+#     ], [], [
+#         AC_MSG_ERROR([Failed to define get_fatal_signals])
+#     ])
+#     AC_LANG_POP
+# ])
+AC_MSG_NOTICE(109========================================================)
+GNULIB_PATH=gnulib
+AC_MSG_NOTICE(110========================================================)
+AC_CANONICAL_HOST
+AC_MSG_NOTICE(111========================================================)
+echo "configure.ac: Configured host OS: $host_os"
+#output : configure.ac: Configured host OS: mingw32
+AC_MSG_NOTICE(112========================================================)
+if test "$host_os" = "mingw32"; then
+    AM_CONDITIONAL([WOE32DLL], true)
+    AM_CONDITIONAL([WOE32], true)
+    echo "WOE32DLL and WOE32 are enabled."
+    LDFLAGS="$LDFLAGS -no-undefined -export-dynamic"
+else
+    AM_CONDITIONAL([WOE32DLL], false)
+    AM_CONDITIONAL([WOE32], false)
+    echo "WOE32DLL and WOE32 are disabled."
+    LDFLAGS="$LDFLAGS -no-undefined"
+fi
+#output : WOE32DLL and WOE32 are enabled.
+AC_MSG_NOTICE(113========================================================)
+AM_CONDITIONAL([INCLUDED_LIBXML], [test "x$have_libxml" = "xyes"])
+AC_MSG_NOTICE(114========================================================)
+# 멈춤구간주석처리
+#AC_CHECK_HEADERS([lib/xgethostname.h lib/xgetaname-impl.h])
+AC_MSG_NOTICE(115========================================================)
+# 멈춤구간주석처리
+#AC_CHECK_FUNC([XGETANAME], [], [AC_MSG_ERROR([XGETANAME not found])])
+AC_MSG_NOTICE(116========================================================)
+# 멈춤구간주석처리
+#AC_CHECK_HEADERS([textstyle/woe32dll.h], [WOE32DLL=1], [WOE32DLL=0])
+AC_MSG_NOTICE(117========================================================)
+if test "$WOE32DLL" = "1"; then
+  AM_LDFLAGS='-export-dynamic'
+fi
+AC_MSG_NOTICE(118========================================================)
+ac_aux_dir_abs=`cd $ac_aux_dir && pwd`
+AC_MSG_NOTICE(119========================================================)
+AC_PATH_PROG([PERL], [perl], [$ac_aux_dir_abs/missing perl])
+#output : checking for perl... /usr/bin/perl
+AC_MSG_NOTICE(120========================================================)
+AC_ARG_ENABLE([namespacing],
+  [  --disable-namespacing   build a library that exports undesired symbols],
+  [:], [enable_namespacing=yes])
+if test "$enable_namespacing" != no; then
+  NAMESPACING=yes
+else
+  NAMESPACING=
+fi
+AC_MSG_NOTICE(121========================================================)
+AC_SUBST([NAMESPACING])
+AC_MSG_NOTICE(122========================================================)
+AC_PROG_AWK
+#output : checking for gawk... (cached) gawk
+AC_MSG_NOTICE(123========================================================)
+changequote(,)
+sed_extract_major='/^[0-9]/{s/^\([0-9]*\).*/\1/p;q;}
+i\
+0
+q
+'
+sed_extract_minor='/^[0-9][0-9]*[.][0-9]/{s/^[0-9]*[.]\([0-9]*\).*/\1/p;q;}
+i\
+0
+q
+'
+sed_extract_subminor='/^[0-9][0-9]*[.][0-9][0-9]*[.][0-9]/{s/^[0-9]*[.][0-9]*[.]\([0-9]*\).*/\1/p;q;}
+i\
+0
+q
+'
+changequote([,])
+AC_MSG_NOTICE(124========================================================)
+version_major=`echo "${VERSION}" | sed -n -e "$sed_extract_major"`
+version_minor=`echo "${VERSION}" | sed -n -e "$sed_extract_minor"`
+version_subminor=`echo "${VERSION}" | sed -n -e "$sed_extract_subminor"`
+HEXVERSION=0x`$AWK 'BEGIN { printf("%02X%02X%02X", "$version_major", "$version_minor", "$version_subminor") }'`
+AC_SUBST([HEXVERSION])
+
+if test "$am_func_iconv" = yes; then
+  HAVE_ICONV=1
+else
+  HAVE_ICONV=0
+fi
+AC_SUBST([HAVE_ICONV])
+
+PKG_CHECK_MODULES(
+    [ITL], 
+    [libintl], 
+    [have_libintl=yes], 
+    [have_libintl=no]
+)
+
+AC_SUBST([ITL_CFLAGS])
+AC_SUBST([ITL_LIBS])
+
+PKG_CHECK_MODULES(
+    [NCURSES], 
+    [ncurses], 
+    [have_ncurses=yes], 
+    [have_ncurses=no]
+)
+
+AC_SUBST([NCURSES_CFLAGS])
+AC_SUBST([NCURSES_LIBS])
+
+PKG_CHECK_MODULES(
+    [GLIB], 
+    [glib-2.0 gobject-2.0], 
+    [have_glib=yes], 
+    [have_glib=no]
+)
+
+AC_SUBST([GLIB_CFLAGS])
+AC_SUBST([GLIB_LIBS])
+AC_SUBST([INTL_CFLAGS], [$INTL_CFLAGS])
+AC_SUBST([INTL_LIBS], [$INTL_LIBS])
+AC_SUBST([NCURSES_CFLAGS], [$NCURSES_CFLAGS])
+AC_SUBST([NCURSES_LIBS], [$NCURSES_LIBS])
+
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([doc/Makefile])
+AC_CONFIG_FILES([lib/Makefile])
+AC_CONFIG_FILES([lib/exported.sh])
+AC_CONFIG_FILES([lib/textstyle/version.h:lib/textstyle/version.in.h])
+AC_CONFIG_FILES([lib/textstyle/woe32dll.h:lib/textstyle/woe32dll.in.h])
+AC_CONFIG_FILES([tests/Makefile])
+AC_CONFIG_FILES([adhoc-tests/Makefile])
+
+AC_LIBOBJ([color])
+AC_LIBOBJ([gl_array_list])
+AC_LIBOBJ([term-ostream])
+AC_LIBOBJ([ostream])
+AC_LIBOBJ([concat-filename])
+AC_LIBOBJ([xconcat-filename])
+AC_LIBOBJ([xsize])
+AC_LIBOBJ([error])
+AC_LIBOBJ([full-write])
+AC_LIBOBJ([term-style-control])
+AC_LIBOBJ([fsync])
+AC_LIBOBJ([xstrdup])
+AC_LIBOBJ([xgethostname])
+AC_LIBOBJ([lt__alloc]) 
+AC_LIBOBJ([lt__argz])
+AC_LIBOBJ([lt_dlloader])
+AC_LIBOBJ([lt_error])
+AC_LIBOBJ([ltdl])
+AC_LIBOBJ([slist])
+
+# 컴파일러 경로 출력
+AC_MSG_NOTICE([BOTTOM START =======================================])
+AC_MSG_NOTICE([C 컴파일러: $CC])
+AC_MSG_NOTICE([C++ 컴파일러: $CXX])
+AC_MSG_NOTICE([링커: $LD])
+AC_MSG_NOTICE([AR: $AR])
+AC_MSG_NOTICE([CFLAGS: $CFLAGS])
+AC_MSG_NOTICE([CXXFLAGS: $CXXFLAGS])
+AC_MSG_NOTICE([LDFLAGS: $LDFLAGS])
+AC_MSG_NOTICE([BOTTOM END =======================================])
+
+AC_OUTPUT

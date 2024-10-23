@@ -1,3 +1,4 @@
+# 주로 autoconf 매크로들을 사용하는 곳
 # Copyright (C) 2011-2024 Simon Josefsson
 
 # This program is free software: you can redistribute it and/or modify
@@ -13,6 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# 추가
+IT_PROG_INTLTOOL([0.40.0]) # 다국어 지원을 위한 도구
+GTK_DOC_CHECK([1.0]) # API 문서를 생성하는 도구
+
+
+
 AC_INIT([Libidn2],
         m4_esyscmd([build-aux/git-version-gen .tarball-version]),
         [help-libidn@gnu.org],,
@@ -22,6 +29,11 @@ AC_INIT([Libidn2],
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
+#추가
+AC_PREFIX_DEFAULT([/mingw64])
+AC_SUBST([datadir], [$prefix/share])
+
+
 AC_SUBST(LT_CURRENT, 4)
 AC_SUBST(LT_REVISION, 0)
 AC_SUBST(LT_AGE, 4)
@@ -37,13 +49,32 @@ AC_SUBST([NUMBER_VERSION], [`printf '0x%02x%02x%04x' $MAJOR_VERSION $MINOR_VERSI
 AC_MSG_NOTICE([$PACKAGE_NAME $PACKAGE_VERSION $PACKAGE_TARNAME $MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION $NUMBER_VERSION $LT_CURRENT:$LT_REVISION:$LT_AGE $DLL_VERSION])
 
 AC_CONFIG_AUX_DIR([build-aux])
-AC_CONFIG_MACRO_DIR([m4])
+#AC_CONFIG_MACRO_DIRS([m4]) #추가 autoconf에서 사용
+#AC_CONFIG_MACRO_DIRS([/usr/share/aclocal])
+#AC_CONFIG_MACRO_DIRS([/mingw64/share/aclocal /usr/share/aclocal m4])
+AC_CONFIG_MACRO_DIRS([/mingw64/share/aclocal /usr/share/aclocal /c/libidn2/m4])
 AC_CONFIG_HEADERS([config.h])
+
+# 추가된 설정
+AC_CONFIG_SRCDIR([src/idn2.c])
+
+
+# 추가
+m4_include([/c/libidn2/m4/custom-macros.m4])
+m4_include([/c/libidn2/m4/gtk-doc.m4])
+m4_pattern_allow([AC_PROG_GETTEXT])
+
+#추가
+CFLAGS=""
+CPPFLAGS=""
+LDFLAGS=""
+
+AC_PROG_CC
 
 AM_INIT_AUTOMAKE([1.14 -Wall -Wno-portability subdir-objects])
 AM_SILENT_RULES([yes])
 
-AC_PROG_CC
+
 AC_USE_SYSTEM_EXTENSIONS
 gl_EARLY
 unistring_EARLY
@@ -51,17 +82,23 @@ AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 LT_INIT([win32-dll])
 gl_INIT
 unistring_INIT
+
+# Add warnings 추가 Makefile.am파일에서 설정하는게 일반적
+#AM_CFLAGS = -Werror
+
+#추가
+CFLAGS="$CFLAGS -Werror"
+
 AC_DEFINE([GNULIB_NO_VLA], 1, [Disable VLA usage in gettext.h.])
 
-# Detect the target system
+# 타겟 시스템 감지
 case "${host_os}" in
     linux-gnu)
         build_linux_gnu=yes
 esac
 AM_CONDITIONAL([TEST_GLIBC], [test "$build_linux_gnu" = "yes"])
 
-dnl Ideally, this should attempt a link, but this requires a separate
-dnl version file, so we only check for compiler support here.
+# 컴파일러 지원 확인
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([
 __attribute__((visibility("hidden")))
 int
@@ -76,14 +113,14 @@ __asm__ (".symver versioned_symbol, versioned_symbol@IDN2_0.0.0");
      [The toolchain supports aliases and .symver.])])
 
 #
-# check for gtk-doc
+# gtk-doc 체크
 #
 m4_ifdef([GTK_DOC_CHECK], [
 GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 ],[
 AM_CONDITIONAL([ENABLE_GTK_DOC], false)
 ])
-# needed for some older versions of gtk-doc
+# 구버전 gtk-doc를 위한 설정
 m4_ifdef([GTK_DOC_USE_LIBTOOL], [], [
 AM_CONDITIONAL([GTK_DOC_USE_LIBTOOL], false)
 ])
@@ -100,102 +137,118 @@ AC_ARG_ENABLE([gcc-warnings],
      'expensive' in addition generates expensive warnings
      and 'error' also turn warnings into errors.])])
 
-# https://www.gnu.org/software/gnulib//manual/html_node/manywarnings.html
+# GCC 경고 설정
 AS_IF([test "$enable_gcc_warnings" != no],
   [
-   # Set up the list of unwanted warning options.
-   nw=
-   if test "$enable_gcc_warnings" = yes; then
-     nw="$nw -fanalyzer"
-   fi
-   nw="$nw -Wbad-function-cast" # Casting a function's result is not more
-                                # dangerous than casting any other value.
-   nw="$nw -Winline"            # It's OK to not inline.
-   nw="$nw -Wsign-compare"      # Too many false alarms.
-   nw="$nw -Wstrict-overflow"   # It's OK to optimize strictly.
-   nw="$nw -Wsystem-headers"    # Don't warn in system headers.
+    nw=
+    if test "$enable_gcc_warnings" = yes; then
+      nw="$nw -fanalyzer"
+    fi
+    nw="$nw -Wbad-function-cast"
+    nw="$nw -Winline"
+    nw="$nw -Wsign-compare"
+    nw="$nw -Wstrict-overflow"
+    nw="$nw -Wsystem-headers"
 
-   # https://github.com/pi-hole/FTL/pull/1428
-   nw="$nw -Wsuggest-attribute=pure"
-   nw="$nw -Wsuggest-attribute=const"
+    nw="$nw -Wsuggest-attribute=pure"
+    nw="$nw -Wsuggest-attribute=const"
 
-  dnl nw="$nw -Wundef"                # All compiler preprocessors support #if UNDEF
-  dnl nw="$nw -Wtraditional"          # All compilers nowadays support ANSI C
-  dnl nw="$nw -Wconversion"           # These warnings usually don't point to mistakes.
-  dnl nw="$nw -Wpadded"               # Padding internal structs doesn't help.
-  dnl nw="$nw -Wc++-compat"           # Compile using a C compiler.
-  dnl nw="$nw -Wtraditional-conversion" # Too many complaints for now.
-  dnl nw="$nw -Wunreachable-code"     # gcc bug 40412
-  dnl nw="$nw -Wswitch-default"       # Nothing wrong with default-less switch?
-  dnl nw="$nw -Wmissing-field-initializers" # Avoid spamming in tests/ directory
-  dnl gl_WARN_ADD([-fdiagnostics-show-option])
-  dnl gl_WARN_ADD([-fdiagnostics-color=always])      # colors even when using ccache
+    # Define or use gl_MANYWARN_ALL_GCC
+    gl_MANYWARN_ALL_GCC $nw 
 
-   if test "$enable_gcc_warnings" = error; then
-     gl_WARN_ADD([-Werror], [WERROR_CFLAGS])
-     gl_WARN_ADD([-Wno-error=analyzer-use-of-uninitialized-value], [WERROR_CFLAGS])
-     gl_WARN_ADD([-Wno-error=missing-field-initializers], [WERROR_TESTS_CFLAGS])
-     # GCC 11.4 false positive: test-glib.c: double-'free' of 'naemchen_bytes' [-Werror=analyzer-double-free]
-     gl_WARN_ADD([-Wno-error=analyzer-double-free], [WERROR_TESTS_CFLAGS])
-   fi
+    # Complement and modify warning options 주석처리
+    #desired_warning_options="-Werror"
+    #possible_warning_options="$nw"
+    # Define warning options 추가
+    nw="-Wall -Wextra"
+    # Check for required warnings
+    desired_warning_options="-Werror -Wall -Wextra"
+    remaining_undesired_warning_options="-Wno-unused-variable -Wno-unused-parameter"
+    possible_warning_options="$nw"
+    
+    # Correct way to call gl_MANYWARN_COMPLEMENT
+    gl_MANYWARN_COMPLEMENT "$desired_warning_options" "$possible_warning_options"
+    gl_MANYWARN_COMPLEMENT "$remaining_undesired_warning_options" "$nw"
 
-   # Setup the list of meaningful warning options for the C compiler.
-   # The list comes from manywarnings.m4. Warning options that are not
-   # generally meaningful have already been filtered out (cf.
-   # build-aux/gcc-warning.spec).
-   gl_MANYWARN_ALL_GCC([possible_warning_options])
+    # Process desired warning options
+    for w in $desired_warning_options; do
+        gl_WARN_ADD $w
+    done
 
-   # Compute the list of warning options that are desired.
-   gl_MANYWARN_COMPLEMENT([desired_warning_options],
-                          [$possible_warning_options], [$nw])
-   # Compute the list of remaining undesired warning options.
-   # Namely those, that were not in manywarnings.m4 because they were
-   # already listed in build-aux/gcc-warning.spec; this includes those
-   # that are implied by -Wall.
-   gl_MANYWARN_COMPLEMENT([remaining_undesired_warning_options],
-                          [$nw], [$possible_warning_options])
+    # Process remaining undesired warning options
+    for w in `echo "$remaining_undesired_warning_options" | sed -e 's/-W/-Wno-/g'`; do
+       gl_WARN_ADD $w
+    done
 
-   # Add the desired warning options to WARN_CFLAGS.
-   for w in $desired_warning_options; do
-     gl_WARN_ADD([$w])
-   done
 
-   # Add the opposites of the remaining undesired warning options to
-   # WARN_CFLAGS.
-   for w in `echo "$remaining_undesired_warning_options" | sed -e 's/-W/-Wno-/g'`; do
-     gl_WARN_ADD([$w])
-   done
-])
+    # Apply desired warning options
+    #for w in $desired_warning_options; do
+    #    gl_WARN_ADD("-W$w")
+    #done
 
+    # Apply remaining undesired warning options
+    #for w in `echo "$remaining_undesired_warning_options" | sed -e 's/-W/-Wno-/g'`; do
+    #    gl_WARN_ADD("-W$w")
+    #done
+
+    #주석처리
+    #gl_MANYWARN_COMPLEMENT("$desired_warning_options", "$possible_warning_options")
+    #gl_MANYWARN_COMPLEMENT("$remaining_undesired_warning_options", "$nw")
+
+    
+  ])
 AC_ARG_ENABLE(doc,
   AS_HELP_STRING([--disable-doc], [don't generate any documentation]),
-    enable_doc=$enableval, enable_doc=yes)
-AM_CONDITIONAL(ENABLE_DOC, test "$enable_doc" != "no")
+  [enable_doc=$enableval], [enable_doc=yes])
 
-if test "$enable_doc" = "yes";then
-  AC_CONFIG_FILES([
-    doc/Makefile
-    doc/reference/Makefile
-    doc/reference/version.xml
-  ])
-fi
-
+# 설정할 파일 목록
 AC_CONFIG_FILES([
-  Makefile
-  examples/Makefile
-  lib/idn2.h
-  lib/Makefile
-  unistring/Makefile
-  gl/Makefile
-  libidn2.pc
-  po/Makefile.in
-  src/Makefile
-  tests/Makefile
-  fuzz/Makefile
+    Makefile
+    gl/Makefile
+    doc/Makefile
+    lib/Makefile
+    gnulib/lib/unictype/Makefile
+    gnulib/Makefile
+    src/Makefile
+    tests/Makefile
+    doc/reference/Makefile
+    examples/Makefile
+    fuzz/Makefile
+    gettext-0.19.8/os2/Makefile
+    po/Makefile
+    libidn2.pc
+    po/Makefile.in
+    lib/idn2.h
 ])
+
+# 추가 설정 (AC_CONFIG_COMMANDS 사용)
+AC_CONFIG_COMMANDS([post-configure], [
+  chmod a+x misc/gettextize
+  chmod a+x misc/autopoint
+  chmod a+x misc/convert-archive
+  FIX_MAKEFILE_DISTRIB
+])
+
 AC_OUTPUT
 
+#추가
+#AC_PROG_LIBTOOL -> LT_INIT대체 libtool 버전 2.2 이상에서 사용 가능
+LT_INIT
+#AC_CHECK_LIB([iconv], [iconv])
+#AC_CHECK_LIB([intl], [gettext])
+#추가
+AC_CHECK_LIB([iconv], [iconv], [], [AC_MSG_ERROR([iconv library not found!])])
+AC_CHECK_LIB([intl], [gettext], [], [AC_MSG_ERROR([gettext library not found!])])
+#AC_PROG_GETTEXT #error: possibly undefined macro: AC_PROG_GETTEXT
+
+#추가
+AC_SUBST(CFLAGS)
+
 AC_MSG_NOTICE([summary of main build options:
+
+#추가
+PATH=/mingw64/bin:/usr/bin:/bin:$PATH
+export PATH
 
   Version:            ${VERSION}
   Libtool version     $LT_CURRENT:$LT_REVISION:$LT_AGE

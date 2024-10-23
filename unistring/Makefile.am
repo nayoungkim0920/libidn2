@@ -1,17 +1,7 @@
-AUTOMAKE_OPTIONS = 1.5 gnits
+lib_LTLIBRARIES = libunistring.la
+libunistring_la_SOURCES = \
+    unistring.c \
+    other_unistring_source.c
+libunistring_la_LDFLAGS = -version-info 1:0:0
 
-noinst_HEADERS =
-noinst_LIBRARIES =
-noinst_LTLIBRARIES =
-EXTRA_DIST = m4/gnulib-cache.m4
-BUILT_SOURCES =
-SUFFIXES =
-MOSTLYCLEANFILES =
-MOSTLYCLEANDIRS =
-CLEANFILES =
-DISTCLEANFILES =
-MAINTAINERCLEANFILES =
-
-AM_CPPFLAGS = -I$(top_srcdir)/gl -I$(top_builddir)/gl
-
-include gnulib.mk
+include_HEADERS = unistring.h

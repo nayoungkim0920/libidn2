@@ -1,0 +1,6 @@
+2024-10-22  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* m4/build-to-host.m4: Upgrade to gettext-0.22.5.
+	* m4/nls.m4: Upgrade to gettext-0.22.5.
+	* m4/po.m4: Upgrade to gettext-0.22.5.
+

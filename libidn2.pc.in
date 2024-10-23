@@ -1,11 +1,10 @@
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-includedir=@includedir@
 libdir=@libdir@
+includedir=@includedir@
 
 Name: libidn2
-Description: Library implementing IDNA2008 and TR46
-Version: @PACKAGE_VERSION@
-Cflags: -I${includedir}
+Description: Internationalized Domain Names library
+Version: @VERSION@
+Cflags: -I${includedir}/libidn2
 Libs: -L${libdir} -lidn2
-Libs.private: @LTLIBICONV@ @LTLIBUNISTRING@
