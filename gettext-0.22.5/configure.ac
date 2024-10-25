@@ -15,7 +15,6 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 dnl Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.64])
 AC_INIT([gettext],
 	m4_esyscmd([build-aux/git-version-gen .tarball-version]),
@@ -23,6 +22,7 @@ AC_INIT([gettext],
 AC_CONFIG_SRCDIR([gettext-tools/src/msgfmt.c])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([1.13 silent-rules parallel-tests tar-ustar])
+AC_MSG_NOTICE([2==================================================================])
 
 dnl Override automake's tar command used for creating distributions.
 am__tar='${AMTAR} chf - --format=ustar --owner=root --group=root "$$tardir"'

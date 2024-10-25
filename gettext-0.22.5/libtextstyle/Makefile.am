@@ -17,7 +17,8 @@
 ## Process this file with automake to produce Makefile.in.
 
 AUTOMAKE_OPTIONS = 1.13 gnu no-dependencies subdir-objects
-ACLOCAL_AMFLAGS = -I m4 -I gnulib-m4 -I /mingw64/share/aclocal
+# -I /mingw64/share/aclocal configure.ac 충돌로 주석처리
+ACLOCAL_AMFLAGS = -I m4 -I ../m4 -I gnulib-m4
 AM_CPPFLAGS = -I${top_builddir} # 전처리기 플래그 설정 추가
 #CFLAGS = -Wall -Wextra -Wpedantic -fdiagnostics-show-option # 모든 경고와 추가적인 경고를 활성화
 #INCLUDES = -I$(top_srcdir) #AM_CPPFLAGS의 old name
@@ -39,7 +40,7 @@ AM_LIBS = $(ITL_LIBS) $(NCURSES_LIBS) $(GLIB_LIBS)
 #DEFAULT_INCLUDES = -I$(srcdir) -I.
 
 # The list of subdirectories containing Makefiles.
-SUBDIRS = po lib tests adhoc-tests doc
+SUBDIRS = libltdl po lib tests adhoc-tests doc
 
 # 공유 라이브러리로 설정
 lib_LTLIBRARIES = libtextstyle.la libltdlc.la

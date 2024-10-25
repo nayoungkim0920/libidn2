@@ -15,11 +15,15 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <https://www.gnu.org/licenses/>.
 dnl Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.72])  # autoconf --version
-
 AC_INIT([libtextstyle], [1.0], [bug-libtextstyle@example.com]) # 프로젝트 초기화
+AC_USE_SYSTEM_EXTENSIONS
 
-AC_USE_SYSTEM_EXTENSIONS # 시스템 확장 기능 활성화
+LT_CONFIG_LTDL_DIR([libltdl])
+
+LT_INIT([win32-dll], [dlopen disable-static])
+LTDL_INIT
+
+AC_PREREQ([2.72])  # autoconf --version
 
 AM_GNU_GETTEXT_VERSION([0.22.5]) # gettext --version 0.22.5
 AM_GNU_GETTEXT([external]) # gettext는 external 인자 없이 사용할 수 없음
@@ -93,8 +97,7 @@ gl_PROG_AR_RANLIB
 # 아카이브 툴 확인 (AM_PROG_AR 호출)
 #AM_PROG_AR #gl_PROG_AR_RANLIB과 충돌
 
-# Libtool 초기화 (LT_INIT 호출)
-LT_INIT([win32-dll], [dlopen disable-static])
+
 
 IT_PROG_INTLTOOL([0.51.0]) # intltool의 버전을 확인하고 필요한 경우 설치
 
@@ -109,17 +112,15 @@ AC_CANONICAL_HOST
 
 AC_CHECK_HEADERS([stdlib.h stdio.h xalloc.h string.h unistd.h stdint.h])
 
-#멈춤구간주석처리
-#AC_PREREQ([2.64])  # Autoconf minimum version
+# AC_CONFIG_SUBDIRS([libltdl]) # LT_CONFIG_LTDL_DIR([libltdl])
 AC_CONFIG_SRCDIR([lib/color.c])  # Primary source file
 AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory
 # 컴파일러 설정
-#멈춤구간주석처리
 AC_PROG_INSTALL
 #output:checking for a BSD-compatible install... /usr/bin/install -c
 AC_PROG_MKDIR_P
 #output:checking for a race-free mkdir -p... /usr/bin/mkdir -p
-AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_MACRO_DIRS([m4] [../m4] [gnulib-m4])
 . $srcdir/version.sh
 gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
 AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
@@ -131,11 +132,11 @@ AM_PROG_CC_C_O # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작�
 #output:checking for gawk... gawk
 #output:checking whether make sets $(MAKE)... yes
 #output:checking whether make supports nested variables... yes
+
 LT_LANG([C])
-#멈춤구간주석처리
-#LT_LANG([C++])
-#멈춤구간주석처리
-#LT_LANG([Windows Resource])
+LT_LANG([C++])
+LT_LANG([Windows Resource])
+
 m4_ifdef([AX_PREFIX_CONFIG_H], [AX_PREFIX_CONFIG_H])
 
 AC_LANG(C)
@@ -158,7 +159,7 @@ AC_COMPILE_IFELSE([
        }
    ]])
 ], [
-   CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가
+   #CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가 # ./configure CFLAGS="-std=c11"
    AC_DEFINE([HAVE_C11], [1], [Define to 1 if C11 is supported.])
 ], [
    AC_MSG_ERROR([C11 지원이 없습니다.])
@@ -190,7 +191,7 @@ AC_COMPILE_IFELSE([
 AC_LANG_POP
 
 
-#AC_CROSS_COMPILER
+AC_CROSS_COMPILER
 #AC_DEFINE([CROSS_COMPILING], [1], [Define if we are cross compiling])
 #AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
 #AC_CHECK_TOOL([LD], [/mingw64/bin/ld.exe], [ld]) #2.43.1
@@ -587,6 +588,9 @@ AC_SUBST([LIBS], [-ltextstyle])
 #     ])
 #     AC_LANG_POP
 # ])
+
+
+
 GNULIB_PATH=gnulib
 AC_CANONICAL_HOST
 echo "configure.ac: Configured host OS: $host_os"
@@ -610,6 +614,8 @@ fi
 
 # libxml이 포함되어 있는지 확인 (libxml이 있을 경우에만 활성화)
 AM_CONDITIONAL([INCLUDED_LIBXML], [test "x$have_libxml" = "xyes"])
+
+
 
 # Automake에서 사용할 GL 관련 매크로 정의
 # 필요한 헤더와 기능을 포함하기 위해 조건을 true로 설정
@@ -715,15 +721,24 @@ PKG_CHECK_MODULES(
 AC_SUBST([NCURSES_CFLAGS])
 AC_SUBST([NCURSES_LIBS])
 
-PKG_CHECK_MODULES(
-    [GLIB], 
-    [glib-2.0 gobject-2.0], 
+# PKG_CHECK_MODULES(
+#     [GLIB], 
+#     [glib-2.0 gobject-2.0], 
+#     [have_glib=yes], 
+#     [have_glib=no]
+# )
+
+PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.10.0 gobject-2.0 >= 2.10.0], 
     [have_glib=yes], 
-    [have_glib=no]
-)
+    [have_glib=no])
+
+if test "x$have_glib" = "xno"; then
+    AC_MSG_ERROR([GLib 2.10.0 or higher is required])
+fi
 
 AC_SUBST([GLIB_CFLAGS])
 AC_SUBST([GLIB_LIBS])
+
 AC_SUBST([INTL_CFLAGS], [$INTL_CFLAGS])
 AC_SUBST([INTL_LIBS], [$INTL_LIBS])
 AC_SUBST([NCURSES_CFLAGS], [$NCURSES_CFLAGS])
@@ -758,6 +773,7 @@ AC_LIBOBJ([lt_dlloader])
 AC_LIBOBJ([lt_error])
 AC_LIBOBJ([ltdl])
 AC_LIBOBJ([slist])
+
 
 # 컴파일러 경로 출력
 

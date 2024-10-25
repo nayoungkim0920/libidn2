@@ -37,59 +37,6 @@ available_tags='CXX '
 
 # ### BEGIN LIBTOOL CONFIG
 
-# Which release of libtool.m4 was used?
-macro_version=2.4.7
-macro_revision=2.4.7
-
-# Assembler program.
-AS="as"
-
-# DLL creation program.
-DLLTOOL="dlltool"
-
-# Object dumper program.
-OBJDUMP="objdump"
-
-# Whether or not to build shared libraries.
-build_libtool_libs=yes
-
-# Whether or not to build static libraries.
-build_old_libs=yes
-
-# What type of objects to build.
-pic_mode=default
-
-# Whether or not to optimize for fast installation.
-fast_install=needless
-
-# Shared archive member basename,for filename based shared library versioning on AIX.
-shared_archive_member_spec=
-
-# Shell to use when invoking shell scripts.
-SHELL="/bin/sh"
-
-# An echo program that protects backslashes.
-ECHO="printf %s\\n"
-
-# The PATH separator for the build system.
-PATH_SEPARATOR=":"
-
-# The host system.
-host_alias=x86_64-w64-mingw32
-host=x86_64-w64-mingw32
-host_os=mingw32
-
-# The build system.
-build_alias=x86_64-w64-mingw32
-build=x86_64-w64-mingw32
-build_os=mingw32
-
-# A sed program that does not truncate output.
-SED="/usr/bin/sed"
-
-# Sed that helps us avoid accidentally triggering echo(1) options like -n.
-Xsed="$SED -e 1s/^X//"
-
 # A grep program that handles long lines.
 GREP="/usr/bin/grep"
 
@@ -99,20 +46,14 @@ EGREP="/usr/bin/grep -E"
 # A literal string matcher.
 FGREP="/usr/bin/grep -F"
 
-# A BSD- or MS-compatible name lister.
-NM="/mingw64/x86_64-w64-mingw32/bin/nm -B"
+# An object symbol dumper.
+OBJDUMP="objdump"
 
-# Whether we need soft or hard links.
-LN_S="cp -pR"
+# A sed program that does not truncate output.
+SED="/usr/bin/sed"
 
-# What is the maximum length of a command?
-max_cmd_len=8192
-
-# Object file suffix (normally "o").
-objext=o
-
-# Executable file suffix (normally "").
-exeext=
+# Sed that helps us avoid accidentally triggering echo(1) options like -n.
+Xsed="$SED -e 1s/^X//"
 
 # whether the shell understands "unset".
 lt_unset=unset
@@ -122,122 +63,6 @@ SP2NL="tr \\040 \\012"
 
 # turn newlines into spaces.
 NL2SP="tr \\015\\012 \\040\\040"
-
-# convert $build file names to $host format.
-to_host_file_cmd=func_convert_file_msys_to_w32
-
-# convert $build files to toolchain format.
-to_tool_file_cmd=func_convert_file_msys_to_w32
-
-# A file(cmd) program that detects file types.
-FILECMD="file"
-
-# Method to check whether dependent libraries are shared objects.
-deplibs_check_method="file_magic ^x86 archive import|^x86 DLL"
-
-# Command to use when deplibs_check_method = "file_magic".
-file_magic_cmd="func_win32_libid"
-
-# How to find potential files when deplibs_check_method = "file_magic".
-file_magic_glob=""
-
-# Find potential files using nocaseglob when deplibs_check_method = "file_magic".
-want_nocaseglob="yes"
-
-# Command to associate shared and link libraries.
-sharedlib_from_linklib_cmd="func_cygming_dll_for_implib"
-
-# The archiver.
-AR="/mingw64/x86_64-w64-mingw32/bin/ar.exe"
-
-# Flags to create an archive (by configure).
-lt_ar_flags=cr
-
-# Flags to create an archive.
-AR_FLAGS=${ARFLAGS-"$lt_ar_flags"}
-
-# How to feed a file listing to the archiver.
-archiver_list_spec="@"
-
-# A symbol stripping program.
-STRIP="strip"
-
-# Commands used to install an old-style archive.
-RANLIB="ranlib"
-old_postinstall_cmds="chmod 644 \$oldlib~\$RANLIB \$tool_oldlib"
-old_postuninstall_cmds=""
-
-# Whether to use a lock for old archive extraction.
-lock_old_archive_extraction=no
-
-# A C compiler.
-LTCC="x86_64-w64-mingw32-gcc"
-
-# LTCC compiler flags.
-LTCFLAGS="-std=c11 -std=c11"
-
-# Take the output of nm and produce a listing of raw symbols and C names.
-global_symbol_pipe="/usr/bin/sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\\{0,1\\}\$/\\1 \\2 \\2/p' | /usr/bin/sed '/ __gnu_lto/d'"
-
-# Transform the output of nm in a proper C declaration.
-global_symbol_to_cdecl="/usr/bin/sed -n -e 's/^T .* \\(.*\\)\$/extern int \\1();/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/extern char \\1;/p'"
-
-# Transform the output of nm into a list of symbols to manually relocate.
-global_symbol_to_import=""
-
-# Transform the output of nm in a C name address pair.
-global_symbol_to_c_name_address="/usr/bin/sed -n -e 's/^: \\(.*\\) .*\$/  {\"\\1\", (void *) 0},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/  {\"\\1\", (void *) \\&\\1},/p'"
-
-# Transform the output of nm in a C name address pair when lib prefix is needed.
-global_symbol_to_c_name_address_lib_prefix="/usr/bin/sed -n -e 's/^: \\(.*\\) .*\$/  {\"\\1\", (void *) 0},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(lib.*\\)\$/  {\"\\1\", (void *) \\&\\1},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/  {\"lib\\1\", (void *) \\&\\1},/p'"
-
-# The name lister interface.
-nm_interface="BSD nm"
-
-# Specify filename containing input files for $NM.
-nm_file_list_spec="@"
-
-# The root where to search for dependent libraries,and where our libraries should be installed.
-lt_sysroot=
-
-# Command to truncate a binary pipe.
-lt_truncate_bin="/usr/bin/dd bs=4096 count=1"
-
-# The name of the directory that contains temporary libtool files.
-objdir=.libs
-
-# Used to examine libraries when file_magic_cmd begins with "file".
-MAGIC_CMD=file
-
-# Must we lock files when doing compilation?
-need_locks="no"
-
-# Manifest tool.
-MANIFEST_TOOL=":"
-
-# Tool to manipulate archived DWARF debug symbol files on Mac OS X.
-DSYMUTIL=""
-
-# Tool to change global to local symbols on Mac OS X.
-NMEDIT=""
-
-# Tool to manipulate fat objects and archives on Mac OS X.
-LIPO=""
-
-# ldd/readelf like tool for Mach-O binaries on Mac OS X.
-OTOOL=""
-
-# ldd/readelf like tool for 64 bit Mach-O binaries on Mac OS X 10.4.
-OTOOL64=""
-
-# Old archive suffix (normally "a").
-libext=a
-
-# Shared library suffix (normally ".so").
-shrext_cmds=".dll"
-
-# The commands to extract the exported symbol list from a shared archive.
-extract_expsyms_cmds=""
 
 # Variables whose values should be saved in libtool wrapper scripts and
 # restored at link time.
@@ -301,13 +126,188 @@ finish_eval=""
 hardcode_into_libs=no
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0 C:/msys64/mingw64/lib/gcc C:/msys64/mingw64/lib C:/msys64/usr/lib C:/msys64/mingw64/x86_64-w64-mingw32/lib C:/msys64/mingw64/bin "
+sys_lib_search_path_spec="C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0 C:/msys64/mingw64/lib/gcc C:/msys64/mingw64/lib C:/msys64/usr/lib C:/msys64/mingw64/x86_64-w64-mingw32/lib C:/msys64/mingw64-backup-11.2.0/lib C:/msys64/mingw64/bin "
 
 # Detected run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/lib /usr/lib"
 
 # Explicit LT_SYS_LIBRARY_PATH set during ./configure time.
 configure_time_lt_sys_library_path=""
+
+# A BSD- or MS-compatible name lister.
+NM="/mingw64/x86_64-w64-mingw32/bin/nm -B"
+
+# Shell to use when invoking shell scripts.
+SHELL="/bin/sh"
+
+# An echo program that protects backslashes.
+ECHO="printf %s\\n"
+
+# A C compiler.
+LTCC="x86_64-w64-mingw32-gcc"
+
+# LTCC compiler flags.
+LTCFLAGS="-std=c11"
+
+# Take the output of nm and produce a listing of raw symbols and C names.
+global_symbol_pipe="/usr/bin/sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\\{0,1\\}\$/\\1 \\2 \\2/p' | /usr/bin/sed '/ __gnu_lto/d'"
+
+# Transform the output of nm in a proper C declaration.
+global_symbol_to_cdecl="/usr/bin/sed -n -e 's/^T .* \\(.*\\)\$/extern int \\1();/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/extern char \\1;/p'"
+
+# Transform the output of nm into a list of symbols to manually relocate.
+global_symbol_to_import=""
+
+# Transform the output of nm in a C name address pair.
+global_symbol_to_c_name_address="/usr/bin/sed -n -e 's/^: \\(.*\\) .*\$/  {\"\\1\", (void *) 0},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/  {\"\\1\", (void *) \\&\\1},/p'"
+
+# Transform the output of nm in a C name address pair when lib prefix is needed.
+global_symbol_to_c_name_address_lib_prefix="/usr/bin/sed -n -e 's/^: \\(.*\\) .*\$/  {\"\\1\", (void *) 0},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(lib.*\\)\$/  {\"\\1\", (void *) \\&\\1},/p' -e 's/^[ABCDGIRSTW][ABCDGIRSTW]* .* \\(.*\\)\$/  {\"lib\\1\", (void *) \\&\\1},/p'"
+
+# The name lister interface.
+nm_interface="BSD nm"
+
+# Specify filename containing input files for $NM.
+nm_file_list_spec="@"
+
+# The name of the directory that contains temporary libtool files.
+objdir=.libs
+
+# Which release of libtool.m4 was used?
+macro_version=2.4.7
+macro_revision=2.4.7
+
+# Assembler program.
+AS="as"
+
+# DLL creation program.
+DLLTOOL="dlltool"
+
+# Whether or not to build shared libraries.
+build_libtool_libs=yes
+
+# Whether or not to build static libraries.
+build_old_libs=yes
+
+# What type of objects to build.
+pic_mode=default
+
+# Whether or not to optimize for fast installation.
+fast_install=needless
+
+# Shared archive member basename,for filename based shared library versioning on AIX.
+shared_archive_member_spec=
+
+# The PATH separator for the build system.
+PATH_SEPARATOR=":"
+
+# The host system.
+host_alias=x86_64-w64-mingw32
+host=x86_64-w64-mingw32
+host_os=mingw32
+
+# The build system.
+build_alias=x86_64-w64-mingw32
+build=x86_64-w64-mingw32
+build_os=mingw32
+
+# Whether we need soft or hard links.
+LN_S="cp -pR"
+
+# What is the maximum length of a command?
+max_cmd_len=8192
+
+# Object file suffix (normally "o").
+objext=o
+
+# Executable file suffix (normally "").
+exeext=
+
+# convert $build file names to $host format.
+to_host_file_cmd=func_convert_file_msys_to_w32
+
+# convert $build files to toolchain format.
+to_tool_file_cmd=func_convert_file_msys_to_w32
+
+# A file(cmd) program that detects file types.
+FILECMD="file"
+
+# Method to check whether dependent libraries are shared objects.
+deplibs_check_method="file_magic ^x86 archive import|^x86 DLL"
+
+# Command to use when deplibs_check_method = "file_magic".
+file_magic_cmd="func_win32_libid"
+
+# How to find potential files when deplibs_check_method = "file_magic".
+file_magic_glob=""
+
+# Find potential files using nocaseglob when deplibs_check_method = "file_magic".
+want_nocaseglob="yes"
+
+# Command to associate shared and link libraries.
+sharedlib_from_linklib_cmd="func_cygming_dll_for_implib"
+
+# The archiver.
+AR="/mingw64/x86_64-w64-mingw32/bin/ar.exe"
+
+# Flags to create an archive (by configure).
+lt_ar_flags=cr
+
+# Flags to create an archive.
+AR_FLAGS=${ARFLAGS-"$lt_ar_flags"}
+
+# How to feed a file listing to the archiver.
+archiver_list_spec="@"
+
+# A symbol stripping program.
+STRIP="strip"
+
+# Commands used to install an old-style archive.
+RANLIB="ranlib"
+old_postinstall_cmds="chmod 644 \$oldlib~\$RANLIB \$tool_oldlib"
+old_postuninstall_cmds=""
+
+# Whether to use a lock for old archive extraction.
+lock_old_archive_extraction=no
+
+# The root where to search for dependent libraries,and where our libraries should be installed.
+lt_sysroot=
+
+# Command to truncate a binary pipe.
+lt_truncate_bin="/usr/bin/dd bs=4096 count=1"
+
+# Used to examine libraries when file_magic_cmd begins with "file".
+MAGIC_CMD=file
+
+# Must we lock files when doing compilation?
+need_locks="no"
+
+# Manifest tool.
+MANIFEST_TOOL=":"
+
+# Tool to manipulate archived DWARF debug symbol files on Mac OS X.
+DSYMUTIL=""
+
+# Tool to change global to local symbols on Mac OS X.
+NMEDIT=""
+
+# Tool to manipulate fat objects and archives on Mac OS X.
+LIPO=""
+
+# ldd/readelf like tool for Mach-O binaries on Mac OS X.
+OTOOL=""
+
+# ldd/readelf like tool for 64 bit Mach-O binaries on Mac OS X 10.4.
+OTOOL64=""
+
+# Old archive suffix (normally "a").
+libext=a
+
+# Shared library suffix (normally ".so").
+shrext_cmds=".dll"
+
+# The commands to extract the exported symbol list from a shared archive.
+extract_expsyms_cmds=""
 
 # Whether dlopen is supported.
 dlopen_support=unknown
@@ -326,21 +326,11 @@ striplib="strip --strip-unneeded"
 # The linker used to build libraries.
 LD="/mingw64/x86_64-w64-mingw32/bin/ld.exe"
 
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$tool_oldlib"
-
 # A language specific compiler.
 CC="x86_64-w64-mingw32-gcc"
 
 # Is the compiler the GNU compiler?
 with_gcc=yes
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=" -fno-builtin"
 
 # Additional compiler flags for building library objects.
 pic_flag=" -DDLL_EXPORT -DPIC"
@@ -349,7 +339,17 @@ pic_flag=" -DDLL_EXPORT -DPIC"
 wl="-Wl,"
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
+link_static_flag=""
+
+# How to create reloadable object files.
+reload_flag=" -r"
+reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
+
+# Commands used to build an old-style archive.
+old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$tool_oldlib"
+
+# Compiler flag to turn off builtin functions.
+no_builtin_flag=" -fno-builtin"
 
 # Does compiler simultaneously support -c and -o options?
 compiler_c_o="yes"
@@ -12044,21 +12044,11 @@ build_old_libs=`case $build_libtool_libs in yes) echo no;; *) echo yes;; esac`
 # The linker used to build libraries.
 LD="/mingw64/x86_64-w64-mingw32/bin/ld.exe"
 
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$tool_oldlib"
-
 # A language specific compiler.
 CC="x86_64-w64-mingw32-g++"
 
 # Is the compiler the GNU compiler?
 with_gcc=yes
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=" -fno-builtin"
 
 # Additional compiler flags for building library objects.
 pic_flag=" -DDLL_EXPORT -DPIC"
@@ -12068,6 +12058,16 @@ wl="-Wl,"
 
 # Compiler flag to prevent dynamic linking.
 link_static_flag="-static"
+
+# How to create reloadable object files.
+reload_flag=" -r"
+reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
+
+# Commands used to build an old-style archive.
+old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$tool_oldlib"
+
+# Compiler flag to turn off builtin functions.
+no_builtin_flag=" -fno-builtin"
 
 # Does compiler simultaneously support -c and -o options?
 compiler_c_o="yes"
@@ -12179,7 +12179,7 @@ file_list_spec="@"
 hardcode_action=immediate
 
 # The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0 C:/msys64/mingw64/bin/../lib/gcc C:/msys64/mingw64/lib/../lib C:/msys64/usr/lib/../lib C:/msys64/mingw64/bin/../lib C:/msys64/mingw64/x86_64-w64-mingw32/lib/../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib/../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../lib C:/msys64/mingw64/lib C:/msys64/usr/lib C:/msys64/mingw64/bin C:/msys64/mingw64/x86_64-w64-mingw32/lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../.."
+compiler_lib_search_dirs="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0 C:/msys64/mingw64/bin/../lib/gcc C:/msys64/mingw64/lib/../lib C:/msys64/usr/lib/../lib C:/msys64/mingw64/bin/../lib C:/msys64/mingw64/x86_64-w64-mingw32/lib/../lib C:/msys64/mingw64-backup-11.2.0/lib/../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib/../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../lib C:/msys64/mingw64/lib C:/msys64/usr/lib C:/msys64/mingw64/bin C:/msys64/mingw64/x86_64-w64-mingw32/lib C:/msys64/mingw64-backup-11.2.0/lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../.."
 
 # Dependencies to place before and after the objects being linked to
 # create a shared library.
@@ -12190,6 +12190,6 @@ postdeps="-lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthre
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path="-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/lib/../lib -LC:/msys64/usr/lib/../lib -LC:/msys64/mingw64/bin/../lib -LC:/msys64/mingw64/x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../lib -LC:/msys64/mingw64/lib -LC:/msys64/usr/lib -LC:/msys64/mingw64/bin -LC:/msys64/mingw64/x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../.."
+compiler_lib_search_path="-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/lib/../lib -LC:/msys64/usr/lib/../lib -LC:/msys64/mingw64/bin/../lib -LC:/msys64/mingw64/x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64-backup-11.2.0/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../lib -LC:/msys64/mingw64/lib -LC:/msys64/usr/lib -LC:/msys64/mingw64/bin -LC:/msys64/mingw64/x86_64-w64-mingw32/lib -LC:/msys64/mingw64-backup-11.2.0/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../.."
 
 # ### END LIBTOOL TAG CONFIG: CXX

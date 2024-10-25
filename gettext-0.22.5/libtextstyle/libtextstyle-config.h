@@ -263,6 +263,30 @@
 /* Define to 1 if <alloca.h> works. */
 /* #undef HAVE_ALLOCA_H */
 
+/* Define to 1 if you have the 'argz_add' function. */
+/* #undef HAVE_ARGZ_ADD */
+
+/* Define to 1 if you have the 'argz_append' function. */
+/* #undef HAVE_ARGZ_APPEND */
+
+/* Define to 1 if you have the 'argz_count' function. */
+/* #undef HAVE_ARGZ_COUNT */
+
+/* Define to 1 if you have the 'argz_create_sep' function. */
+/* #undef HAVE_ARGZ_CREATE_SEP */
+
+/* Define to 1 if you have the <argz.h> header file. */
+/* #undef HAVE_ARGZ_H */
+
+/* Define to 1 if you have the 'argz_insert' function. */
+/* #undef HAVE_ARGZ_INSERT */
+
+/* Define to 1 if you have the 'argz_next' function. */
+/* #undef HAVE_ARGZ_NEXT */
+
+/* Define to 1 if you have the 'argz_stringify' function. */
+/* #undef HAVE_ARGZ_STRINGIFY */
+
 /* Define to 1 if C11 is supported. */
 #ifndef LIBTEXTSTYLE_HAVE_C11
 #define LIBTEXTSTYLE_HAVE_C11 1
@@ -275,6 +299,11 @@
 /* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
    the CoreFoundation framework. */
 /* #undef HAVE_CFPREFERENCESCOPYAPPVALUE */
+
+/* Define to 1 if you have the 'closedir' function. */
+#ifndef LIBTEXTSTYLE_HAVE_CLOSEDIR
+#define LIBTEXTSTYLE_HAVE_CLOSEDIR 1
+#endif
 
 /* Define to 1 if C++17 is supported. */
 #ifndef LIBTEXTSTYLE_HAVE_CPP17
@@ -295,6 +324,12 @@
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
 /* #undef HAVE_DCGETTEXT */
+
+/* Define to 1 if you have the declaration of 'cygwin_conv_path', and to 0 if
+   you don't. */
+#ifndef LIBTEXTSTYLE_HAVE_DECL_CYGWIN_CONV_PATH
+#define LIBTEXTSTYLE_HAVE_DECL_CYGWIN_CONV_PATH 0
+#endif
 
 /* Define to 1 if you have the declaration of 'ecvt', and to 0 if you don't.
    */
@@ -368,8 +403,28 @@
 #define LIBTEXTSTYLE_HAVE_DECL___ARGV 1
 #endif
 
+/* Define to 1 if you have the <dirent.h> header file. */
+#ifndef LIBTEXTSTYLE_HAVE_DIRENT_H
+#define LIBTEXTSTYLE_HAVE_DIRENT_H 1
+#endif
+
+/* Define if you have the GNU dld library. */
+/* #undef HAVE_DLD */
+
+/* Define to 1 if you have the <dld.h> header file. */
+/* #undef HAVE_DLD_H */
+
+/* Define to 1 if you have the 'dlerror' function. */
+/* #undef HAVE_DLERROR */
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
+
+/* Define to 1 if you have the <dl.h> header file. */
+/* #undef HAVE_DL_H */
+
+/* Define if you have the _dyld_func_lookup function. */
+/* #undef HAVE_DYLD */
 
 /* Define to 1 if you have the `error' function. */
 /* #undef HAVE_ERROR */
@@ -378,6 +433,9 @@
 #ifndef LIBTEXTSTYLE_HAVE_ERROR_H
 #define LIBTEXTSTYLE_HAVE_ERROR_H 1
 #endif
+
+/* Define to 1 if the system has the type 'error_t'. */
+/* #undef HAVE_ERROR_T */
 
 /* Define to 1 if you have the 'fchdir' function. */
 /* #undef HAVE_FCHDIR */
@@ -410,6 +468,14 @@
 /* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
 /* #undef HAVE_LANGINFO_CODESET */
 
+/* Define if you have the libdl library or equivalent. */
+/* #undef HAVE_LIBDL */
+
+/* Define if libdlloader will be built on this platform */
+#ifndef LIBTEXTSTYLE_HAVE_LIBDLLOADER
+#define LIBTEXTSTYLE_HAVE_LIBDLLOADER 1
+#endif
+
 /* Define to 1 if you have the <limits.h> header file. */
 #ifndef LIBTEXTSTYLE_HAVE_LIMITS_H
 #define LIBTEXTSTYLE_HAVE_LIMITS_H 1
@@ -423,6 +489,12 @@
 /* Define to 1 if you have the 'lstat' function. */
 /* #undef HAVE_LSTAT */
 
+/* Define this if a modern libltdl is already installed */
+/* #undef HAVE_LTDL */
+
+/* Define to 1 if you have the <mach-o/dyld.h> header file. */
+/* #undef HAVE_MACH_O_DYLD_H */
+
 /* Define to 1 if you have the <minix/config.h> header file. */
 /* #undef HAVE_MINIX_CONFIG_H */
 
@@ -432,6 +504,21 @@
 #define LIBTEXTSTYLE_HAVE_MSVC_INVALID_PARAMETER_HANDLER 1
 #endif
 
+/* Define to 1 if you have the 'opendir' function. */
+#ifndef LIBTEXTSTYLE_HAVE_OPENDIR
+#define LIBTEXTSTYLE_HAVE_OPENDIR 1
+#endif
+
+/* Define if libtool can extract symbol lists from object files. */
+#ifndef LIBTEXTSTYLE_HAVE_PRELOADED_SYMBOLS
+#define LIBTEXTSTYLE_HAVE_PRELOADED_SYMBOLS 1
+#endif
+
+/* Define to 1 if you have the 'readdir' function. */
+#ifndef LIBTEXTSTYLE_HAVE_READDIR
+#define LIBTEXTSTYLE_HAVE_READDIR 1
+#endif
+
 /* Define to 1 if you have the <sdkddkver.h> header file. */
 #ifndef LIBTEXTSTYLE_HAVE_SDKDDKVER_H
 #define LIBTEXTSTYLE_HAVE_SDKDDKVER_H 1
@@ -439,6 +526,9 @@
 
 /* Define to 1 if you have the 'setdtablesize' function. */
 /* #undef HAVE_SETDTABLESIZE */
+
+/* Define if you have the shl_load function. */
+/* #undef HAVE_SHL_LOAD */
 
 /* Define to 1 if 'sig_atomic_t' is a signed integer type. */
 /* #undef HAVE_SIGNED_SIG_ATOMIC_T */
@@ -487,6 +577,12 @@
 #define LIBTEXTSTYLE_HAVE_STRING_H 1
 #endif
 
+/* Define to 1 if you have the 'strlcat' function. */
+/* #undef HAVE_STRLCAT */
+
+/* Define to 1 if you have the 'strlcpy' function. */
+/* #undef HAVE_STRLCPY */
+
 /* Define to 1 if 'st_atimensec' is a member of 'struct stat'. */
 /* #undef HAVE_STRUCT_STAT_ST_ATIMENSEC */
 
@@ -513,6 +609,9 @@
 
 /* Define to 1 if you have the <sys/bitypes.h> header file. */
 /* #undef HAVE_SYS_BITYPES_H */
+
+/* Define to 1 if you have the <sys/dl.h> header file. */
+/* #undef HAVE_SYS_DL_H */
 
 /* Define to 1 if you have the <sys/inttypes.h> header file. */
 /* #undef HAVE_SYS_INTTYPES_H */
@@ -572,6 +671,9 @@
 #ifndef LIBTEXTSTYLE_HAVE_WINT_T
 #define LIBTEXTSTYLE_HAVE_WINT_T 1
 #endif
+
+/* This value is set to 1 to indicate that the system argz facility works */
+/* #undef HAVE_WORKING_ARGZ */
 
 /* Define to 1 if O_NOATIME works. */
 #ifndef LIBTEXTSTYLE_HAVE_WORKING_O_NOATIME
@@ -704,10 +806,47 @@
 /* Define to 1 if you have the '__xpg_strerror_r' function. */
 /* #undef HAVE___XPG_STRERROR_R */
 
+/* Define if the OS needs help to load dependent libraries for dlopen(). */
+#ifndef LIBTEXTSTYLE_LTDL_DLOPEN_DEPLIBS
+#define LIBTEXTSTYLE_LTDL_DLOPEN_DEPLIBS 1
+#endif
+
+/* Define to the system default library search path. */
+#ifndef LIBTEXTSTYLE_LT_DLSEARCH_PATH
+#define LIBTEXTSTYLE_LT_DLSEARCH_PATH "/lib:/usr/lib"
+#endif
+
+/* The archive extension */
+#ifndef LIBTEXTSTYLE_LT_LIBEXT
+#define LIBTEXTSTYLE_LT_LIBEXT ""
+#endif
+
+/* The archive prefix */
+#ifndef LIBTEXTSTYLE_LT_LIBPREFIX
+#define LIBTEXTSTYLE_LT_LIBPREFIX "lib"
+#endif
+
+/* Define to the extension used for runtime loadable modules, say, ".so". */
+#ifndef LIBTEXTSTYLE_LT_MODULE_EXT
+#define LIBTEXTSTYLE_LT_MODULE_EXT ".dll"
+#endif
+
+/* Define to the name of the environment variable that determines the run-time
+   module search path. */
+#ifndef LIBTEXTSTYLE_LT_MODULE_PATH_VAR
+#define LIBTEXTSTYLE_LT_MODULE_PATH_VAR "PATH"
+#endif
+
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #ifndef LIBTEXTSTYLE_LT_OBJDIR
 #define LIBTEXTSTYLE_LT_OBJDIR ".libs/"
 #endif
+
+/* Define to the shared library suffix, say, ".dylib". */
+/* #undef LT_SHARED_EXT */
+
+/* Define to the shared archive member specification, say "(shr.o)". */
+/* #undef LT_SHARED_LIB_MEMBER */
 
 /* If malloc(0) is != NULL, define this to 1. Otherwise define this to 0. */
 #ifndef LIBTEXTSTYLE_MALLOC_0_IS_NONNULL
@@ -722,6 +861,9 @@
 
 /* Define to 1 on musl libc. */
 /* #undef MUSL_LIBC */
+
+/* Define if dlsym() requires a leading underscore in symbol names. */
+/* #undef NEED_USCORE */
 
 /* Define to 1 if open() fails to recognize a trailing slash. */
 /* #undef OPEN_TRAILING_SLASH_BUG */
@@ -1138,6 +1280,11 @@
 /* Define to 1 if C does not support variable-length arrays, and if the
    compiler does not already define this. */
 /* #undef __STDC_NO_VLA__ */
+
+/* Define so that glibc/gnulib argp.h does not typedef error_t. */
+#ifndef LIBTEXTSTYLE___error_t_defined
+#define LIBTEXTSTYLE___error_t_defined 1
+#endif
 
 /* The _GL_ASYNC_SAFE marker should be attached to functions that are
    signal handlers (for signals other than SIGABRT, SIGPIPE) or can be
@@ -1966,6 +2113,11 @@
 # define _GL_END_C_LINKAGE
 #endif
 
+
+/* Define to a type to use for 'error_t' if it is not otherwise available. */
+#ifndef _libtextstyle_error_t
+#define _libtextstyle_error_t int
+#endif
 
 /* Work around a bug in Apple GCC 4.0.1 build 5465: In C99 mode, it supports
    the ISO C 99 semantics of 'extern inline' (unlike the GNU C semantics of

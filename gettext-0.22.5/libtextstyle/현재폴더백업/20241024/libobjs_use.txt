@@ -1,0 +1,331 @@
+nayou@kimnayooung MINGW64 /c/libidn2/gettext-0.22.5/libtextstyle
+# grep -rnw './' -e 'LIBOBJS' | grep -v '^\s*#'
+./adhoc-tests/Makefile:252:LIBOBJS =  ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDIR}xconcat-filename$U.o ${LIBOBJDIR}xsize$U.o ${LIBOBJDIR}error$U.o ${LIBOBJDIR}full-write$U.o ${LIBOBJDIR}term-style-control$U.o ${LIBOBJDIR}fsync$U.o ${LIBOBJDIR}xstrdup$U.o ${LIBOBJDIR}xgethostname$U.o ${LIBOBJDIR}lt__alloc$U.o ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt_dlloader$U.o ${LIBOBJDIR}lt_error$U.o ${LIBOBJDIR}ltdl$U.o ${LIBOBJDIR}slist$U.o
+./adhoc-tests/Makefile.in:256:LIBOBJS = @LIBOBJS@
+./autom4te.cache/output.0:23068:  #    will be set to the directory where LIBOBJS objects are built.
+./autom4te.cache/output.1:22986:  #    will be set to the directory where LIBOBJS objects are built.
+./autom4te.cache/output.2:22986:  #    will be set to the directory where LIBOBJS objects are built.
+./autom4te.cache/traces.0:13745:m4trace:configure.ac:20: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./autom4te.cache/traces.1:29:m4trace:configure.ac:20: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./autom4te.cache/traces.2:29:m4trace:configure.ac:20: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./change_LIBOBJS_to_AC_LIBOBJ.sh:7:grep -rn --exclude-dir=백업* "\<LIBOBJS\>" "$TARGET_DIR" | while read -r line; do
+./change_LIBOBJS_to_AC_LIBOBJ.sh:11:        IFS=',' read -ra occurrences <<< "$(echo "$line" | grep -o "LIBOBJS")"
+./change_LIBOBJS_to_AC_LIBOBJ.sh:18:            # 원본 줄과 찾은 LIBOBJS 출력
+./code_test/macro_calls.txt:3265:m4/gnulib-comp.m4:# into gl_LIBOBJS instead of into LIBOBJS.
+./code_test/macro_calls.txt:3269:m4/gnulib-comp.m4:# into gl_LIBOBJS instead of into LIBOBJS.
+./code_test/macro_calls.txt:3332:m4/gnulib-comp.m4~:# into gl_LIBOBJS instead of into LIBOBJS.
+./code_test/macro_calls.txt:3336:m4/gnulib-comp.m4~:# into gl_LIBOBJS instead of into LIBOBJS.
+./config.log:5189:LIBOBJS=' color.o gl_array_list.o term-ostream.o ostream.o concat-filename.o xconcat-filename.o xsize.o error.o full-write.o term-style-control.o fsync.o xstrdup.o xgethostname.o lt__alloc.o lt__argz.o lt_dlloader.o lt_error.o ltdl.o slist.o'
+./config.status:853:S["LIBOBJS"]=" ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDI"\
+./configure:610:LIBOBJS=
+./configure:844:LIBOBJS
+./configure:4506:case " $LIBOBJS " in
+./configure:4508:  *) LIBOBJS="$LIBOBJS color.$ac_objext"
+./configure:4512:case " $LIBOBJS " in
+./configure:4514:  *) LIBOBJS="$LIBOBJS gl_array_list.$ac_objext"
+./configure:4518:case " $LIBOBJS " in
+./configure:4520:  *) LIBOBJS="$LIBOBJS term-ostream.$ac_objext"
+./configure:4524:case " $LIBOBJS " in
+./configure:4526:  *) LIBOBJS="$LIBOBJS ostream.$ac_objext"
+./configure:4530:case " $LIBOBJS " in
+./configure:4532:  *) LIBOBJS="$LIBOBJS concat-filename.$ac_objext"
+./configure:4536:case " $LIBOBJS " in
+./configure:4538:  *) LIBOBJS="$LIBOBJS xconcat-filename.$ac_objext"
+./configure:4542:case " $LIBOBJS " in
+./configure:4544:  *) LIBOBJS="$LIBOBJS xsize.$ac_objext"
+./configure:4548:case " $LIBOBJS " in
+./configure:4550:  *) LIBOBJS="$LIBOBJS error.$ac_objext"
+./configure:4554:case " $LIBOBJS " in
+./configure:4556:  *) LIBOBJS="$LIBOBJS full-write.$ac_objext"
+./configure:4560:case " $LIBOBJS " in
+./configure:4562:  *) LIBOBJS="$LIBOBJS term-style-control.$ac_objext"
+./configure:4566:case " $LIBOBJS " in
+./configure:4568:  *) LIBOBJS="$LIBOBJS fsync.$ac_objext"
+./configure:4572:case " $LIBOBJS " in
+./configure:4574:  *) LIBOBJS="$LIBOBJS xstrdup.$ac_objext"
+./configure:4578:case " $LIBOBJS " in
+./configure:4580:  *) LIBOBJS="$LIBOBJS xgethostname.$ac_objext"
+./configure:4584:case " $LIBOBJS " in
+./configure:4586:  *) LIBOBJS="$LIBOBJS lt__alloc.$ac_objext"
+./configure:4590:case " $LIBOBJS " in
+./configure:4592:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./configure:4596:case " $LIBOBJS " in
+./configure:4598:  *) LIBOBJS="$LIBOBJS lt_dlloader.$ac_objext"
+./configure:4602:case " $LIBOBJS " in
+./configure:4604:  *) LIBOBJS="$LIBOBJS lt_error.$ac_objext"
+./configure:4608:case " $LIBOBJS " in
+./configure:4610:  *) LIBOBJS="$LIBOBJS ltdl.$ac_objext"
+./configure:4614:case " $LIBOBJS " in
+./configure:4616:  *) LIBOBJS="$LIBOBJS slist.$ac_objext"
+./configure:22769:case " $LIBOBJS " in
+./configure:22771:  *) LIBOBJS="$LIBOBJS color.$ac_objext"
+./configure:22775:case " $LIBOBJS " in
+./configure:22777:  *) LIBOBJS="$LIBOBJS gl_array_list.$ac_objext"
+./configure:22781:case " $LIBOBJS " in
+./configure:22783:  *) LIBOBJS="$LIBOBJS term-ostream.$ac_objext"
+./configure:22787:case " $LIBOBJS " in
+./configure:22789:  *) LIBOBJS="$LIBOBJS ostream.$ac_objext"
+./configure:22793:case " $LIBOBJS " in
+./configure:22795:  *) LIBOBJS="$LIBOBJS concat-filename.$ac_objext"
+./configure:22799:case " $LIBOBJS " in
+./configure:22801:  *) LIBOBJS="$LIBOBJS xconcat-filename.$ac_objext"
+./configure:22805:case " $LIBOBJS " in
+./configure:22807:  *) LIBOBJS="$LIBOBJS xsize.$ac_objext"
+./configure:22811:case " $LIBOBJS " in
+./configure:22813:  *) LIBOBJS="$LIBOBJS error.$ac_objext"
+./configure:22817:case " $LIBOBJS " in
+./configure:22819:  *) LIBOBJS="$LIBOBJS full-write.$ac_objext"
+./configure:22823:case " $LIBOBJS " in
+./configure:22825:  *) LIBOBJS="$LIBOBJS term-style-control.$ac_objext"
+./configure:22829:case " $LIBOBJS " in
+./configure:22831:  *) LIBOBJS="$LIBOBJS fsync.$ac_objext"
+./configure:22835:case " $LIBOBJS " in
+./configure:22837:  *) LIBOBJS="$LIBOBJS xstrdup.$ac_objext"
+./configure:22841:case " $LIBOBJS " in
+./configure:22843:  *) LIBOBJS="$LIBOBJS xgethostname.$ac_objext"
+./configure:22847:case " $LIBOBJS " in
+./configure:22849:  *) LIBOBJS="$LIBOBJS lt__alloc.$ac_objext"
+./configure:22853:case " $LIBOBJS " in
+./configure:22855:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./configure:22859:case " $LIBOBJS " in
+./configure:22861:  *) LIBOBJS="$LIBOBJS lt_dlloader.$ac_objext"
+./configure:22865:case " $LIBOBJS " in
+./configure:22867:  *) LIBOBJS="$LIBOBJS lt_error.$ac_objext"
+./configure:22871:case " $LIBOBJS " in
+./configure:22873:  *) LIBOBJS="$LIBOBJS ltdl.$ac_objext"
+./configure:22877:case " $LIBOBJS " in
+./configure:22879:  *) LIBOBJS="$LIBOBJS slist.$ac_objext"
+./configure:22981:for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
+./configure:22986:  #    will be set to the directory where LIBOBJS objects are built.
+./configure:22990:LIBOBJS=$ac_libobjs
+./configure~:610:LIBOBJS=
+./configure~:844:LIBOBJS
+./configure~:4506:case " $LIBOBJS " in
+./configure~:4508:  *) LIBOBJS="$LIBOBJS color.$ac_objext"
+./configure~:4512:case " $LIBOBJS " in
+./configure~:4514:  *) LIBOBJS="$LIBOBJS gl_array_list.$ac_objext"
+./configure~:4518:case " $LIBOBJS " in
+./configure~:4520:  *) LIBOBJS="$LIBOBJS term-ostream.$ac_objext"
+./configure~:4524:case " $LIBOBJS " in
+./configure~:4526:  *) LIBOBJS="$LIBOBJS ostream.$ac_objext"
+./configure~:4530:case " $LIBOBJS " in
+./configure~:4532:  *) LIBOBJS="$LIBOBJS concat-filename.$ac_objext"
+./configure~:4536:case " $LIBOBJS " in
+./configure~:4538:  *) LIBOBJS="$LIBOBJS xconcat-filename.$ac_objext"
+./configure~:4542:case " $LIBOBJS " in
+./configure~:4544:  *) LIBOBJS="$LIBOBJS xsize.$ac_objext"
+./configure~:4548:case " $LIBOBJS " in
+./configure~:4550:  *) LIBOBJS="$LIBOBJS error.$ac_objext"
+./configure~:4554:case " $LIBOBJS " in
+./configure~:4556:  *) LIBOBJS="$LIBOBJS full-write.$ac_objext"
+./configure~:4560:case " $LIBOBJS " in
+./configure~:4562:  *) LIBOBJS="$LIBOBJS term-style-control.$ac_objext"
+./configure~:4566:case " $LIBOBJS " in
+./configure~:4568:  *) LIBOBJS="$LIBOBJS fsync.$ac_objext"
+./configure~:4572:case " $LIBOBJS " in
+./configure~:4574:  *) LIBOBJS="$LIBOBJS xstrdup.$ac_objext"
+./configure~:4578:case " $LIBOBJS " in
+./configure~:4580:  *) LIBOBJS="$LIBOBJS xgethostname.$ac_objext"
+./configure~:4584:case " $LIBOBJS " in
+./configure~:4586:  *) LIBOBJS="$LIBOBJS lt__alloc.$ac_objext"
+./configure~:4590:case " $LIBOBJS " in
+./configure~:4592:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./configure~:4596:case " $LIBOBJS " in
+./configure~:4598:  *) LIBOBJS="$LIBOBJS lt_dlloader.$ac_objext"
+./configure~:4602:case " $LIBOBJS " in
+./configure~:4604:  *) LIBOBJS="$LIBOBJS lt_error.$ac_objext"
+./configure~:4608:case " $LIBOBJS " in
+./configure~:4610:  *) LIBOBJS="$LIBOBJS ltdl.$ac_objext"
+./configure~:4614:case " $LIBOBJS " in
+./configure~:4616:  *) LIBOBJS="$LIBOBJS slist.$ac_objext"
+./configure~:22769:case " $LIBOBJS " in
+./configure~:22771:  *) LIBOBJS="$LIBOBJS color.$ac_objext"
+./configure~:22775:case " $LIBOBJS " in
+./configure~:22777:  *) LIBOBJS="$LIBOBJS gl_array_list.$ac_objext"
+./configure~:22781:case " $LIBOBJS " in
+./configure~:22783:  *) LIBOBJS="$LIBOBJS term-ostream.$ac_objext"
+./configure~:22787:case " $LIBOBJS " in
+./configure~:22789:  *) LIBOBJS="$LIBOBJS ostream.$ac_objext"
+./configure~:22793:case " $LIBOBJS " in
+./configure~:22795:  *) LIBOBJS="$LIBOBJS concat-filename.$ac_objext"
+./configure~:22799:case " $LIBOBJS " in
+./configure~:22801:  *) LIBOBJS="$LIBOBJS xconcat-filename.$ac_objext"
+./configure~:22805:case " $LIBOBJS " in
+./configure~:22807:  *) LIBOBJS="$LIBOBJS xsize.$ac_objext"
+./configure~:22811:case " $LIBOBJS " in
+./configure~:22813:  *) LIBOBJS="$LIBOBJS error.$ac_objext"
+./configure~:22817:case " $LIBOBJS " in
+./configure~:22819:  *) LIBOBJS="$LIBOBJS full-write.$ac_objext"
+./configure~:22823:case " $LIBOBJS " in
+./configure~:22825:  *) LIBOBJS="$LIBOBJS term-style-control.$ac_objext"
+./configure~:22829:case " $LIBOBJS " in
+./configure~:22831:  *) LIBOBJS="$LIBOBJS fsync.$ac_objext"
+./configure~:22835:case " $LIBOBJS " in
+./configure~:22837:  *) LIBOBJS="$LIBOBJS xstrdup.$ac_objext"
+./configure~:22841:case " $LIBOBJS " in
+./configure~:22843:  *) LIBOBJS="$LIBOBJS xgethostname.$ac_objext"
+./configure~:22847:case " $LIBOBJS " in
+./configure~:22849:  *) LIBOBJS="$LIBOBJS lt__alloc.$ac_objext"
+./configure~:22853:case " $LIBOBJS " in
+./configure~:22855:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./configure~:22859:case " $LIBOBJS " in
+./configure~:22861:  *) LIBOBJS="$LIBOBJS lt_dlloader.$ac_objext"
+./configure~:22865:case " $LIBOBJS " in
+./configure~:22867:  *) LIBOBJS="$LIBOBJS lt_error.$ac_objext"
+./configure~:22871:case " $LIBOBJS " in
+./configure~:22873:  *) LIBOBJS="$LIBOBJS ltdl.$ac_objext"
+./configure~:22877:case " $LIBOBJS " in
+./configure~:22879:  *) LIBOBJS="$LIBOBJS slist.$ac_objext"
+./configure~:22981:for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
+./configure~:22986:  #    will be set to the directory where LIBOBJS objects are built.
+./configure~:22990:LIBOBJS=$ac_libobjs
+./doc/gnulib-tool.texi:321:from @file{configure.ac} augment a variable @code{@@LIBOBJS@@} (and/or
+./doc/Makefile:271:LIBOBJS =  ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDIR}xconcat-filename$U.o ${LIBOBJDIR}xsize$U.o ${LIBOBJDIR}error$U.o ${LIBOBJDIR}full-write$U.o ${LIBOBJDIR}term-style-control$U.o ${LIBOBJDIR}fsync$U.o ${LIBOBJDIR}xstrdup$U.o ${LIBOBJDIR}xgethostname$U.o ${LIBOBJDIR}lt__alloc$U.o ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt_dlloader$U.o ${LIBOBJDIR}lt_error$U.o ${LIBOBJDIR}ltdl$U.o ${LIBOBJDIR}slist$U.o
+./doc/Makefile.in:275:LIBOBJS = @LIBOBJS@
+./gnulib-m4/gnulib-comp.m4:872:# into lts_LIBOBJS instead of into LIBOBJS.
+./gnulib-m4/gnulib-comp.m4:879:# into lts_LIBOBJS instead of into LIBOBJS.
+./gnulib-m4/gnulib-comp.m4:899:# into ltstests_LIBOBJS instead of into LIBOBJS.
+./gnulib-m4/gnulib-comp.m4:906:# into ltstests_LIBOBJS instead of into LIBOBJS.
+./lib/ltdl/ChangeLog.old:4885:  Unfortunately, the autoconf implementation of LIBOBJS and
+./lib/ltdl/ChangeLog.old:4893:  LIBOBJS and AC_LIBSOURCES that save missing sources in a
+./lib/ltdl/ChangeLog.old:4894:  ltdl_LIBOBJS automake macro, instead of the global LIBOBJS
+./lib/ltdl/ChangeLog.old:4900:  sites that call LIBOBJS.  Also, using lt_libobj_prefix,
+./lib/ltdl/ChangeLog.old:4903:  and ltdl_LTLIBOBJS for LIBOBJS and LTLIBOBJS during copying
+./lib/ltdl/ChangeLog.old:12561: libltdl uses LIBOBJS, which leak out into a parent project if both
+./lib/ltdl/ChangeLog.old:12565: respective LIBOBJS separate:
+./lib/ltdl/ChangeLog.old:12789: * m4/ltdl.m4 (AC_LTDL_DLLIB): Use LIBOBJS to add appropriate
+./lib/ltdl/ChangeLog.old:12869: * m4/ltdl.m4 (AC_LTDL_FUNC_ARGZ): Add argz to LIBOBJS if any of
+./lib/ltdl/ChangeLog.old:12877: * m4/ltdl.m4 (AC_LIB_LTDL): Add lt_dirent to LIBOBJS if all of
+./lib/ltdl/config.log:2151:LIBOBJS=' ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt__strl$U.o'
+./lib/ltdl/config.status:842:S["LIBOBJS"]=" ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt__strl$U.o"
+./lib/ltdl/configure:584:LIBOBJS=
+./lib/ltdl/configure:645:LIBOBJS
+./lib/ltdl/configure:13156:  LT_ARGZ_H=lt__argz.h; case " $LIBOBJS " in
+./lib/ltdl/configure:13158:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./lib/ltdl/configure:13206:        case " $LIBOBJS " in
+./lib/ltdl/configure:13208:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./lib/ltdl/configure:13304:  case " $LIBOBJS " in
+./lib/ltdl/configure:13306:  *) LIBOBJS="$LIBOBJS lt__dirent.$ac_objext"
+./lib/ltdl/configure:13323:  case " $LIBOBJS " in
+./lib/ltdl/configure:13325:  *) LIBOBJS="$LIBOBJS lt__strl.$ac_objext"
+./lib/ltdl/configure:13453:for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
+./lib/ltdl/configure:13458:  #    will be set to the directory where LIBOBJS objects are built.
+./lib/ltdl/configure:13462:LIBOBJS=$ac_libobjs
+./lib/ltdl/doc/libtool.texi:2752:LTLIBOBJS=`echo "$LIBOBJS" | sed 's/\.[^.]* /.lo /g;s/\.[^.]*$/.lo/'`
+./lib/ltdl/libltdl/ltdl.mk:126:## Automake-1.9.6 doesn't clean subdir LIBOBJS compiled objects
+./lib/ltdl/libltdl/ltdl.mk:128:#CLEANFILES             += $(LIBOBJS) $(LTLIBOBJS)
+./lib/ltdl/m4/ltdl.m4:211:# Like LIBOBJS, except that MODULE_NAME goes into _LT_LIBOBJS instead
+./lib/ltdl/m4/ltdl.m4:212:# of into LIBOBJS.
+./lib/ltdl/m4/ltdl.m4:233:#m4_pushdef([LIBOBJS], m4_defn([_LT_LIBOBJ]))
+./lib/ltdl/m4/ltdl.m4:330:m4_popdef([LIBOBJS])
+./lib/ltdl/m4/ltdl.m4:408:#AC_CHECK_FUNCS([closedir opendir readdir], [], [LIBOBJS([lt__dirent])])
+./lib/ltdl/m4/ltdl.m4:410:#AC_CHECK_FUNCS([strlcat strlcpy], [], [LIBOBJS([lt__strl])])
+./lib/ltdl/mail/LTLIBOBJ:51:> >> LTLIBOBJS=`echo "$LIBOBJS" | sed 's/\.o/.lo/g'` AC_SUBST(LTLIBOBJS)
+./lib/ltdl/mail/LTLIBOBJ:68:> needed magic that enables ansi2knr on LIBOBJS files.  In addition to
+./lib/ltdl/mail/LTLIBOBJ:72:> # This is necessary so that .o files in LIBOBJS are also built via
+./lib/ltdl/mail/LTLIBOBJ:74:> LIBOBJS=`echo $LIBOBJS|sed 's/\.o /\$U.o /g;s/\.o$/\$U.o/'`
+./lib/ltdl/mail/LTLIBOBJ:88:> What is the real status of this?  Since Automake reads these LIBOBJS
+./lib/ltdl/mail/LTLIBOBJ:149:>> LIBOBJS extensions, if one solution is to be chosen, couldn't it
+./lib/ltdl/mail/LTLIBOBJ:167:   LIBOBJS="$LIBOBJS blah.${ac_objext}"
+./lib/ltdl/Makefile.am:90:#libltdl_la_LIBADD    = $(LTLIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.am:91:#libltdl_la_DEPENDENCIES = $(LT_DLLOADERS) $(LTLIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.am:92:libltdl_la_LIBADD = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.am:93:libltdl_la_DEPENDENCIES = $(LT_DLLOADERS) $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.am:138:## Automake-1.9.6 doesn't clean subdir LIBOBJS compiled objects
+./lib/ltdl/Makefile.am:140:#CLEANFILES += $(LIBOBJS) $(LTLIBOBJS)
+./lib/ltdl/Makefile.am:141:#CLEANFILES += $(AC_LIBOBJ) $(LTLIBOBJS)  # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.am:142:CLEANFILES += $(AC_LIBOBJ)  # LIBOBJS -> AC_LIBOBJ
+./lib/ltdl/Makefile.in:370:#LIBOBJS = @LIBOBJS@
+./lib/ltdl/Makefile.in:371:LIBOBJS = @AC_LIBOBJ@
+./lib/ltdl/Makefile.in:475:CLEANFILES = libltdl.la libltdlc.la libdlloader.la $(LIBOBJS) \
+./lib/Makefile:431:LIBOBJS =  ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDIR}xconcat-filename$U.o ${LIBOBJDIR}xsize$U.o ${LIBOBJDIR}error$U.o ${LIBOBJDIR}full-write$U.o ${LIBOBJDIR}term-style-control$U.o ${LIBOBJDIR}fsync$U.o ${LIBOBJDIR}xstrdup$U.o ${LIBOBJDIR}xgethostname$U.o ${LIBOBJDIR}lt__alloc$U.o ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt_dlloader$U.o ${LIBOBJDIR}lt_error$U.o ${LIBOBJDIR}ltdl$U.o ${LIBOBJDIR}slist$U.o
+./lib/Makefile.am:63:#libgnu_a_LIBADD = $(gl_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.am:64:#libgnu_a_DEPENDENCIES = $(gl_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.am:65:libgnu_a_LIBADD = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.am:66:libgnu_a_DEPENDENCIES = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.in:435:LIBOBJS = @LIBOBJS@
+./lib/Makefile.in:581:#libgnu_a_LIBADD = $(gl_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.in:582:#libgnu_a_DEPENDENCIES = $(gl_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.in:583:libgnu_a_LIBADD = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./lib/Makefile.in:584:libgnu_a_DEPENDENCIES = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./libltdl/autom4te.cache/output.0:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.1:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.2:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.3:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.4:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.5:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/output.6:14503:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/autom4te.cache/traces.0:2969:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.1:15:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.2:15:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.3:2969:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.4:15:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.5:15:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/autom4te.cache/traces.6:2978:m4trace:configure.ac:44: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'])
+./libltdl/configure:584:LIBOBJS=
+./libltdl/configure:645:LIBOBJS
+./libltdl/configure:13156:  LT_ARGZ_H=lt__argz.h; case " $LIBOBJS " in
+./libltdl/configure:13158:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./libltdl/configure:13206:        case " $LIBOBJS " in
+./libltdl/configure:13208:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./libltdl/configure:13304:  case " $LIBOBJS " in
+./libltdl/configure:13306:  *) LIBOBJS="$LIBOBJS lt__dirent.$ac_objext"
+./libltdl/configure:13323:  case " $LIBOBJS " in
+./libltdl/configure:13325:  *) LIBOBJS="$LIBOBJS lt__strl.$ac_objext"
+./libltdl/configure:13453:for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
+./libltdl/configure:13458:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/configure:13462:LIBOBJS=$ac_libobjs
+./libltdl/configure~:584:LIBOBJS=
+./libltdl/configure~:645:LIBOBJS
+./libltdl/configure~:13156:  LT_ARGZ_H=lt__argz.h; case " $LIBOBJS " in
+./libltdl/configure~:13158:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./libltdl/configure~:13206:        case " $LIBOBJS " in
+./libltdl/configure~:13208:  *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
+./libltdl/configure~:13304:  case " $LIBOBJS " in
+./libltdl/configure~:13306:  *) LIBOBJS="$LIBOBJS lt__dirent.$ac_objext"
+./libltdl/configure~:13323:  case " $LIBOBJS " in
+./libltdl/configure~:13325:  *) LIBOBJS="$LIBOBJS lt__strl.$ac_objext"
+./libltdl/configure~:13453:for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
+./libltdl/configure~:13458:  #    will be set to the directory where LIBOBJS objects are built.
+./libltdl/configure~:13462:LIBOBJS=$ac_libobjs
+./libltdl/Makefile.am:90:#libltdl_la_LIBADD = $(LTLIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.am:91:#libltdl_la_DEPENDENCIES = $(LT_DLLOADERS) $(LTLIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.am:92:libltdl_la_LIBADD = $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.am:93:libltdl_la_DEPENDENCIES        = $(LT_DLLOADERS) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.am:140:#CLEANFILES          += $(LIBOBJS) $(LTLIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.am:141:CLEANFILES           += $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./libltdl/Makefile.in:370:LIBOBJS = @LIBOBJS@
+./libltdl/Makefile.in:474:CLEANFILES = libltdl.la libltdlc.la libdlloader.la $(LIBOBJS) \
+./log/alllog.txt:207:autom4te-2.72: forbidden tokens: ^_?A[CHUM]_|_AC_|^LIBOBJS$|^_?m4_|^dnl$|^_?AS_|^_?LT_[A-Z_]+$|^_?PKG_[A-Z_]+$|^gl_[A-Z]
+./log/alllog.txt:208:autom4te-2.72: forbidden token : ^LIBOBJS$ => do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'
+./log/alllog.txt:209:autom4te-2.72: allowed   tokens: ^am__quote$|^AS_FLAGS$|^SHELL$|^PATH_SEPARATOR$|^PACKAGE_NAME$|^PACKAGE_TARNAME$|^PACKAGE_VERSION$|^PACKAGE_STRING$|^PACKAGE_BUGREPORT$|^PACKAGE_URL$|^exec_prefix$|^prefix$|^program_transform_name$|^bindir$|^sbindir$|^libexecdir$|^datarootdir$|^datadir$|^sysconfdir$|^sharedstatedir$|^localstatedir$|^runstatedir$|^includedir$|^oldincludedir$|^docdir$|^infodir$|^htmldir$|^dvidir$|^pdfdir$|^psdir$|^libdir$|^localedir$|^mandir$|^PACKAGE_NAME$|^PACKAGE_TARNAME$|^PACKAGE_VERSION$|^PACKAGE_STRING$|^PACKAGE_BUGREPORT$|^PACKAGE_URL$|^DEFS$|^ECHO_C$|^ECHO_N$|^ECHO_T$|^LIBS$|^build_alias$|^host_alias$|^target_alias$|AC_CAN_COMPILE|^CC$|^CFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CC$|^CC$|^CC$|^CC$|^ac_ct_CC$|^CC$|^EXEEXT$|^OBJEXT$|^STDC_HEADERS$|^_ALL_SOURCE$|^_DARWIN_C_SOURCE$|^_GNU_SOURCE$|^_HPUX_ALT_XOPEN_SOCKET_API$|^_NETBSD_SOURCE$|^_OPENBSD_SOURCE$|^_POSIX_PTHREAD_SEMANTICS$|^__STDC_WANT_IEC_60559_ATTRIBS_EXT__$|^__STDC_WANT_IEC_60559_BFP_EXT__$|^__STDC_WANT_IEC_60559_DFP_EXT__$|^__STDC_WANT_IEC_60559_EXT__$|^__STDC_WANT_IEC_60559_FUNCS_EXT__$|^__STDC_WANT_IEC_60559_TYPES_EXT__$|^__STDC_WANT_LIB_EXT2__$|^__STDC_WANT_MATH_SPEC_FUNCS__$|^_TANDEM_SOURCE$|^_MINIX$|^_POSIX_SOURCE$|^_POSIX_1_SOURCE$|^__EXTENSIONS__$|^_XOPEN_SOURCE$|^(_LT_EOF|LT_DLGLOBAL|LT_DLLAZY_OR_NOW|LT_MULTI_MODULE)$|^AS$|^DLLTOOL$|^OBJDUMP$|^LIBTOOL$|^build$|^build_cpu$|^build_vendor$|^build_os$|^host$|^host_cpu$|^host_vendor$|^host_os$|^SED$|^GREP$|^EGREP$|^FGREP$|^GREP$|^LD$|^DUMPBIN$|^ac_ct_DUMPBIN$|^DUMPBIN$|^NM$|^LN_S$|^FILECMD$|^OBJDUMP$|^OBJDUMP$|^DLLTOOL$|^DLLTOOL$|^AR$|^ac_ct_AR$|^STRIP$|^RANLIB$|^AWK$|LT_OBJDIR|^LT_OBJDIR$|^MANIFEST_TOOL$|^DSYMUTIL$|^NMEDIT$|^LIPO$|^OTOOL$|^OTOOL64$|^LT_SYS_LIBRARY_PATH$|^HAVE_DLFCN_H$|^LIBLTDL$|^LTDLDEPS$|^LTDLINCL$|^INCLTDL$|^HAVE_LTDL$|LT_MODULE_EXT|^LT_MODULE_EXT$|LT_SHARED_EXT|^LT_SHARED_EXT$|LT_SHARED_LIB_MEMBER|^LT_SHARED_LIB_MEMBER$|LT_MODULE_PATH_VAR|^LT_MODULE_PATH_VAR$|LT_DLSEARCH_PATH|^LT_DLSEARCH_PATH$|^LT_DLLOADERS$|^LT_DLLOADERS$|^HAVE_LIBDL$|^HAVE_LIBDL$|^HAVE_LIBDL$|^HAVE_DLERROR$|^LIBADD_DLOPEN$|^HAVE_SHL_LOAD$|^HAVE_SHL_LOAD$|^LIBADD_SHL_LOAD$|^HAVE_DYLD$|^HAVE_DECL_CYGWIN_CONV_PATH$|^HAVE_DLD$|^LIBADD_DLD_LINK$|^LT_DLPREOPEN$|^HAVE_LIBDLLOADER$|^LT_DLPREOPEN$|^LIBADD_DL$|^sys_symbol_underscore$|^NEED_USCORE$|^LTDL_DLOPEN_DEPLIBS$|^HAVE_ARGZ_H$|^HAVE_ERROR_T$|^error_t$|^__error_t_defined$|^_LT_LIBOBJS$|^HAVE_WORKING_ARGZ$|^_LT_LIBOBJS$|^LT_ARGZ_H$|^HAVE_PRELOADED_SYMBOLS$|^INSTALL_LTDL_TRUE$|^INSTALL_LTDL_FALSE$|^CONVENIENCE_LTDL_TRUE$|^CONVENIENCE_LTDL_FALSE$|^subdirs$|^LT_CONFIG_H$|^HAVE_UNISTD_H$|^HAVE_DL_H$|^HAVE_SYS_DL_H$|^HAVE_DLD_H$|^HAVE_MACH_O_DYLD_H$|^HAVE_DIRENT_H$|^_LT_LIBOBJS$|^_LT_LIBOBJS$|LT_LIBEXT|^LT_LIBEXT$|LT_LIBPREFIX|^LT_LIBPREFIX$|^LTDLOPEN$|^SET_MAKE$|^INSTALL_PROGRAM$|^INSTALL_SCRIPT$|^INSTALL_DATA$|^MKDIR_P$|^USE_NLS$|^GETTEXT_MACRO_VERSION$|^MSGFMT$|^GMSGFMT$|^GMSGFMT_015$|^XGETTEXT$|^XGETTEXT_015$|^MSGMERGE$|^MSGMERGE_FOR_MSGFMT_OPTION$|^XGETTEXT_EXTRA_OPTIONS$|^CPP$|^CPPFLAGS$|^CPP$|^HAVE_CFPREFERENCESCOPYAPPVALUE$|^HAVE_CFLOCALECOPYPREFERREDLANGUAGES$|^INTL_MACOSX_LIBS$|^HAVE_ICONV$|^LIBICONV$|^LTLIBICONV$|^ENABLE_NLS$|^HAVE_GETTEXT$|^HAVE_DCGETTEXT$|^INTLLIBS$|^LIBINTL$|^LTLIBINTL$|^POSUB$|^localedir_c$|^localedir_c_make$|^INTLTOOL_UPDATE$|^INTLTOOL_MERGE$|^INTLTOOL_EXTRACT$|^AM_DEFAULT_VERBOSITY$|^INTLTOOL_V_MERGE$|^INTLTOOL__v_MERGE_$|^INTLTOOL__v_MERGE_0$|^INTLTOOL_V_MERGE_OPTIONS$|^intltool__v_merge_options_$|^intltool__v_merge_options_0$|^INTLTOOL_DESKTOP_RULE$|^INTLTOOL_DIRECTORY_RULE$|^INTLTOOL_KEYS_RULE$|^INTLTOOL_PROP_RULE$|^INTLTOOL_OAF_RULE$|^INTLTOOL_PONG_RULE$|^INTLTOOL_SERVER_RULE$|^INTLTOOL_SHEET_RULE$|^INTLTOOL_SOUNDLIST_RULE$|^INTLTOOL_UI_RULE$|^INTLTOOL_XAM_RULE$|^INTLTOOL_KBD_RULE$|^INTLTOOL_XML_RULE$|^INTLTOOL_XML_NOMERGE_RULE$|^INTLTOOL_CAVES_RULE$|^INTLTOOL_SCHEMAS_RULE$|^INTLTOOL_THEME_RULE$|^INTLTOOL_SERVICE_RULE$|^INTLTOOL_POLICY_RULE$|^XGETTEXT$|^MSGMERGE$|^MSGFMT$|^GMSGFMT$|^INTLTOOL_PERL$|^ALL_LINGUAS$|^PKG_CONFIG(_(PATH|LIBDIR|SYSROOT_DIR|ALLOW_SYSTEM_(CFLAGS|LIBS)))?$|^PKG_CONFIG_(DISABLE_UNINSTALLED|TOP_BUILD_DIR|DEBUG_SPEW)$|^PKG_CONFIG$|^PKG_CONFIG_PATH$|^PKG_CONFIG_LIBDIR$|^PKG_CONFIG$|^GTKDOC_CHECK$|^GTKDOC_CHECK_PATH$|^GTKDOC_REBASE$|^GTKDOC_MKPDF$|^HTML_DIR$|^GTKDOC_DEPS_CFLAGS$|^GTKDOC_DEPS_LIBS$|^AM_DEFAULT_VERBOSITY$|^HAVE_GTK_DOC_TRUE$|^HAVE_GTK_DOC_FALSE$|^ENABLE_GTK_DOC_TRUE$|^ENABLE_GTK_DOC_FALSE$|^GTK_DOC_BUILD_HTML_TRUE$|^GTK_DOC_BUILD_HTML_FALSE$|^GTK_DOC_BUILD_PDF_TRUE$|^GTK_DOC_BUILD_PDF_FALSE$|^GTK_DOC_USE_LIBTOOL_TRUE$|^GTK_DOC_USE_LIBTOOL_FALSE$|^GTK_DOC_USE_REBASE_TRUE$|^GTK_DOC_USE_REBASE_FALSE$|^HAVE_STDLIB_H$|^HAVE_STDIO_H$|^HAVE_XALLOC_H$|^HAVE_STRING_H$|^HAVE_UNISTD_H$|^HAVE_STDINT_H$|^AM_[A-Z]+FLAGS$|^am__isrc$|^CYGPATH_W$|^PACKAGE$|^VERSION$|^ACLOCAL$|^AUTOCONF$|^AUTOMAKE$|^AUTOHEADER$|^MAKEINFO$|^install_sh$|^STRIP$|^INSTALL_STRIP_PROGRAM$|^mkdir_p$|^am__leading_dot$|^AMTAR$|^am__tar$|^am__untar$|^DEPDIR$|^am__include$|^AMDEP_TRUE$|^AMDEP_FALSE$|^AMDEPBACKSLASH$|^am__nodep$|^CCDEPMODE$|^am__fastdepCC_TRUE$|^am__fastdepCC_FALSE$|^CTAGS$|^ETAGS$|^CSCOPE$|^AM_V$|^AM_DEFAULT_V$|^AM_DEFAULT_VERBOSITY$|^AM_BACKSLASH$|^PACKAGE$|^VERSION$|^PACKAGE$|^VERSION$|^CXX$|^CXXFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CXX$|^ac_ct_CXX$|^CXXDEPMODE$|^am__fastdepCXX_TRUE$|^am__fastdepCXX_FALSE$|^CXXCPP$|^CPPFLAGS$|^CXXCPP$|^LD$|^LT_SYS_LIBRARY_PATH$|^RC$|^CC$|^CFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CC$|^CC$|^CC$|^CC$|^ac_ct_CC$|^CC$|^HAVE_C11$|^HAVE_CPP17$|^CROSS_COMPILING$|^CC$|^LD$|^AR$|^HAVE_WINDOWS_CONSOLES$|^HAVE_WCHAR_H$|^AC_GNU_LIB_TOOL$|AC_CROSS_COMPILER|GL_REQUIRE_VERSION|GNULIB_MODULES|AC_MSG_WARN|_LT_LIBOBJS|gl_CC_GNULIB_WARNINGS|AC_CHECK_FUNCS|gl_INIT|gl_EARLY|gl_COMMON|gl_PROG_AR_RANLIB|AC_CONFIG_RPATH|AC_CONFIG_LIBS|AC_DEFINE|gl_MODULES|m4_ifndef|^gl_ES$|^gl_LIBOBJS$|^gl_LTLIBOBJS$|^_ISOC11_SOURCE$|^AR$|^AR$|^ARFLAGS$|^RANLIB$|^RANLIB$|^_LINUX_SOURCE_COMPAT$|^_FILE_OFFSET_BITS$|^_LARGE_FILES$|^_TIME_BITS$|^__MINGW_USE_VC2005_COMPAT$|^__USE_MINGW_ANSI_STDIO$|^GL_COND_LIBTOOL_TRUE$|^GL_COND_LIBTOOL_FALSE$|^size_t$|^HAVE_ALLOCA_H$|^HAVE_ALLOCA$|^ALLOCA$|^C_ALLOCA$|^STACK_DIRECTION$|^HAVE_ALLOCA$|^HAVE_ALLOCA_H$|^ALLOCA_H$|^GL_GENERATE_ALLOCA_H_TRUE$|^GL_GENERATE_ALLOCA_H_FALSE$|^HAVE_C_STATIC_ASSERT$|^INCLUDE_NEXT$|^INCLUDE_NEXT_AS_FIRST_DIRECTIVE$|^PRAGMA_SYSTEM_HEADER$|^PRAGMA_COLUMNS$|^NEXT_ASSERT_H$|^NEXT_AS_FIRST_DIRECTIVE_ASSERT_H$|^ASSERT_H$|^GL_GENERATE_ASSERT_H_TRUE$|^GL_GENERATE_ASSERT_H_FALSE$|^GNULIB_TEST_CLOEXEC$|^HAVE_CHOWN$|^HAVE_COPY_FILE_RANGE$|^HAVE_DUP3$|^HAVE_EUIDACCESS$|^HAVE_EXECVPE$|^HAVE_FACCESSAT$|^HAVE_FCHDIR$|^HAVE_FCHOWNAT$|^HAVE_FDATASYNC$|^HAVE_FSYNC$|^HAVE_FTRUNCATE$|^HAVE_GETDTABLESIZE$|^HAVE_GETENTROPY$|^HAVE_GETGROUPS$|^HAVE_GETHOSTNAME$|^HAVE_GETLOGIN$|^HAVE_GETPAGESIZE$|^HAVE_GETPASS$|^HAVE_GROUP_MEMBER$|^HAVE_LCHOWN$|^HAVE_LINK$|^HAVE_LINKAT$|^HAVE_PIPE$|^HAVE_PIPE2$|^HAVE_PREAD$|^HAVE_PWRITE$|^HAVE_READLINK$|^HAVE_READLINKAT$|^HAVE_SETHOSTNAME$|^HAVE_SLEEP$|^HAVE_SYMLINK$|^HAVE_SYMLINKAT$|^HAVE_UNLINKAT$|^HAVE_USLEEP$|^HAVE_DECL_ENVIRON$|^HAVE_DECL_EXECVPE$|^HAVE_DECL_FCHDIR$|^HAVE_DECL_FDATASYNC$|^HAVE_DECL_GETDOMAINNAME$|^HAVE_DECL_GETLOGIN$|^HAVE_DECL_GETLOGIN_R$|^HAVE_DECL_GETPAGESIZE$|^HAVE_DECL_GETUSERSHELL$|^HAVE_DECL_SETHOSTNAME$|^HAVE_DECL_TRUNCATE$|^HAVE_DECL_TTYNAME_R$|^HAVE_OS_H$|^HAVE_SYS_PARAM_H$|^REPLACE_ACCESS$|^REPLACE_CHOWN$|^REPLACE_CLOSE$|^REPLACE_COPY_FILE_RANGE$|^REPLACE_DUP$|^REPLACE_DUP2$|^REPLACE_DUP3$|^REPLACE_EXECL$|^REPLACE_EXECLE$|^REPLACE_EXECLP$|^REPLACE_EXECV$|^REPLACE_EXECVE$|^REPLACE_EXECVP$|^REPLACE_EXECVPE$|^REPLACE_FACCESSAT$|^REPLACE_FCHDIR$|^REPLACE_FCHOWNAT$|^REPLACE_FDATASYNC$|^REPLACE_FTRUNCATE$|^REPLACE_GETCWD$|^REPLACE_GETDOMAINNAME$|^REPLACE_GETDTABLESIZE$|^REPLACE_GETENTROPY$|^REPLACE_GETLOGIN_R$|^REPLACE_GETGROUPS$|^REPLACE_GETPAGESIZE$|^REPLACE_GETPASS$|^REPLACE_GETPASS_FOR_GETPASS_GNU$|^REPLACE_GETUSERSHELL$|^REPLACE_ISATTY$|^REPLACE_LCHOWN$|^REPLACE_LINK$|^REPLACE_LINKAT$|^REPLACE_LSEEK$|^REPLACE_PIPE2$|^REPLACE_PREAD$|^REPLACE_PWRITE$|^REPLACE_READ$|^REPLACE_READLINK$|^REPLACE_READLINKAT$|^REPLACE_RMDIR$|^REPLACE_SETHOSTNAME$|^REPLACE_SLEEP$|^REPLACE_SYMLINK$|^REPLACE_SYMLINKAT$|^REPLACE_TRUNCATE$|^REPLACE_TTYNAME_R$|^REPLACE_UNLINK$|^REPLACE_UNLINKAT$|^REPLACE_USLEEP$|^REPLACE_WRITE$|^UNISTD_H_HAVE_SYS_RANDOM_H$|^UNISTD_H_HAVE_WINSOCK2_H$|^UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS$|^HAVE_MSVC_INVALID_PARAMETER_HANDLER$|^HAVE_MSVC_INVALID_PARAMETER_HANDLER$|^SYS_IOCTL_H_HAVE_WINSOCK2_H$|^SYS_IOCTL_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS$|^REPLACE_IOCTL$|^HAVE_WINSOCK2_H$|^HAVE_WINSOCK2_H$|^GL_COND_OBJ_CLOSE_TRUE$|^GL_COND_OBJ_CLOSE_FALSE$|^GL_GNULIB_ACCESS$|^GL_GNULIB_CHDIR$|^GL_GNULIB_CHOWN$|^GL_GNULIB_CLOSE$|^GL_GNULIB_COPY_FILE_RANGE$|^GL_GNULIB_DUP$|^GL_GNULIB_DUP2$|^GL_GNULIB_DUP3$|^GL_GNULIB_ENVIRON$|^GL_GNULIB_EUIDACCESS$|^GL_GNULIB_EXECL$|^GL_GNULIB_EXECLE$|^GL_GNULIB_EXECLP$|^GL_GNULIB_EXECV$|^GL_GNULIB_EXECVE$|^GL_GNULIB_EXECVP$|^GL_GNULIB_EXECVPE$|^GL_GNULIB_FACCESSAT$|^GL_GNULIB_FCHDIR$|^GL_GNULIB_FCHOWNAT$|^GL_GNULIB_FDATASYNC$|^GL_GNULIB_FSYNC$|^GL_GNULIB_FTRUNCATE$|^GL_GNULIB_GETCWD$|^GL_GNULIB_GETDOMAINNAME$|^GL_GNULIB_GETDTABLESIZE$|^GL_GNULIB_GETENTROPY$|^GL_GNULIB_GETGROUPS$|^GL_GNULIB_GETHOSTNAME$|^GL_GNULIB_GETLOGIN$|^GL_GNULIB_GETLOGIN_R$|^GL_GNULIB_GETOPT_POSIX$|^GL_GNULIB_GETPAGESIZE$|^GL_GNULIB_GETPASS$|^GL_GNULIB_GETPASS_GNU$|^GL_GNULIB_GETUSERSHELL$|^GL_GNULIB_GROUP_MEMBER$|^GL_GNULIB_ISATTY$|^GL_GNULIB_LCHOWN$|^GL_GNULIB_LINK$|^GL_GNULIB_LINKAT$|^GL_GNULIB_LSEEK$|^GL_GNULIB_PIPE$|^GL_GNULIB_PIPE2$|^GL_GNULIB_PREAD$|^GL_GNULIB_PWRITE$|^GL_GNULIB_READ$|^GL_GNULIB_READLINK$|^GL_GNULIB_READLINKAT$|^GL_GNULIB_RMDIR$|^GL_GNULIB_SETHOSTNAME$|^GL_GNULIB_SLEEP$|^GL_GNULIB_SYMLINK$|^GL_GNULIB_SYMLINKAT$|^GL_GNULIB_TRUNCATE$|^GL_GNULIB_TTYNAME_R$|^GL_GNULIB_UNISTD_H_GETOPT$|^GL_GNULIB_UNISTD_H_NONBLOCKING$|^GL_GNULIB_UNISTD_H_SIGPIPE$|^GL_GNULIB_UNLINK$|^GL_GNULIB_UNLINKAT$|^GL_GNULIB_USLEEP$|^GL_GNULIB_WRITE$|^GL_GNULIB_MDA_ACCESS$|^GL_GNULIB_MDA_CHDIR$|^GL_GNULIB_MDA_CLOSE$|^GL_GNULIB_MDA_DUP$|^GL_GNULIB_MDA_DUP2$|^GL_GNULIB_MDA_EXECL$|^GL_GNULIB_MDA_EXECLE$|^GL_GNULIB_MDA_EXECLP$|^GL_GNULIB_MDA_EXECV$|^GL_GNULIB_MDA_EXECVE$|^GL_GNULIB_MDA_EXECVP$|^GL_GNULIB_MDA_EXECVPE$|^GL_GNULIB_MDA_GETCWD$|^GL_GNULIB_MDA_GETPID$|^GL_GNULIB_MDA_ISATTY$|^GL_GNULIB_MDA_LSEEK$|^GL_GNULIB_MDA_READ$|^GL_GNULIB_MDA_RMDIR$|^GL_GNULIB_MDA_SWAB$|^GL_GNULIB_MDA_UNLINK$|^GL_GNULIB_MDA_WRITE$|^GNULIB_TEST_CLOSE$|^GNULIB_CLOSE$|^DOUBLE_SLASH_IS_DISTINCT_ROOT$|^HAVE_SETDTABLESIZE$|^GL_COND_OBJ_DUP2_TRUE$|^GL_COND_OBJ_DUP2_FALSE$|^GNULIB_TEST_DUP2$|^NEXT_ERRNO_H$|^NEXT_AS_FIRST_DIRECTIVE_ERRNO_H$|^EMULTIHOP_HIDDEN$|^EMULTIHOP_VALUE$|^ENOLINK_HIDDEN$|^ENOLINK_VALUE$|^EOVERFLOW_HIDDEN$|^EOVERFLOW_VALUE$|^ERRNO_H$|^GL_GENERATE_ERRNO_H_TRUE$|^GL_GENERATE_ERRNO_H_FALSE$|^NEXT_ERROR_H$|^NEXT_AS_FIRST_DIRECTIVE_ERROR_H$|^HAVE_ERROR_H$|^HAVE_ERROR$|^HAVE_ERROR$|^HAVE_ERROR_AT_LINE$|^REPLACE_ERROR$|^REPLACE_ERROR_AT_LINE$|^GL_COND_OBJ_ERROR_TRUE$|^GL_COND_OBJ_ERROR_FALSE$|^HAVE_DECL_STRERROR_R$|^HAVE_STRERROR_R$|^STRERROR_R_CHAR_P$|^HAVE___HEADER_INLINE$|^HAVE_FCNTL$|^HAVE_OPENAT$|^REPLACE_CREAT$|^REPLACE_FCNTL$|^REPLACE_OPEN$|^REPLACE_OPENAT$|^FCNTL_DUPFD_BUGGY$|^GL_COND_OBJ_FCNTL_TRUE$|^GL_COND_OBJ_FCNTL_FALSE$|^GL_GNULIB_CREAT$|^GL_GNULIB_FCNTL$|^GL_GNULIB_NONBLOCKING$|^GL_GNULIB_OPEN$|^GL_GNULIB_OPENAT$|^GL_GNULIB_MDA_CREAT$|^GL_GNULIB_MDA_OPEN$|^GNULIB_TEST_FCNTL$|^HAVE_WORKING_O_NOATIME$|^HAVE_WORKING_O_NOFOLLOW$|^NEXT_FCNTL_H$|^NEXT_AS_FIRST_DIRECTIVE_FCNTL_H$|^pid_t$|^mode_t$|^HAVE_FCHMODAT$|^HAVE_FSTATAT$|^HAVE_FUTIMENS$|^HAVE_GETUMASK$|^HAVE_LCHMOD$|^HAVE_LSTAT$|^HAVE_MKDIRAT$|^HAVE_MKFIFO$|^HAVE_MKFIFOAT$|^HAVE_MKNOD$|^HAVE_MKNODAT$|^HAVE_UTIMENSAT$|^REPLACE_CHMOD$|^REPLACE_FCHMODAT$|^REPLACE_FSTAT$|^REPLACE_FSTATAT$|^REPLACE_FUTIMENS$|^REPLACE_LSTAT$|^REPLACE_MKDIR$|^REPLACE_MKFIFO$|^REPLACE_MKFIFOAT$|^REPLACE_MKNOD$|^REPLACE_MKNODAT$|^REPLACE_STAT$|^REPLACE_UTIMENSAT$|^GL_COND_OBJ_FSTAT_TRUE$|^GL_COND_OBJ_FSTAT_FALSE$|^STAT_MACROS_BROKEN$|^NEXT_SYS_STAT_H$|^NEXT_AS_FIRST_DIRECTIVE_SYS_STAT_H$|^WINDOWS_STAT_TIMESPEC$|^WINDOWS_64_BIT_ST_SIZE$|^nlink_t$|^restrict$|^restrict$|^HAVE_SDKDDKVER_H$|^GL_GNULIB_CHMOD$|^GL_GNULIB_FCHMODAT$|^GL_GNULIB_FSTAT$|^GL_GNULIB_FSTATAT$|^GL_GNULIB_FUTIMENS$|^GL_GNULIB_GETUMASK$|^GL_GNULIB_LCHMOD$|^GL_GNULIB_LSTAT$|^GL_GNULIB_MKDIR$|^GL_GNULIB_MKDIRAT$|^GL_GNULIB_MKFIFO$|^GL_GNULIB_MKFIFOAT$|^GL_GNULIB_MKNOD$|^GL_GNULIB_MKNODAT$|^GL_GNULIB_STAT$|^GL_GNULIB_UTIMENSAT$|^GL_GNULIB_OVERRIDES_STRUCT_STAT$|^GL_GNULIB_MDA_CHMOD$|^GL_GNULIB_MDA_MKDIR$|^GL_GNULIB_MDA_UMASK$|^GNULIB_TEST_FSTAT$|^GNULIB_FSTAT$|^HAVE_DECL_GETDTABLESIZE$|^GL_COND_OBJ_GETDTABLESIZE_TRUE$|^GL_COND_OBJ_GETDTABLESIZE_FALSE$|^GNULIB_TEST_GETDTABLESIZE$|^HAVE__EXIT$|^HAVE_ALIGNED_ALLOC$|^HAVE_ATOLL$|^HAVE_CANONICALIZE_FILE_NAME$|^HAVE_DECL_ECVT$|^HAVE_DECL_FCVT$|^HAVE_DECL_GCVT$|^HAVE_DECL_GETLOADAVG$|^HAVE_DECL_PROGRAM_INVOCATION_NAME$|^HAVE_GETPROGNAME$|^HAVE_GETSUBOPT$|^HAVE_GRANTPT$|^HAVE_INITSTATE$|^HAVE_DECL_INITSTATE$|^HAVE_MBTOWC$|^HAVE_MKDTEMP$|^HAVE_MKOSTEMP$|^HAVE_MKOSTEMPS$|^HAVE_MKSTEMP$|^HAVE_MKSTEMPS$|^HAVE_POSIX_MEMALIGN$|^HAVE_POSIX_OPENPT$|^HAVE_PTSNAME$|^HAVE_PTSNAME_R$|^HAVE_QSORT_R$|^HAVE_RANDOM$|^HAVE_RANDOM_H$|^HAVE_RANDOM_R$|^HAVE_REALLOCARRAY$|^HAVE_REALPATH$|^HAVE_RPMATCH$|^HAVE_SECURE_GETENV$|^HAVE_SETENV$|^HAVE_DECL_SETENV$|^HAVE_SETSTATE$|^HAVE_DECL_SETSTATE$|^HAVE_STRTOD$|^HAVE_STRTOF$|^HAVE_STRTOL$|^HAVE_STRTOLD$|^HAVE_STRTOLL$|^HAVE_STRTOUL$|^HAVE_STRTOULL$|^HAVE_STRUCT_RANDOM_DATA$|^HAVE_SYS_LOADAVG_H$|^HAVE_UNLOCKPT$|^HAVE_DECL_UNSETENV$|^REPLACE__EXIT$|^REPLACE_ABORT$|^REPLACE_ALIGNED_ALLOC$|^REPLACE_CALLOC_FOR_CALLOC_GNU$|^REPLACE_CALLOC_FOR_CALLOC_POSIX$|^REPLACE_CANONICALIZE_FILE_NAME$|^REPLACE_FREE$|^REPLACE_GETLOADAVG$|^REPLACE_GETPROGNAME$|^REPLACE_GETSUBOPT$|^REPLACE_INITSTATE$|^REPLACE_MALLOC_FOR_MALLOC_GNU$|^REPLACE_MALLOC_FOR_MALLOC_POSIX$|^REPLACE_MB_CUR_MAX$|^REPLACE_MBSTOWCS$|^REPLACE_MBTOWC$|^REPLACE_MKOSTEMP$|^REPLACE_MKOSTEMPS$|^REPLACE_MKSTEMP$|^REPLACE_POSIX_MEMALIGN$|^REPLACE_POSIX_OPENPT$|^REPLACE_PTSNAME$|^REPLACE_PTSNAME_R$|^REPLACE_PUTENV$|^REPLACE_QSORT_R$|^REPLACE_RAND$|^REPLACE_RANDOM$|^REPLACE_RANDOM_R$|^REPLACE_REALLOC_FOR_REALLOC_GNU$|^REPLACE_REALLOC_FOR_REALLOC_POSIX$|^REPLACE_REALLOCARRAY$|^REPLACE_REALPATH$|^REPLACE_SETENV$|^REPLACE_SETSTATE$|^REPLACE_STRTOD$|^REPLACE_STRTOF$|^REPLACE_STRTOL$|^REPLACE_STRTOLD$|^REPLACE_STRTOLL$|^REPLACE_STRTOUL$|^REPLACE_STRTOULL$|^REPLACE_UNSETENV$|^REPLACE_WCTOMB$|^CAN_PRINT_STACK_TRACE$|^HAVE_GETPROGNAME$|^HAVE_DECL_PROGRAM_INVOCATION_NAME$|^GL_COND_OBJ_GETPROGNAME_TRUE$|^GL_COND_OBJ_GETPROGNAME_FALSE$|^HAVE_DECL_PROGRAM_INVOCATION_NAME$|^HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME$|^HAVE_DECL___ARGV$|^HAVE_VAR___PROGNAME$|^GL_GNULIB__EXIT$|^GL_GNULIB_ABORT_DEBUG$|^GL_GNULIB_ALIGNED_ALLOC$|^GL_GNULIB_ATOLL$|^GL_GNULIB_CALLOC_GNU$|^GL_GNULIB_CALLOC_POSIX$|^GL_GNULIB_CANONICALIZE_FILE_NAME$|^GL_GNULIB_FREE_POSIX$|^GL_GNULIB_GETLOADAVG$|^GL_GNULIB_GETPROGNAME$|^GL_GNULIB_GETSUBOPT$|^GL_GNULIB_GRANTPT$|^GL_GNULIB_MALLOC_GNU$|^GL_GNULIB_MALLOC_POSIX$|^GL_GNULIB_MBSTOWCS$|^GL_GNULIB_MBTOWC$|^GL_GNULIB_MKDTEMP$|^GL_GNULIB_MKOSTEMP$|^GL_GNULIB_MKOSTEMPS$|^GL_GNULIB_MKSTEMP$|^GL_GNULIB_MKSTEMPS$|^GL_GNULIB_POSIX_MEMALIGN$|^GL_GNULIB_POSIX_OPENPT$|^GL_GNULIB_PTSNAME$|^GL_GNULIB_PTSNAME_R$|^GL_GNULIB_PUTENV$|^GL_GNULIB_QSORT_R$|^GL_GNULIB_RAND$|^GL_GNULIB_RANDOM$|^GL_GNULIB_RANDOM_R$|^GL_GNULIB_REALLOCARRAY$|^GL_GNULIB_REALLOC_GNU$|^GL_GNULIB_REALLOC_POSIX$|^GL_GNULIB_REALPATH$|^GL_GNULIB_RPMATCH$|^GL_GNULIB_SECURE_GETENV$|^GL_GNULIB_SETENV$|^GL_GNULIB_STACK_TRACE$|^GL_GNULIB_STRTOD$|^GL_GNULIB_STRTOF$|^GL_GNULIB_STRTOL$|^GL_GNULIB_STRTOLD$|^GL_GNULIB_STRTOLL$|^GL_GNULIB_STRTOUL$|^GL_GNULIB_STRTOULL$|^GL_GNULIB_SYSTEM_POSIX$|^GL_GNULIB_UNLOCKPT$|^GL_GNULIB_UNSETENV$|^GL_GNULIB_WCTOMB$|^GL_GNULIB_MDA_ECVT$|^GL_GNULIB_MDA_FCVT$|^GL_GNULIB_MDA_GCVT$|^GL_GNULIB_MDA_MKTEMP$|^GL_GNULIB_MDA_PUTENV$|^GNULIB_TEST_GETPROGNAME$|^LIBINTL$|^LTLIBINTL$|^NEXT_LIMITS_H$|^NEXT_AS_FIRST_DIRECTIVE_LIMITS_H$|^LIMITS_H$|^GL_GENERATE_LIMITS_H_TRUE$|^GL_GENERATE_LIMITS_H_FALSE$|^MALLOC_0_IS_NONNULL$|^GL_COND_OBJ_MSVC_INVAL_TRUE$|^GL_COND_OBJ_MSVC_INVAL_FALSE$|^GL_COND_OBJ_MSVC_NOTHROW_TRUE$|^GL_COND_OBJ_MSVC_NOTHROW_FALSE$|^GNULIB_MSVC_NOTHROW$|^APPLE_UNIVERSAL_BUILD$|^OPEN_TRAILING_SLASH_BUG$|^GL_COND_OBJ_OPEN_TRUE$|^GL_COND_OBJ_OPEN_FALSE$|^PROMOTED_MODE_T$|^GNULIB_TEST_OPEN$|^ssize_t$|^REPLACE_FUNC_STAT_FILE$|^GL_COND_OBJ_STAT_TRUE$|^GL_COND_OBJ_STAT_FALSE$|^GNULIB_TEST_STAT$|^GNULIB_STAT$|^HAVE_STRUCT_STAT_ST_ATIM_TV_NSEC$|^TYPEOF_STRUCT_STAT_ST_ATIM_IS_STRUCT_TIMESPEC$|^HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC$|^HAVE_STRUCT_STAT_ST_ATIMENSEC$|^HAVE_STRUCT_STAT_ST_ATIM_ST__TIM_TV_NSEC$|^HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC$|^HAVE_STRUCT_STAT_ST_BIRTHTIMENSEC$|^HAVE_STRUCT_STAT_ST_BIRTHTIM_TV_NSEC$|^HAVE_C_BOOL$|^STDCKDINT_H$|^GL_GENERATE_STDCKDINT_H_TRUE$|^GL_GENERATE_STDCKDINT_H_FALSE$|^NULLPTR_T_NEEDS_STDDEF$|^STDDEF_NOT_IDEMPOTENT$|^REPLACE_NULL$|^HAVE_MAX_ALIGN_T$|^NEXT_STDDEF_H$|^NEXT_AS_FIRST_DIRECTIVE_STDDEF_H$|^STDDEF_H$|^GL_GENERATE_STDDEF_H_TRUE$|^GL_GENERATE_STDDEF_H_FALSE$|^HAVE_WINT_T$|^GNULIBHEADERS_OVERRIDE_WINT_T$|^HAVE_LONG_LONG_INT$|^HAVE_UNSIGNED_LONG_LONG_INT$|^HAVE_WCHAR_H$|^HAVE_INTTYPES_H$|^HAVE_SYS_TYPES_H$|^NEXT_STDINT_H$|^NEXT_AS_FIRST_DIRECTIVE_STDINT_H$|^HAVE_STDINT_H$|^__STDC_CONSTANT_MACROS$|^__STDC_LIMIT_MACROS$|^HAVE_SYS_INTTYPES_H$|^HAVE_SYS_BITYPES_H$|^BITSIZEOF_PTRDIFF_T$|^BITSIZEOF_SIZE_T$|^BITSIZEOF_SIG_ATOMIC_T$|^BITSIZEOF_WCHAR_T$|^BITSIZEOF_WINT_T$|^HAVE_SIGNED_SIG_ATOMIC_T$|^HAVE_SIGNED_WCHAR_T$|^HAVE_SIGNED_WINT_T$|^PTRDIFF_T_SUFFIX$|^SIZE_T_SUFFIX$|^SIG_ATOMIC_T_SUFFIX$|^WCHAR_T_SUFFIX$|^WINT_T_SUFFIX$|^HAVE_C99_STDINT_H$|^HAVE_SYS_BITYPES_H$|^HAVE_SYS_INTTYPES_H$|^STDINT_H$|^GL_GENERATE_STDINT_H_TRUE$|^GL_GENERATE_STDINT_H_FALSE$|^LIMITS_H$|^GL_GENERATE_LIMITS_H_TRUE$|^GL_GENERATE_LIMITS_H_FALSE$|^HAVE_DECL_FCLOSEALL$|^HAVE_DECL_FPURGE$|^HAVE_DECL_FSEEKO$|^HAVE_DECL_FTELLO$|^HAVE_DECL_GETDELIM$|^HAVE_DECL_GETLINE$|^HAVE_DECL_GETW$|^HAVE_DECL_OBSTACK_PRINTF$|^HAVE_DECL_PUTW$|^HAVE_DECL_SNPRINTF$|^HAVE_DECL_VSNPRINTF$|^HAVE_DPRINTF$|^HAVE_FSEEKO$|^HAVE_FTELLO$|^HAVE_PCLOSE$|^HAVE_POPEN$|^HAVE_RENAMEAT$|^HAVE_VASPRINTF$|^HAVE_VDPRINTF$|^REPLACE_DPRINTF$|^REPLACE_FCLOSE$|^REPLACE_FDOPEN$|^REPLACE_FFLUSH$|^REPLACE_FOPEN$|^REPLACE_FOPEN_FOR_FOPEN_GNU$|^REPLACE_FPRINTF$|^REPLACE_FPURGE$|^REPLACE_FREOPEN$|^REPLACE_FSEEK$|^REPLACE_FSEEKO$|^REPLACE_FTELL$|^REPLACE_FTELLO$|^REPLACE_GETDELIM$|^REPLACE_GETLINE$|^REPLACE_OBSTACK_PRINTF$|^REPLACE_PERROR$|^REPLACE_POPEN$|^REPLACE_PRINTF$|^REPLACE_REMOVE$|^REPLACE_RENAME$|^REPLACE_RENAMEAT$|^REPLACE_SNPRINTF$|^REPLACE_SPRINTF$|^REPLACE_STDIO_READ_FUNCS$|^REPLACE_STDIO_WRITE_FUNCS$|^REPLACE_TMPFILE$|^REPLACE_VASPRINTF$|^REPLACE_VDPRINTF$|^REPLACE_VFPRINTF$|^REPLACE_VPRINTF$|^REPLACE_VSNPRINTF$|^REPLACE_VSPRINTF$|^NEXT_STDIO_H$|^NEXT_AS_FIRST_DIRECTIVE_STDIO_H$|^GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU$|^MUSL_LIBC$|^HAVE_DECL_FCLOSEALL$|^HAVE_DECL_GETW$|^HAVE_DECL_PUTW$|^GL_GNULIB_DPRINTF$|^GL_GNULIB_DZPRINTF$|^GL_GNULIB_FCLOSE$|^GL_GNULIB_FDOPEN$|^GL_GNULIB_FFLUSH$|^GL_GNULIB_FGETC$|^GL_GNULIB_FGETS$|^GL_GNULIB_FOPEN$|^GL_GNULIB_FOPEN_GNU$|^GL_GNULIB_FPRINTF$|^GL_GNULIB_FPRINTF_POSIX$|^GL_GNULIB_FPURGE$|^GL_GNULIB_FPUTC$|^GL_GNULIB_FPUTS$|^GL_GNULIB_FREAD$|^GL_GNULIB_FREOPEN$|^GL_GNULIB_FSCANF$|^GL_GNULIB_FSEEK$|^GL_GNULIB_FSEEKO$|^GL_GNULIB_FTELL$|^GL_GNULIB_FTELLO$|^GL_GNULIB_FWRITE$|^GL_GNULIB_FZPRINTF$|^GL_GNULIB_GETC$|^GL_GNULIB_GETCHAR$|^GL_GNULIB_GETDELIM$|^GL_GNULIB_GETLINE$|^GL_GNULIB_OBSTACK_PRINTF$|^GL_GNULIB_OBSTACK_PRINTF_POSIX$|^GL_GNULIB_OBSTACK_ZPRINTF$|^GL_GNULIB_PCLOSE$|^GL_GNULIB_PERROR$|^GL_GNULIB_POPEN$|^GL_GNULIB_PRINTF$|^GL_GNULIB_PRINTF_POSIX$|^GL_GNULIB_PUTC$|^GL_GNULIB_PUTCHAR$|^GL_GNULIB_PUTS$|^GL_GNULIB_REMOVE$|^GL_GNULIB_RENAME$|^GL_GNULIB_RENAMEAT$|^GL_GNULIB_SCANF$|^GL_GNULIB_SNPRINTF$|^GL_GNULIB_SNZPRINTF$|^GL_GNULIB_SPRINTF_POSIX$|^GL_GNULIB_STDIO_H_NONBLOCKING$|^GL_GNULIB_STDIO_H_SIGPIPE$|^GL_GNULIB_SZPRINTF$|^GL_GNULIB_TMPFILE$|^GL_GNULIB_VASPRINTF$|^GL_GNULIB_VASZPRINTF$|^GL_GNULIB_VFSCANF$|^GL_GNULIB_VSCANF$|^GL_GNULIB_VDPRINTF$|^GL_GNULIB_VDZPRINTF$|^GL_GNULIB_VFPRINTF$|^GL_GNULIB_VFPRINTF_POSIX$|^GL_GNULIB_VFZPRINTF$|^GL_GNULIB_VPRINTF$|^GL_GNULIB_VPRINTF_POSIX$|^GL_GNULIB_VSNPRINTF$|^GL_GNULIB_VSNZPRINTF$|^GL_GNULIB_VSPRINTF_POSIX$|^GL_GNULIB_VSZPRINTF$|^GL_GNULIB_VZPRINTF$|^GL_GNULIB_ZPRINTF$|^GL_GNULIB_MDA_FCLOSEALL$|^GL_GNULIB_MDA_FDOPEN$|^GL_GNULIB_MDA_FILENO$|^GL_GNULIB_MDA_GETW$|^GL_GNULIB_MDA_PUTW$|^GL_GNULIB_MDA_TEMPNAM$|^GL_COND_OBJ_STDIO_READ_TRUE$|^GL_COND_OBJ_STDIO_READ_FALSE$|^GL_COND_OBJ_STDIO_WRITE_TRUE$|^GL_COND_OBJ_STDIO_WRITE_FALSE$|^GNULIB_TEST_FSCANF$|^GNULIB_FSCANF$|^GNULIB_TEST_SCANF$|^GNULIB_SCANF$|^GNULIB_TEST_FGETC$|^GNULIB_TEST_GETC$|^GNULIB_TEST_GETCHAR$|^GNULIB_TEST_FGETS$|^GNULIB_TEST_FREAD$|^GNULIB_TEST_FPRINTF$|^GNULIB_TEST_PRINTF$|^GNULIB_TEST_VFPRINTF$|^GNULIB_TEST_VPRINTF$|^GNULIB_TEST_FPUTC$|^GNULIB_TEST_PUTC$|^GNULIB_TEST_PUTCHAR$|^GNULIB_TEST_FPUTS$|^GNULIB_TEST_PUTS$|^GNULIB_TEST_FWRITE$|^NEXT_STDLIB_H$|^NEXT_AS_FIRST_DIRECTIVE_STDLIB_H$|^HAVE_LANGINFO_CODESET$|^LOCALE_EN_UTF8$|^HAVE_DECL_ECVT$|^HAVE_DECL_FCVT$|^HAVE_DECL_GCVT$|^HAVE_MBSLEN$|^HAVE_EXPLICIT_BZERO$|^HAVE_FFSL$|^HAVE_FFSLL$|^HAVE_DECL_MEMMEM$|^HAVE_MEMPCPY$|^HAVE_MEMSET_EXPLICIT$|^HAVE_DECL_MEMRCHR$|^HAVE_RAWMEMCHR$|^HAVE_STPCPY$|^HAVE_STPNCPY$|^HAVE_STRCHRNUL$|^HAVE_DECL_STRDUP$|^HAVE_DECL_STRNDUP$|^HAVE_DECL_STRNLEN$|^HAVE_STRPBRK$|^HAVE_STRSEP$|^HAVE_STRCASESTR$|^HAVE_DECL_STRTOK_R$|^HAVE_DECL_STRERROR_R$|^HAVE_STRERRORNAME_NP$|^HAVE_SIGABBREV_NP$|^HAVE_SIGDESCR_NP$|^HAVE_DECL_STRSIGNAL$|^HAVE_STRVERSCMP$|^REPLACE_FFSLL$|^REPLACE_MEMCHR$|^REPLACE_MEMMEM$|^REPLACE_MEMPCPY$|^REPLACE_MEMSET_EXPLICIT$|^REPLACE_STPCPY$|^REPLACE_STPNCPY$|^REPLACE_STRCHRNUL$|^REPLACE_STRDUP$|^REPLACE_STRNCAT$|^REPLACE_STRNDUP$|^REPLACE_STRNLEN$|^REPLACE_STRSTR$|^REPLACE_STRCASESTR$|^REPLACE_STRTOK_R$|^REPLACE_STRERROR$|^REPLACE_STRERROR_R$|^REPLACE_STRERRORNAME_NP$|^REPLACE_STRSIGNAL$|^REPLACE_STRVERSCMP$|^UNDEFINE_STRTOK_R$|^REPLACE_STRERROR_0$|^HAVE_STRERROR_R$|^GL_COND_OBJ_STRERROR_TRUE$|^GL_COND_OBJ_STRERROR_FALSE$|^GNULIB_STRERROR$|^GL_GNULIB_EXPLICIT_BZERO$|^GL_GNULIB_FFSL$|^GL_GNULIB_FFSLL$|^GL_GNULIB_MEMCHR$|^GL_GNULIB_MEMMEM$|^GL_GNULIB_MEMPCPY$|^GL_GNULIB_MEMRCHR$|^GL_GNULIB_MEMSET_EXPLICIT$|^GL_GNULIB_RAWMEMCHR$|^GL_GNULIB_STPCPY$|^GL_GNULIB_STPNCPY$|^GL_GNULIB_STRCHRNUL$|^GL_GNULIB_STRDUP$|^GL_GNULIB_STRNCAT$|^GL_GNULIB_STRNDUP$|^GL_GNULIB_STRNLEN$|^GL_GNULIB_STRPBRK$|^GL_GNULIB_STRSEP$|^GL_GNULIB_STRSTR$|^GL_GNULIB_STRCASESTR$|^GL_GNULIB_STRTOK_R$|^GL_GNULIB_MBSLEN$|^GL_GNULIB_MBSNLEN$|^GL_GNULIB_MBSCHR$|^GL_GNULIB_MBSRCHR$|^GL_GNULIB_MBSSTR$|^GL_GNULIB_MBSCASECMP$|^GL_GNULIB_MBSNCASECMP$|^GL_GNULIB_MBSPCASECMP$|^GL_GNULIB_MBSCASESTR$|^GL_GNULIB_MBSCSPN$|^GL_GNULIB_MBSPBRK$|^GL_GNULIB_MBSSPN$|^GL_GNULIB_MBSSEP$|^GL_GNULIB_MBSTOK_R$|^GL_GNULIB_STRERROR$|^GL_GNULIB_STRERROR_R$|^GL_GNULIB_STRERRORNAME_NP$|^GL_GNULIB_SIGABBREV_NP$|^GL_GNULIB_SIGDESCR_NP$|^GL_GNULIB_STRSIGNAL$|^GL_GNULIB_STRVERSCMP$|^GL_GNULIB_MDA_MEMCCPY$|^GL_GNULIB_MDA_STRDUP$|^GNULIB_TEST_STRERROR$|^GL_COND_OBJ_STRERROR_OVERRIDE_TRUE$|^GL_COND_OBJ_STRERROR_OVERRIDE_FALSE$|^HAVE_WINSOCK2_H$|^HAVE_WINSOCK2_H$|^NEXT_STRING_H$|^NEXT_AS_FIRST_DIRECTIVE_STRING_H$|^_USE_STD_STAT$|^NEXT_SYS_TYPES_H$|^NEXT_AS_FIRST_DIRECTIVE_SYS_TYPES_H$|^WINDOWS_64_BIT_OFF_T$|^HAVE_OFF64_T$|^WINDOWS_STAT_INODES$|^HAVE_DECL_LOCALTIME_R$|^HAVE_NANOSLEEP$|^HAVE_STRPTIME$|^HAVE_TIMEGM$|^HAVE_TIMESPEC_GET$|^HAVE_TIMESPEC_GETRES$|^HAVE_TIMEZONE_T$|^HAVE_TZALLOC$|^REPLACE_CTIME$|^REPLACE_GMTIME$|^REPLACE_LOCALTIME$|^REPLACE_LOCALTIME_R$|^REPLACE_LOCALTIME_RZ$|^REPLACE_MKTIME$|^REPLACE_MKTIME_Z$|^REPLACE_NANOSLEEP$|^REPLACE_STRFTIME$|^REPLACE_TIME$|^REPLACE_TIMEGM$|^REPLACE_TIMESPEC_GET$|^REPLACE_TIMESPEC_GETRES$|^REPLACE_TZSET$|^NEXT_TIME_H$|^NEXT_AS_FIRST_DIRECTIVE_TIME_H$|^TIME_H_DEFINES_STRUCT_TIMESPEC$|^SYS_TIME_H_DEFINES_STRUCT_TIMESPEC$|^PTHREAD_H_DEFINES_STRUCT_TIMESPEC$|^UNISTD_H_DEFINES_STRUCT_TIMESPEC$|^TIME_H_DEFINES_TIME_UTC$|^GL_GNULIB_CTIME$|^GL_GNULIB_MKTIME$|^GL_GNULIB_LOCALTIME$|^GL_GNULIB_NANOSLEEP$|^GL_GNULIB_STRFTIME$|^GL_GNULIB_STRPTIME$|^GL_GNULIB_TIME$|^GL_GNULIB_TIMEGM$|^GL_GNULIB_TIMESPEC_GET$|^GL_GNULIB_TIMESPEC_GETRES$|^GL_GNULIB_TIME_R$|^GL_GNULIB_TIME_RZ$|^GL_GNULIB_TZNAME$|^GL_GNULIB_TZSET$|^GL_GNULIB_MDA_TZSET$|^NEXT_UNISTD_H$|^NEXT_AS_FIRST_DIRECTIVE_UNISTD_H$|^HAVE_UNISTD_H$|^HAVE_DECL_EXECVPE$|^HAVE_C_VARARRAYS$|^__STDC_NO_VLA__$|^GNULIB_XALLOC_DIE$|^gltests_WITNESS$|^GL_CFLAG_ALLOW_WARNINGS$|^GL_CFLAG_GNULIB_WARNINGS$|^LIBGNU_LIBDEPS$|^LIBGNU_LTLIBDEPS$|^_GL_ASYNC_SAFE$|^_GL_HAS_ATTRIBUTE_ALLOC_SIZE$|^_GL_HAS_ATTRIBUTE_ALLOC_SIZE$|^HAVE_FSYNC$|^HAVE_FLUSH_FILE_BUFFERS$|^_GL_HAS_ATTRIBUTE$|^_GL_HAS_ATTRIBUTE$|^_GL_HAS_ATTRIBUTE_RETURNS_NONNULL$|^_GL_HAS_ATTRIBUTE_RETURNS_NONNULL$|^IN_LIBTEXTSTYLE$|^_GL_INLINE$|^_GL_INLINE_HEADER_BEGIN$|^_GL_INLINE_HEADER_END$|^_GL_CONFIG_H_INCLUDED$|^_GL_LIST_INLINE$|^GNULIB_XALLOC$|^GNULIB_XALLOC_DIE$|^GNULIB_XSTRDUP$|^GNULIB_TPUTS$|^GNULIB_SAFE_WRITE$|^HAVE_ATTRIBUTE_PURE$|^HAVE_ATTRIBUTE_PURE$|^_GL_ATTRIBUTE_PURE$|^_GL_ATTRIBUTE_PURE$|^HAVE_ATTRIBUTE_NONNULL$|^HAVE_ATTRIBUTE_NONNULL$|^_GL_ARG_NONNULL_1_2$|^_GL_ARG_NONNULL_1$|^_GL_ARG_NONNULL_1_3$|^_GL_ARG_NONNULL_3$|^_GL_ARG_NONNULL_1_2$|^_GL_ARG_NONNULL_1$|^_GL_ARG_NONNULL_1_3$|^_GL_ARG_NONNULL_3$|^HAVE_ATTRIBUTE_MALLOC$|^HAVE_ATTRIBUTE_MALLOC$|^_GL_ATTRIBUTE_MALLOC$|^_GL_ATTRIBUTE_MALLOC$|^_GL_ATTRIBUTE_DEALLOC$|^_GL_ATTRIBUTE_DEALLOC$|^_GL_ATTRIBUTE_NORETURN$|^_GL_ATTRIBUTE_NORETURN$|^_GL_ATTRIBUTE_MAYBE_UNUSED$|^_GL_ATTRIBUTE_COLD$|^_GL_ATTRIBUTE_SPEC_PRINTF_ERROR$|^_GL_ATTRIBUTE_FORMAT$|^_GL_ATTRIBUTE_FORMAT_ERROR_AT_LINE$|^_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR$|^_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR_AT_LINE$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_1_2$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_0$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_3$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_0$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_4$|^_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_2_3$|^_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_1_0$|^DLL_VARIABLE$|^DLL_VARIABLE$|^DLL_VARIABLE$|^HAVE_WCHAR_T$|^LDFLAGS$|^CPPFLAGS$|^LIBS$|^HAVE__GET_OSFHANDLE$|^_GL_NOTHROW_GET_OSFHANDLE$|^_GL_NOTHROW_GET_OSFHANDLE$|^CC$|^CFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CC$|^CC$|^CC$|^CC$|^ac_ct_CC$|^CC$|^CPP$|^CPPFLAGS$|^CPP$|^CXX$|^CXXFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CXX$|^ac_ct_CXX$|^CXXDEPMODE$|^am__fastdepCXX_TRUE$|^am__fastdepCXX_FALSE$|^WOE32DLL_TRUE$|^WOE32DLL_FALSE$|^WOE32_TRUE$|^WOE32_FALSE$|^WOE32DLL_TRUE$|^WOE32DLL_FALSE$|^WOE32_TRUE$|^WOE32_FALSE$|^INCLUDED_LIBXML_TRUE$|^INCLUDED_LIBXML_FALSE$|^HAVE_LIB_XGETHOSTNAME_H$|^HAVE_LIB_XGETANAME_IMPL_H$|^HAVE_TEXTSTYLE_WOE32DLL_H$|^PERL$|^NAMESPACING$|^AWK$|^HEXVERSION$|^HAVE_ICONV$|^ITL_CFLAGS$|^ITL_LIBS$|^ITL_CFLAGS$|^ITL_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^GLIB_CFLAGS$|^GLIB_LIBS$|^GLIB_CFLAGS$|^GLIB_LIBS$|^INTL_CFLAGS$|^INTL_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LTLIBOBJS$|^LT_CONFIG_H$|^ltdl_LIBOBJS$|^ltdl_LTLIBOBJS$|^am__EXEEXT_TRUE$|^am__EXEEXT_FALSE$|^gl_LIBOBJS$|^gl_LTLIBOBJS$|^gl_LIBOBJDEPS$|^gltests_LIBOBJS$|^gltests_LTLIBOBJS$|^gltests_LIBOBJDEPS$
+./log/autoconf.log:86:autom4te-2.72: forbidden tokens: ^_?A[CHUM]_|_AC_|^LIBOBJS$|^_?m4_|^dnl$|^_?AS_|^_?LT_[A-Z_]+$|^_?PKG_[A-Z_]+$
+./log/autoconf.log:87:autom4te-2.72: forbidden token : ^LIBOBJS$ => do not use LIBOBJS directly, use AC_LIBOBJ (see section 'AC_LIBOBJ vs LIBOBJS'
+./log/autoconf.log:88:autom4te-2.72: allowed   tokens: ^am__quote$|^AS_FLAGS$|^SHELL$|^PATH_SEPARATOR$|^PACKAGE_NAME$|^PACKAGE_TARNAME$|^PACKAGE_VERSION$|^PACKAGE_STRING$|^PACKAGE_BUGREPORT$|^PACKAGE_URL$|^exec_prefix$|^prefix$|^program_transform_name$|^bindir$|^sbindir$|^libexecdir$|^datarootdir$|^datadir$|^sysconfdir$|^sharedstatedir$|^localstatedir$|^runstatedir$|^includedir$|^oldincludedir$|^docdir$|^infodir$|^htmldir$|^dvidir$|^pdfdir$|^psdir$|^libdir$|^localedir$|^mandir$|^PACKAGE_NAME$|^PACKAGE_TARNAME$|^PACKAGE_VERSION$|^PACKAGE_STRING$|^PACKAGE_BUGREPORT$|^PACKAGE_URL$|^DEFS$|^ECHO_C$|^ECHO_N$|^ECHO_T$|^LIBS$|^build_alias$|^host_alias$|^target_alias$|^CC$|^CFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CC$|^CC$|^CC$|^CC$|^ac_ct_CC$|^CC$|^EXEEXT$|^OBJEXT$|^AR$|^ac_ct_AR$|^AR$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^(_LT_EOF|LT_DLGLOBAL|LT_DLLAZY_OR_NOW|LT_MULTI_MODULE)$|^AS$|^DLLTOOL$|^OBJDUMP$|^LIBTOOL$|^build$|^build_cpu$|^build_vendor$|^build_os$|^host$|^host_cpu$|^host_vendor$|^host_os$|^SED$|^GREP$|^EGREP$|^FGREP$|^GREP$|^LD$|^DUMPBIN$|^ac_ct_DUMPBIN$|^DUMPBIN$|^NM$|^LN_S$|^FILECMD$|^OBJDUMP$|^OBJDUMP$|^DLLTOOL$|^DLLTOOL$|^AR$|^ac_ct_AR$|^STRIP$|^RANLIB$|^AWK$|LT_OBJDIR|^LT_OBJDIR$|^MANIFEST_TOOL$|^DSYMUTIL$|^NMEDIT$|^LIPO$|^OTOOL$|^OTOOL64$|^LT_SYS_LIBRARY_PATH$|^STDC_HEADERS$|^HAVE_DLFCN_H$|^SET_MAKE$|^INSTALL_PROGRAM$|^INSTALL_SCRIPT$|^INSTALL_DATA$|^MKDIR_P$|^USE_NLS$|^GETTEXT_MACRO_VERSION$|^MSGFMT$|^GMSGFMT$|^GMSGFMT_015$|^XGETTEXT$|^XGETTEXT_015$|^MSGMERGE$|^MSGMERGE_FOR_MSGFMT_OPTION$|^XGETTEXT_EXTRA_OPTIONS$|^CPP$|^CPPFLAGS$|^CPP$|^HAVE_CFPREFERENCESCOPYAPPVALUE$|^HAVE_CFLOCALECOPYPREFERREDLANGUAGES$|^INTL_MACOSX_LIBS$|^HAVE_ICONV$|^LIBICONV$|^LTLIBICONV$|^ENABLE_NLS$|^HAVE_GETTEXT$|^HAVE_DCGETTEXT$|^INTLLIBS$|^LIBINTL$|^LTLIBINTL$|^POSUB$|^localedir_c$|^localedir_c_make$|^PKG_CONFIG(_(PATH|LIBDIR|SYSROOT_DIR|ALLOW_SYSTEM_(CFLAGS|LIBS)))?$|^PKG_CONFIG_(DISABLE_UNINSTALLED|TOP_BUILD_DIR|DEBUG_SPEW)$|^PKG_CONFIG$|^PKG_CONFIG_PATH$|^PKG_CONFIG_LIBDIR$|^PKG_CONFIG$|^GTKDOC_CHECK$|^GTKDOC_CHECK_PATH$|^GTKDOC_REBASE$|^GTKDOC_MKPDF$|^HTML_DIR$|^GTKDOC_DEPS_CFLAGS$|^GTKDOC_DEPS_LIBS$|^AM_DEFAULT_VERBOSITY$|^HAVE_GTK_DOC_TRUE$|^HAVE_GTK_DOC_FALSE$|^ENABLE_GTK_DOC_TRUE$|^ENABLE_GTK_DOC_FALSE$|^GTK_DOC_BUILD_HTML_TRUE$|^GTK_DOC_BUILD_HTML_FALSE$|^GTK_DOC_BUILD_PDF_TRUE$|^GTK_DOC_BUILD_PDF_FALSE$|^GTK_DOC_USE_LIBTOOL_TRUE$|^GTK_DOC_USE_LIBTOOL_FALSE$|^GTK_DOC_USE_REBASE_TRUE$|^GTK_DOC_USE_REBASE_FALSE$|^AM_[A-Z]+FLAGS$|^am__isrc$|^CYGPATH_W$|^PACKAGE$|^VERSION$|^ACLOCAL$|^AUTOCONF$|^AUTOMAKE$|^AUTOHEADER$|^MAKEINFO$|^install_sh$|^STRIP$|^INSTALL_STRIP_PROGRAM$|^mkdir_p$|^am__leading_dot$|^AMTAR$|^am__tar$|^am__untar$|^DEPDIR$|^am__include$|^AMDEP_TRUE$|^AMDEP_FALSE$|^AMDEPBACKSLASH$|^am__nodep$|^CCDEPMODE$|^am__fastdepCC_TRUE$|^am__fastdepCC_FALSE$|^CTAGS$|^ETAGS$|^CSCOPE$|^AM_V$|^AM_DEFAULT_V$|^AM_DEFAULT_VERBOSITY$|^AM_BACKSLASH$|^PACKAGE$|^VERSION$|^PACKAGE$|^VERSION$|^HAVE_C11$|^CXX$|^CXXFLAGS$|^LDFLAGS$|^LIBS$|^CPPFLAGS$|^CXX$|^ac_ct_CXX$|^CXXDEPMODE$|^am__fastdepCXX_TRUE$|^am__fastdepCXX_FALSE$|^CXXCPP$|^CPPFLAGS$|^CXXCPP$|^LD$|^LT_SYS_LIBRARY_PATH$|^HAVE_CPP17$|^HAVE_WINDOWS_CONSOLES$|^AC_GNU_LIB_TOOL$|AC_CROSS_COMPILER|GL_REQUIRE_VERSION|GNULIB_MODULES|AC_MSG_WARN|gl_CC_GNULIB_WARNINGS|AC_CHECK_FUNCS|gl_INIT|gl_EARLY|gl_COMMON|gl_PROG_AR_RANLIB|AC_CONFIG_RPATH|AC_CONFIG_LIBS|AC_DEFINE|gl_MODULES|m4_ifndef|^_GL_ASYNC_SAFE$|^IN_LIBTEXTSTYLE$|^_GL_INLINE_HEADER_BEGIN$|^_GL_INLINE_HEADER_END$|^_GL_CONFIG_H_INCLUDED$|^_GL_LIST_INLINE$|^GNULIB_XALLOC$|^GNULIB_XALLOC_DIE$|^GNULIB_XSTRDUP$|^GNULIB_TPUTS$|^GNULIB_SAFE_WRITE$|^_GL_ARG_NONNULL_1_2$|^_GL_ARG_NONNULL_1$|^_GL_ARG_NONNULL_1_3$|^_GL_ARG_NONNULL_3$|^_GL_ARG_NONNULL_1_2$|^_GL_ARG_NONNULL_1$|^_GL_ARG_NONNULL_1_3$|^_GL_ARG_NONNULL_3$|^_GL_ATTRIBUTE_MALLOC$|^_GL_ATTRIBUTE_MALLOC$|^_GL_ATTRIBUTE_DEALLOC$|^_GL_ATTRIBUTE_DEALLOC$|^_GL_ATTRIBUTE_MAYBE_UNUSED$|^_GL_ATTRIBUTE_COLD$|^_GL_ATTRIBUTE_SPEC_PRINTF_ERROR$|^_GL_ATTRIBUTE_FORMAT$|^_GL_ATTRIBUTE_FORMAT_ERROR_AT_LINE$|^_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR$|^_GL_ATTRIBUTE_SPEC_PRINTF_STANDARD_ERROR_AT_LINE$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_1_2$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_0$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_2_3$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_0$|^_GL_ATTRIBUTE_FORMAT_PRINTF_STANDARD_3_4$|^_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_2_3$|^_GL_ATTRIBUTE_FORMAT_PRINTF_SYSTEM_1_0$|^DLL_VARIABLE$|^DLL_VARIABLE$|^DLL_VARIABLE$|^HAVE_WCHAR_T$|^LIBS$|^WOE32DLL_TRUE$|^WOE32DLL_FALSE$|^WOE32_TRUE$|^WOE32_FALSE$|^WOE32DLL_TRUE$|^WOE32DLL_FALSE$|^WOE32_TRUE$|^WOE32_FALSE$|^INCLUDED_LIBXML_TRUE$|^INCLUDED_LIBXML_FALSE$|^GL_GENERATE_ALLOCA_H_TRUE$|^GL_GENERATE_ALLOCA_H_FALSE$|^GL_GENERATE_ASSERT_H_TRUE$|^GL_GENERATE_ASSERT_H_FALSE$|^GL_COND_OBJ_CLOSE_TRUE$|^GL_COND_OBJ_CLOSE_FALSE$|^GL_COND_OBJ_DUP2_TRUE$|^GL_COND_OBJ_DUP2_FALSE$|^GL_GENERATE_ERRNO_H_TRUE$|^GL_GENERATE_ERRNO_H_FALSE$|^GL_COND_OBJ_ERROR_TRUE$|^GL_COND_OBJ_ERROR_FALSE$|^GL_COND_OBJ_FCNTL_TRUE$|^GL_COND_OBJ_FCNTL_FALSE$|^GL_COND_OBJ_FSTAT_TRUE$|^GL_COND_OBJ_FSTAT_FALSE$|^GL_COND_OBJ_GETDTABLESIZE_TRUE$|^GL_COND_OBJ_GETDTABLESIZE_FALSE$|^GL_COND_OBJ_GETPROGNAME_TRUE$|^GL_COND_OBJ_GETPROGNAME_FALSE$|^GL_GENERATE_LIMITS_H_TRUE$|^GL_GENERATE_LIMITS_H_FALSE$|^GL_COND_OBJ_MSVC_INVAL_TRUE$|^GL_COND_OBJ_MSVC_INVAL_FALSE$|^GL_COND_OBJ_MSVC_NOTHROW_TRUE$|^GL_COND_OBJ_MSVC_NOTHROW_FALSE$|^GL_COND_OBJ_OPEN_TRUE$|^GL_COND_OBJ_OPEN_FALSE$|^GL_COND_OBJ_STAT_TRUE$|^GL_COND_OBJ_STAT_FALSE$|^GL_GENERATE_STDCKDINT_H_TRUE$|^GL_GENERATE_STDCKDINT_H_FALSE$|^GL_GENERATE_STDDEF_H_TRUE$|^GL_GENERATE_STDDEF_H_FALSE$|^GL_GENERATE_STDINT_H_TRUE$|^GL_GENERATE_STDINT_H_FALSE$|^GL_COND_OBJ_STDIO_READ_TRUE$|^GL_COND_OBJ_STDIO_READ_FALSE$|^GL_COND_OBJ_STDIO_WRITE_TRUE$|^GL_COND_OBJ_STDIO_WRITE_FALSE$|^GL_COND_OBJ_STRERROR_TRUE$|^GL_COND_OBJ_STRERROR_FALSE$|^GL_COND_OBJ_STRERROR_OVERRIDE_TRUE$|^GL_COND_OBJ_STRERROR_OVERRIDE_FALSE$|^PERL$|^NAMESPACING$|^AWK$|^HEXVERSION$|^HAVE_ICONV$|^ITL_CFLAGS$|^ITL_LIBS$|^ITL_CFLAGS$|^ITL_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^GLIB_CFLAGS$|^GLIB_LIBS$|^GLIB_CFLAGS$|^GLIB_LIBS$|^INTL_CFLAGS$|^INTL_LIBS$|^NCURSES_CFLAGS$|^NCURSES_LIBS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LIBOBJS$|^LTLIBOBJS$|^am__EXEEXT_TRUE$|^am__EXEEXT_FALSE$
+./m4/gnulib-comp.m4:429:# into gl_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4:436:# into gl_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4:456:# into gltests_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4:463:# into gltests_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4~:181:# into gl_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4~:188:# into gl_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4~:208:# into gltests_LIBOBJS instead of into LIBOBJS.
+./m4/gnulib-comp.m4~:215:# into gltests_LIBOBJS instead of into LIBOBJS.
+./m4/ltdl.m4:213:# of into LIBOBJS.
+./Makefile:369:LIBOBJS =  ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDIR}xconcat-filename$U.o ${LIBOBJDIR}xsize$U.o ${LIBOBJDIR}error$U.o ${LIBOBJDIR}full-write$U.o ${LIBOBJDIR}term-style-control$U.o ${LIBOBJDIR}fsync$U.o ${LIBOBJDIR}xstrdup$U.o ${LIBOBJDIR}xgethostname$U.o ${LIBOBJDIR}lt__alloc$U.o ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt_dlloader$U.o ${LIBOBJDIR}lt_error$U.o ${LIBOBJDIR}ltdl$U.o ${LIBOBJDIR}slist$U.o
+./Makefile:519:libtextstyle_la_LIBOBJS = $(LIBOBJS)
+./Makefile:553:libltdlc_la_LIBOBJS = $(LIBOBJS)
+./Makefile.am:79:# LIBOBJS=>AC_LIBOBJ로 변경
+./Makefile.am:80:#libtextstyle_la_LIBOBJS = $(LIBOBJS)
+./Makefile.am:125:# LIBOBJS=>AC_LIBOBJ로 변경
+./Makefile.am:126:#libltdlc_la_LIBOBJS = $(LIBOBJS)
+./Makefile.am:136:#libltdlc_la_LIBS = -lncurses $(GNULIB_LIBS) $(GL_LIBOBJS) $(LTDLIBS) $(LT_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./Makefile.am:137:libltdlc_la_LIBS = -lncurses $(GNULIB_LIBS) $(AC_LIBOBJ) $(LTDLIBS) $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./Makefile.in:374:LIBOBJS = @LIBOBJS@
+./Makefile.in:532:#libltdlc_la_LIBS = -lncurses $(GNULIB_LIBS) $(GL_LIBOBJS) $(LTDLIBS) $(LT_LIBOBJS) # LIBOBJS -> AC_LIBOBJ
+./Makefile.in:533:libltdlc_la_LIBS = -lncurses $(GNULIB_LIBS) $(AC_LIBOBJ) $(LTDLIBS) $(AC_LIBOBJ) # LIBOBJS -> AC_LIBOBJ
+./Makefile.in:1330:# LIBOBJS=>AC_LIBOBJ로 변경
+./Makefile.in:1331:#libtextstyle_la_LIBOBJS = $(LIBOBJS)
+./Makefile.in:1355:# LIBOBJS=>AC_LIBOBJ로 변경
+./Makefile.in:1356:#libltdlc_la_LIBOBJS = $(LIBOBJS)
+./tests/Makefile:562:LIBOBJS =  ${LIBOBJDIR}color$U.o ${LIBOBJDIR}gl_array_list$U.o ${LIBOBJDIR}term-ostream$U.o ${LIBOBJDIR}ostream$U.o ${LIBOBJDIR}concat-filename$U.o ${LIBOBJDIR}xconcat-filename$U.o ${LIBOBJDIR}xsize$U.o ${LIBOBJDIR}error$U.o ${LIBOBJDIR}full-write$U.o ${LIBOBJDIR}term-style-control$U.o ${LIBOBJDIR}fsync$U.o ${LIBOBJDIR}xstrdup$U.o ${LIBOBJDIR}xgethostname$U.o ${LIBOBJDIR}lt__alloc$U.o ${LIBOBJDIR}lt__argz$U.o ${LIBOBJDIR}lt_dlloader$U.o ${LIBOBJDIR}lt_error$U.o ${LIBOBJDIR}ltdl$U.o ${LIBOBJDIR}slist$U.o
+./tests/Makefile.in:566:LIBOBJS = @LIBOBJS@
