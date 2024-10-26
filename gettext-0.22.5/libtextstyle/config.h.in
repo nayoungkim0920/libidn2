@@ -19,6 +19,9 @@
 /* Define to the number of bits in type 'wint_t'. */
 #undef BITSIZEOF_WINT_T
 
+/* Define if we are cross compiling */
+#undef CROSS_COMPILING
+
 /* Define to 1 if using 'alloca.c'. */
 #undef C_ALLOCA
 
@@ -194,8 +197,14 @@
 /* Define to 1 if you have the 'argz_stringify' function. */
 #undef HAVE_ARGZ_STRINGIFY
 
-/* Define to 1 if C11 is supported. */
-#undef HAVE_C11
+/* Define if compiler does not support __attribute__((__malloc__)) */
+#undef HAVE_ATTRIBUTE_MALLOC
+
+/* Define if compiler does not support __attribute__((nonnull)) */
+#undef HAVE_ATTRIBUTE_NONNULL
+
+/* Define if compiler does not support __attribute__((__pure__)) */
+#undef HAVE_ATTRIBUTE_PURE
 
 /* Define to 1 if you have the Mac OS X function
    CFLocaleCopyPreferredLanguages in the CoreFoundation framework. */
@@ -312,13 +321,19 @@
 /* Define to 1 if you have the 'fcntl' function. */
 #undef HAVE_FCNTL
 
+/* Define to 1 if using FlushFileBuffers on Windows. */
+#undef HAVE_FLUSH_FILE_BUFFERS
+
+/* Define to 1 if you have the 'fsync' function. */
+#undef HAVE_FSYNC
+
 /* Define to 1 if you have the 'getdtablesize' function. */
 #undef HAVE_GETDTABLESIZE
 
 /* Define to 1 if you have the 'getexecname' function. */
 #undef HAVE_GETEXECNAME
 
-/* Define to 1 if you have the `getprogname' function. */
+/* Define to 1 if you have the 'getprogname' function. */
 #undef HAVE_GETPROGNAME
 
 /* Define if the GNU gettext() function is already present or preinstalled. */
@@ -339,6 +354,12 @@
 /* Define if libdlloader will be built on this platform */
 #undef HAVE_LIBDLLOADER
 
+/* Define to 1 if you have the <lib/xgetaname-impl.h> header file. */
+#undef HAVE_LIB_XGETANAME_IMPL_H
+
+/* Define to 1 if you have the <lib/xgethostname.h> header file. */
+#undef HAVE_LIB_XGETHOSTNAME_H
+
 /* Define to 1 if you have the <limits.h> header file. */
 #undef HAVE_LIMITS_H
 
@@ -354,6 +375,9 @@
 /* Define to 1 if you have the <mach-o/dyld.h> header file. */
 #undef HAVE_MACH_O_DYLD_H
 
+/* Define to 1 if you have the 'malloc' function. */
+#undef HAVE_MALLOC
+
 /* Define to 1 if you have the <minix/config.h> header file. */
 #undef HAVE_MINIX_CONFIG_H
 
@@ -367,8 +391,14 @@
 /* Define if libtool can extract symbol lists from object files. */
 #undef HAVE_PRELOADED_SYMBOLS
 
+/* Define to 1 if you have the 'printf' function. */
+#undef HAVE_PRINTF
+
 /* Define to 1 if you have the 'readdir' function. */
 #undef HAVE_READDIR
+
+/* Define to 1 if you have the 'rpl_stpcpy' function. */
+#undef HAVE_RPL_STPCPY
 
 /* Define to 1 if you have the <sdkddkver.h> header file. */
 #undef HAVE_SDKDDKVER_H
@@ -466,6 +496,9 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
+/* Define to 1 if you have the <textstyle/woe32dll.h> header file. */
+#undef HAVE_TEXTSTYLE_WOE32DLL_H
+
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
@@ -496,8 +529,20 @@
 /* Define to 1 if O_NOFOLLOW works. */
 #undef HAVE_WORKING_O_NOFOLLOW
 
+/* Define to 1 if you have the 'xalloc_die' function. */
+#undef HAVE_XALLOC_DIE
+
 /* Define to 1 if you have the <xalloc.h> header file. */
 #undef HAVE_XALLOC_H
+
+/* Define to 1 if you have the 'xmalloc' function. */
+#undef HAVE_XMALLOC
+
+/* Define to 1 if you have the 'xrealloc' function. */
+#undef HAVE_XREALLOC
+
+/* Define to 1 if you have the '_get_osfhandle' function. */
+#undef HAVE__GET_OSFHANDLE
 
 /* Define to 1 if you have the '_set_invalid_parameter_handler' function. */
 #undef HAVE__SET_INVALID_PARAMETER_HANDLER
@@ -892,6 +937,12 @@
 /* Define to __attribute__((unused)) */
 #undef _GL_ATTRIBUTE_MAYBE_UNUSED
 
+/* Define for attribute noreturn */
+#undef _GL_ATTRIBUTE_NORETURN
+
+/* Define as empty if __attribute__((__pure__)) is not supported */
+#undef _GL_ATTRIBUTE_PURE
+
 /* Define to __attribute__((format(printf, 3, 4))) */
 #undef _GL_ATTRIBUTE_SPEC_PRINTF_ERROR
 
@@ -925,6 +976,15 @@
 #endif
 
 
+/* Define if compiler does not support __attribute__((__alloc_size__)) */
+#undef _GL_HAS_ATTRIBUTE_ALLOC_SIZE
+
+/* Define if compiler does not support __attribute__((returns_nonnull)) */
+#undef _GL_HAS_ATTRIBUTE_RETURNS_NONNULL
+
+/* Define for inline */
+#undef _GL_INLINE
+
 /* Define for inline header start */
 #undef _GL_INLINE_HEADER_BEGIN
 
@@ -933,6 +993,9 @@
 
 /* Define for list inline */
 #undef _GL_LIST_INLINE
+
+/* Define if _get_osfhandle is not available */
+#undef _GL_NOTHROW_GET_OSFHANDLE
 
 /* Define to enable the declarations of ISO C 11 types and functions. */
 #undef _ISOC11_SOURCE
