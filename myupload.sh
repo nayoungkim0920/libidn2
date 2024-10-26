@@ -14,4 +14,4 @@ fi
 # Git 작업 파일 추가 및 커밋 메시지에 현재 날짜 설정
 git add .
 git commit -m "commit $(date +'%Y%m%d')"  # 오늘 날짜를 'YYYYMMDD' 형식으로 추가
-git push origin master
+git push origin master --force
