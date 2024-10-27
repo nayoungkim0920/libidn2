@@ -48,7 +48,14 @@ m4_pattern_allow([AC_DEFINE])
 m4_pattern_allow([gl_MODULES])
 m4_pattern_allow([m4_ifndef])
 
-#AC_PROG_CC # C 컴파일러 확인
+# Libtool이 컴파일과 링크 작업을 처리할 수 있게 해주는 설정
+AC_LANG([C])
+AC_LANG([C++])
+AC_LANG([CXX])
+
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
 
 # GNULIB 초기화
 gl_EARLY
@@ -98,8 +105,6 @@ gl_PROG_AR_RANLIB
 # 아카이브 툴 확인 (AM_PROG_AR 호출)
 #AM_PROG_AR #gl_PROG_AR_RANLIB과 충돌
 
-
-
 IT_PROG_INTLTOOL([0.51.0]) # intltool의 버전을 확인하고 필요한 경우 설치
 
 GTK_DOC_CHECK([1.34])  # Gtkdoc 버전 요구 사항을 설정합니다.
@@ -130,25 +135,39 @@ AC_CANONICAL_HOST
 echo "configure.ac: Configured host OS: $host_os"
 #output : configure.ac: Configured host OS: mingw32
 # 호스트 OS가 mingw32인지 확인하고 관련 플래그와 조건을 설정
-if test "$host_os" = "mingw32"; then
+#if test "$host_os" = "mingw32"; then
+if test "$host_os" in  mingw* | cygwin*; then
     # mingw32가 감지되면 WOE32DLL과 WOE32를 활성화
     AM_CONDITIONAL([WOE32DLL], true)
     AM_CONDITIONAL([WOE32], true)
     echo "WOE32DLL과 WOE32가 활성화되었습니다."
     # mingw32에서 동적 내보내기(export-dynamic)를 위해 LDFLAGS 설정
-    LDFLAGS="$LDFLAGS -no-undefined -export-dynamic"
+    # LDFLAGS="$LDFLAGS -no-undefined -export-dynamic"
+	# LDFLAGS="$LDFLAGS -export-dynamic"
+
+    # MinGW에서 불필요한 버전 확인 옵션 및 링커 옵션 제거
+    AC_MSG_NOTICE([Configuring for MinGW environment])
+
+    # MinGW에서 비호환 옵션을 피하기 위해 LDFLAGS 수정
+    LDFLAGS=$(echo "$LDFLAGS" | sed 's/-no-undefined//g; s/-export-dynamic//g')
+
+    # 컴파일러 버전 확인 시 불필요한 옵션을 피하도록 설정
+    # autoconf 기본 매크로로 인해 비호환 옵션이 시도되는 것을 방지
+    CC="$CC --version"
+    CXX="$CXX --version"
+
 else
     # mingw32가 아닌 경우 WOE32DLL과 WOE32를 비활성화
     AM_CONDITIONAL([WOE32DLL], false)
     AM_CONDITIONAL([WOE32], false)
     echo "WOE32DLL과 WOE32가 비활성화되었습니다."
     # non-mingw32 시스템에서는 정의되지 않은 심볼을 허용하지 않도록 LDFLAGS 설정
-    LDFLAGS="$LDFLAGS -no-undefined"
+    # LDFLAGS="$LDFLAGS -no-undefined"
 fi
 
 # AC_CONFIG_SUBDIRS([libltdl]) # LT_CONFIG_LTDL_DIR([libltdl])
 AC_CONFIG_SRCDIR([lib/color.c])  # Primary source file
-AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory
+AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
 # 컴파일러 설정
 AC_PROG_INSTALL
 #output:checking for a BSD-compatible install... /usr/bin/install -c
@@ -159,7 +178,7 @@ AC_CONFIG_MACRO_DIRS([m4] [../m4] [gnulib-m4])
 gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
 AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
 #AC_PROG_LIBTOOL # 동적 라이브러리 및 정적 라이브러리 생성을 관리 => LT_INIT
-#AM_PROG_CC_C_O # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
+AM_PROG_CC_C_O # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
 #output:checking whether build environment is sane... yes
 #output:checking for x86_64-w64-mingw32-strip... no
 #output:checking for strip... strip
@@ -167,41 +186,39 @@ AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면
 #output:checking whether make sets $(MAKE)... yes
 #output:checking whether make supports nested variables... yes
 
-#LT_LANG([C])
+LT_LANG([C])
 LT_LANG([C++])
 LT_LANG([Windows Resource])
 
 m4_ifdef([AX_PREFIX_CONFIG_H], [AX_PREFIX_CONFIG_H])
 
 # C11 지원 확인
-# AC_LANG(C)
-# AC_LANG_PUSH([C])
-# AC_COMPILE_IFELSE([  
-#    AC_LANG_SOURCE([[  /* C11에서 도입된 _Alignas 사용 */
-#        #include <stdio.h>
-#        #include <stdlib.h>
-#        #include <stdalign.h>
+AC_LANG_PUSH([C])
+AC_COMPILE_IFELSE([  
+   AC_LANG_SOURCE([[  /* C11에서 도입된 _Alignas 사용 */
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <stdalign.h>
 
-#        int main(void) {
-#            /* C11에서 도입된 _Alignas를 사용하여 16바이트 정렬된 변수 선언 */
-#            _Alignas(16) char buffer[32];  /* 16바이트 정렬된 배열 */
+       int main(void) {
+           /* C11에서 도입된 _Alignas를 사용하여 16바이트 정렬된 변수 선언 */
+           _Alignas(16) char buffer[32];  /* 16바이트 정렬된 배열 */
 
-#            /* static_assert로 C11 지원 여부 확인 */
-#            _Static_assert(1, "C11 is supported.");  /* 항상 참인 조건 */
+           /* static_assert로 C11 지원 여부 확인 */
+           _Static_assert(1, "C11 is supported.");  /* 항상 참인 조건 */
 
-#            printf("C11 is supported.\n");  /* 출력 메시지 */
-#            return 0;  /* 성공 */
-#        }
-#    ]])
-# ], [
-#    #CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가 # ./configure CFLAGS="-std=c11"
-#    AC_DEFINE([HAVE_C11], [1], [Define to 1 if C11 is supported.])
-# ], [
-#    AC_MSG_ERROR([C11 지원이 없습니다.])
-# ])
+           printf("C11 is supported.\n");  /* 출력 메시지 */
+           return 0;  /* 성공 */
+       }
+   ]])
+], [
+   #CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가 # ./configure CFLAGS="-std=c11"
+   AC_DEFINE([HAVE_C11], [1], [Define to 1 if C11 is supported.])
+], [
+   AC_MSG_ERROR([C11 지원이 없습니다.])
+])
 
 # C++17 지원 확인
-AC_LANG([C++]) #Libtool이 C++ 컴파일과 링크 작업을 처리할 수 있게 해주는 설정
 AC_LANG_PUSH([C++])
 AC_COMPILE_IFELSE([
    AC_LANG_SOURCE([[
@@ -227,10 +244,10 @@ AC_LANG_POP
 AC_CROSS_COMPILER # command not found
 AC_DEFINE([CROSS_COMPILING], [1], [Define if we are cross compiling])
 
-#AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
+AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
 AC_CHECK_TOOL([LD], [/mingw64/bin/ld.exe], [ld]) #2.43.1
 AC_CHECK_TOOL([AR], [/mingw64/bin/ar.exe], [ar]) #2.43.1
-#AC_DEFUN([AC_LIBTOOL_PROG_CC_C_O], [dnl])
+AC_DEFUN([AC_LIBTOOL_PROG_CC_C_O], [dnl])
 
 AC_DEFUN([AC_LIBTOOL_SYS_HARD_LINK_LOCKS], [dnl])
 AC_DEFUN([AC_LIBTOOL_OBJDIR], [dnl])
@@ -247,20 +264,20 @@ CHECK_WINDOWS_CONSOLES
 
 AC_COMPILE_IFELSE(
    [AC_LANG_PROGRAM([[]], [[
-       void* xmalloc(size_t) __attribute__((__alloc_size__(1)));
+       void* xmalloc(size_t size) __attribute__((__alloc_size__(1)));
    ]])],
    [AC_DEFINE([_GL_HAS_ATTRIBUTE_ALLOC_SIZE], [1], [Define if compiler supports __attribute__((__alloc_size__))])],
    [AC_DEFINE([_GL_HAS_ATTRIBUTE_ALLOC_SIZE], [0], [Define if compiler does not support __attribute__((__alloc_size__))])]
 )
 
-AC_COMPILE_IFELSE([AC_LANG_SOURCE([#include <unistd.h>
-                                   int main() {
-                                       int fd = 0; 
-                                       fsync(fd);
-                                       return 0;
-                                   }])],
-[AC_DEFINE([HAVE_FSYNC], [1], [Define to 1 if you have the fsync' function.])],
-[AC_DEFINE([HAVE_FLUSH_FILE_BUFFERS], [1], [Define to 1 if using FlushFileBuffers on Windows.])])
+# AC_COMPILE_IFELSE([AC_LANG_SOURCE([#include <unistd.h>
+#                                    int main() {
+#                                        int fd = 0; 
+#                                        fsync(fd);
+#                                        return 0;
+#                                    }])],
+# [AC_DEFINE([HAVE_FSYNC], [1], [Define to 1 if you have the fsync' function.])],
+# [AC_DEFINE([HAVE_FLUSH_FILE_BUFFERS], [1], [Define to 1 if using FlushFileBuffers on Windows.])])
 
 AC_COMPILE_IFELSE(
    [AC_LANG_PROGRAM([[]], [[
@@ -411,7 +428,7 @@ AC_CHECK_TYPE([wchar_t],
 AC_SUBST([HAVE_WCHAR_T])
 AC_SUBST([LIBS], [-ltextstyle])
 
-AC_CHECK_FUNCS([getprogname printf malloc fsync], [GL_COND_OBJ_FSYNC=1])
+#AC_CHECK_FUNCS([getprogname printf malloc fsync], [GL_COND_OBJ_FSYNC=1])
 
 AC_CHECK_FUNCS([xmalloc xrealloc rpl_stpcpy xalloc_die], [], [
     AC_MSG_ERROR([Failed to define necessary memory allocation functions.])
@@ -436,192 +453,192 @@ AC_CHECK_FUNCS([_get_osfhandle],
 END
 ])
 
-# AC_CHECK_FUNC([xmalloc], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([ 
-#        AC_LANG_PROGRAM([ 
-#            #include <stdlib.h>
-#            void *xmalloc(size_t size) {
-#                void *ptr = malloc(size);
-#                if (!ptr) {
-#                    exit(EXIT_FAILURE);
-#                }
-#                return ptr;
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xmalloc])
-#    ])
-#    AC_LANG_POP
-# ])
+AC_CHECK_FUNC([xmalloc], [], [
+   AC_LANG_PUSH([C])
+   AC_COMPILE_IFELSE([ 
+       AC_LANG_PROGRAM([ 
+           #include <stdlib.h>
+           void *xmalloc(size_t size) {
+               void *ptr = malloc(size);
+               if (!ptr) {
+                   exit(EXIT_FAILURE);
+               }
+               return ptr;
+           }
+       ])
+   ], [], [
+       AC_MSG_ERROR([Failed to define xmalloc])
+   ])
+   AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([xrealloc], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([ 
-#        AC_LANG_PROGRAM([ 
-#            #include <stdlib.h>
-#            void *xrealloc(void *ptr, size_t size) {
-#                void *new_ptr = realloc(ptr, size);
-#                if (!new_ptr) {
-#                    exit(EXIT_FAILURE);
-#                }
-#                return new_ptr;
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xrealloc])
-#    ])
-#    AC_LANG_POP
-# ])
+AC_CHECK_FUNC([xrealloc], [], [
+   AC_LANG_PUSH([C])
+   AC_COMPILE_IFELSE([ 
+       AC_LANG_PROGRAM([ 
+           #include <stdlib.h>
+           void *xrealloc(void *ptr, size_t size) {
+               void *new_ptr = realloc(ptr, size);
+               if (!new_ptr) {
+                   exit(EXIT_FAILURE);
+               }
+               return new_ptr;
+           }
+       ])
+   ], [], [
+       AC_MSG_ERROR([Failed to define xrealloc])
+   ])
+   AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([rpl_stpcpy], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([ 
-#        AC_LANG_PROGRAM([ 
-#            #include <string.h>
-#            char *rpl_stpcpy(char *dest, const char *src) {
-#                return stpcpy(dest, src);
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define rpl_stpcpy])
-#    ])
-#    AC_LANG_POP
-# ])
+AC_CHECK_FUNC([rpl_stpcpy], [], [
+   AC_LANG_PUSH([C])
+   AC_COMPILE_IFELSE([ 
+       AC_LANG_PROGRAM([ 
+           #include <string.h>
+           char *rpl_stpcpy(char *dest, const char *src) {
+               return stpcpy(dest, src);
+           }
+       ])
+   ], [], [
+       AC_MSG_ERROR([Failed to define rpl_stpcpy])
+   ])
+   AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([xalloc_die], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([ 
-#        AC_LANG_PROGRAM([ 
-#            #include <stdio.h>
-#            void xalloc_die(void) {
-#                fprintf(stderr, "Memory allocation failed\n");
-#                exit(EXIT_FAILURE);
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xalloc_die])
-#    ])
-#    AC_LANG_POP
-# ])
+AC_CHECK_FUNC([xalloc_die], [], [
+   AC_LANG_PUSH([C])
+   AC_COMPILE_IFELSE([ 
+       AC_LANG_PROGRAM([ 
+           #include <stdio.h>
+           void xalloc_die(void) {
+               fprintf(stderr, "Memory allocation failed\n");
+               exit(EXIT_FAILURE);
+           }
+       ])
+   ], [], [
+       AC_MSG_ERROR([Failed to define xalloc_die])
+   ])
+   AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([safe_write], [], [
-#    AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             #include <unistd.h>
-#             ssize_t safe_write(int fd, const void *buf, size_t count) {
-#                 ssize_t result = write(fd, buf, count);
-#                 if (result < 0) {
-#                     // handle error
-#                 }
-#                 return result;
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define safe_write])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([safe_write], [], [
+   AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            #include <unistd.h>
+            ssize_t safe_write(int fd, const void *buf, size_t count) {
+                ssize_t result = write(fd, buf, count);
+                if (result < 0) {
+                    // handle error
+                }
+                return result;
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define safe_write])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([at_fatal_signal], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             #include <signal.h>
-#             void at_fatal_signal(void (*handler)(int)) {
-#                 signal(SIGTERM, handler);
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define at_fatal_signal])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([at_fatal_signal], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            #include <signal.h>
+            void at_fatal_signal(void (*handler)(int)) {
+                signal(SIGTERM, handler);
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define at_fatal_signal])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([styled_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void *styled_ostream_create(void) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([styled_ostream_create], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void *styled_ostream_create(void) {
+                return NULL; // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define styled_ostream_create])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([styled_ostream_begin_use_class], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void styled_ostream_begin_use_class(void) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_begin_use_class])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([styled_ostream_begin_use_class], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void styled_ostream_begin_use_class(void) {
+                // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define styled_ostream_begin_use_class])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([styled_ostream_set_hyperlink], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void styled_ostream_set_hyperlink(void *stream, const char *url) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_set_hyperlink])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([styled_ostream_set_hyperlink], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void styled_ostream_set_hyperlink(void *stream, const char *url) {
+                // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define styled_ostream_set_hyperlink])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([file_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void *file_ostream_create(const char *filename) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define file_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([file_ostream_create], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void *file_ostream_create(const char *filename) {
+                return NULL; // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define file_ostream_create])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([html_styled_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void *html_styled_ostream_create(void) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define html_styled_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([html_styled_ostream_create], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void *html_styled_ostream_create(void) {
+                return NULL; // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define html_styled_ostream_create])
+    ])
+    AC_LANG_POP
+])
 
-# AC_CHECK_FUNC([get_fatal_signals], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([ 
-#         AC_LANG_PROGRAM([ 
-#             void get_fatal_signals(void) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define get_fatal_signals])
-#     ])
-#     AC_LANG_POP
-# ])
+AC_CHECK_FUNC([get_fatal_signals], [], [
+    AC_LANG_PUSH([C])
+    AC_COMPILE_IFELSE([ 
+        AC_LANG_PROGRAM([ 
+            void get_fatal_signals(void) {
+                // placeholder implementation
+            }
+        ])
+    ], [], [
+        AC_MSG_ERROR([Failed to define get_fatal_signals])
+    ])
+    AC_LANG_POP
+])
 
 # libxml이 포함되어 있는지 확인 (libxml이 있을 경우에만 활성화)
 AM_CONDITIONAL([INCLUDED_LIBXML], [test "x$have_libxml" = "xyes"])
@@ -653,9 +670,9 @@ AM_CONDITIONAL([GL_COND_OBJ_STRERROR_OVERRIDE], true)  # strerror 오버라이�
 
 AC_CHECK_FUNC([XGETANAME], [], [AC_MSG_ERROR([XGETANAME not found])])
 
-if test "$WOE32DLL" = "1"; then
-  AM_LDFLAGS='-export-dynamic'
-fi
+# if test "$WOE32DLL" = "1"; then
+#   AM_LDFLAGS='-export-dynamic'
+# fi
 ac_aux_dir_abs=`cd $ac_aux_dir && pwd`
 AC_PATH_PROG([PERL], [perl], [$ac_aux_dir_abs/missing perl])
 #output : checking for perl... /usr/bin/perl

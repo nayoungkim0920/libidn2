@@ -206,6 +206,9 @@
 /* Define if compiler does not support __attribute__((__pure__)) */
 #undef HAVE_ATTRIBUTE_PURE
 
+/* Define to 1 if C11 is supported. */
+#undef HAVE_C11
+
 /* Define to 1 if you have the Mac OS X function
    CFLocaleCopyPreferredLanguages in the CoreFoundation framework. */
 #undef HAVE_CFLOCALECOPYPREFERREDLANGUAGES

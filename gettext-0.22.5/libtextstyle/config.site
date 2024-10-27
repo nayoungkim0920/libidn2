@@ -1,0 +1,2 @@
+ac_cv_prog_cc_c99="gcc --version"
+ac_cv_prog_cxx_cxx11="g++ --version"

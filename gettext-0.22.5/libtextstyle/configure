@@ -3311,129 +3311,6 @@ fi
   as_fn_set_status $ac_retval
 
 } # ac_fn_cxx_try_link
-
-# ac_fn_cxx_check_type LINENO TYPE VAR INCLUDES
-# ---------------------------------------------
-# Tests whether TYPE exists after having included INCLUDES, setting cache
-# variable VAR accordingly.
-ac_fn_cxx_check_type ()
-{
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
-printf %s "checking for $2... " >&6; }
-if eval test \${$3+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) eval "$3=no"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-$4
-int
-main (void)
-{
-if (sizeof ($2))
-	 return 0;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
-then :
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-$4
-int
-main (void)
-{
-if (sizeof (($2)))
-	    return 0;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
-then :
-
-else case e in #(
-  e) eval "$3=yes" ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
-esac
-fi
-eval ac_res=\$$3
-	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
-printf "%s\n" "$ac_res" >&6; }
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-
-} # ac_fn_cxx_check_type
-
-# ac_fn_cxx_check_func LINENO FUNC VAR
-# ------------------------------------
-# Tests whether FUNC exists, setting the cache variable VAR accordingly
-ac_fn_cxx_check_func ()
-{
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
-printf %s "checking for $2... " >&6; }
-if eval test \${$3+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-/* Define $2 to an innocuous variant, in case <limits.h> declares $2.
-   For example, HP-UX 11i <limits.h> declares gettimeofday.  */
-#define $2 innocuous_$2
-
-/* System header to define __stub macros and hopefully few prototypes,
-   which can conflict with char $2 (void); below.  */
-
-#include <limits.h>
-#undef $2
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char $2 (void);
-/* The GNU C library defines this for functions which it implements
-    to always fail with ENOSYS.  Some functions are actually named
-    something starting with __ and the normal name is an alias.  */
-#if defined __stub_$2 || defined __stub___$2
-choke me
-#endif
-
-int
-main (void)
-{
-return $2 ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_link "$LINENO"
-then :
-  eval "$3=yes"
-else case e in #(
-  e) eval "$3=no" ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext ;;
-esac
-fi
-eval ac_res=\$$3
-	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
-printf "%s\n" "$ac_res" >&6; }
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-
-} # ac_fn_cxx_check_func
 ac_configure_args_raw=
 for ac_arg
 do
@@ -18782,7 +18659,47 @@ printf "%s\n" "#define HAVE_DCGETTEXT 1" >>confdefs.h
 
 
 
-#AC_PROG_CC # C 컴파일러 확인
+# unrecognized command-line option '-V -qversion -version' 방지
+# AC_PROG_CC, AC_PROG_CPP에서 여러옵션 시도 => 에러발생하므로 제거
+# C
+#AC_LANG([C])
+
+# C 컴파일러 버전 확인
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for C compiler version" >&5
+printf %s "checking for C compiler version... " >&6; }
+for ac_option in --version -v; do
+  if $CC $ac_option >/dev/null 2>&1; then
+    $CC $ac_option
+    break
+  fi
+done
+
+# C 컴파일러 설정 확인
+if test -z "$CC"; then
+  as_fn_error $? "No C compiler found in PATH" "$LINENO" 5
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $CC" >&5
+printf "%s\n" "$CC" >&6; }
+
+# C++
+#AC_LANG([C++])
+
+# C++ 컴파일러 버전 확인
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for C++ compiler version" >&5
+printf %s "checking for C++ compiler version... " >&6; }
+for ac_option in --version -v; do
+  if $CXX $ac_option >/dev/null 2>&1; then
+    $CXX $ac_option
+    break
+  fi
+done
+
+# C++ 컴파일러 설정 확인
+if test -z "$CXX"; then
+  as_fn_error $? "No C++ compiler found in PATH" "$LINENO" 5
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $CXX" >&5
+printf "%s\n" "$CXX" >&6; }
 
 # GNULIB 초기화
 
@@ -30372,7 +30289,7 @@ fi
 
 # AC_CONFIG_SUBDIRS([libltdl]) # LT_CONFIG_LTDL_DIR([libltdl])
   # Primary source file
-  # Auxiliary files directory
+  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
 # 컴파일러 설정
 
 #output:checking for a BSD-compatible install... /usr/bin/install -c
@@ -30982,7 +30899,7 @@ printf "%s\n" "#define VERSION \"$VERSION\"" >>confdefs.h
 
  #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
 #AC_PROG_LIBTOOL # 동적 라이브러리 및 정적 라이브러리 생성을 관리 => LT_INIT
-#AM_PROG_CC_C_O # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
+ # C 컴파일러를 체크하고, -c 및 -o 옵션이 잘 동작하는지 확인
 #output:checking whether build environment is sane... yes
 #output:checking for x86_64-w64-mingw32-strip... no
 #output:checking for strip... strip
@@ -30990,7 +30907,7 @@ printf "%s\n" "#define VERSION \"$VERSION\"" >>confdefs.h
 #output:checking whether make sets $(MAKE)... yes
 #output:checking whether make supports nested variables... yes
 
-#LT_LANG([C])
+
 
 
 
@@ -35044,39 +34961,52 @@ ac_config_commands="$ac_config_commands $PACKAGE-config.h"
 
 
 # C11 지원 확인
-# AC_LANG(C)
-# AC_LANG_PUSH([C])
-# AC_COMPILE_IFELSE([
-#    AC_LANG_SOURCE([[  /* C11에서 도입된 _Alignas 사용 */
-#        #include <stdio.h>
-#        #include <stdlib.h>
-#        #include <stdalign.h>
+# AC_LANG(C) # 상단으로 이동
+ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
-#        int main(void) {
-#            /* C11에서 도입된 _Alignas를 사용하여 16바이트 정렬된 변수 선언 */
-#            _Alignas(16) char buffer[32];  /* 16바이트 정렬된 배열 */
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
 
-#            /* static_assert로 C11 지원 여부 확인 */
-#            _Static_assert(1, "C11 is supported.");  /* 항상 참인 조건 */
+     /* C11에서 도입된 _Alignas 사용 */
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <stdalign.h>
 
-#            printf("C11 is supported.\n");  /* 출력 메시지 */
-#            return 0;  /* 성공 */
-#        }
-#    ]])
-# ], [
-#    #CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가 # ./configure CFLAGS="-std=c11"
-#    AC_DEFINE([HAVE_C11], [1], [Define to 1 if C11 is supported.])
-# ], [
-#    AC_MSG_ERROR([C11 지원이 없습니다.])
-# ])
+       int main(void) {
+           /* C11에서 도입된 _Alignas를 사용하여 16바이트 정렬된 변수 선언 */
+           _Alignas(16) char buffer[32];  /* 16바이트 정렬된 배열 */
+
+           /* static_assert로 C11 지원 여부 확인 */
+           _Static_assert(1, "C11 is supported.");  /* 항상 참인 조건 */
+
+           printf("C11 is supported.\n");  /* 출력 메시지 */
+           return 0;  /* 성공 */
+       }
+
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+   #CFLAGS="$CFLAGS -std=c11"  # C11 플래그 추가 # ./configure CFLAGS="-std=c11"
+
+printf "%s\n" "#define HAVE_C11 1" >>confdefs.h
+
+
+else case e in #(
+  e)
+   as_fn_error $? "C11 지원이 없습니다." "$LINENO" 5
+ ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
 
 # C++17 지원 확인
-ac_ext=cpp
-ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
- #Libtool이 C++ 컴파일과 링크 작업을 처리할 수 있게 해주는 설정
+# AC_LANG([C++]) # 상단으로 이동Libtool이 C++ 컴파일과 링크 작업을 처리할 수 있게 해주는 설정
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -35114,11 +35044,11 @@ else case e in #(
 esac
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-ac_ext=cpp
-ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
@@ -35127,7 +35057,110 @@ AC_CROSS_COMPILER # command not found
 printf "%s\n" "#define CROSS_COMPILING 1" >>confdefs.h
 
 
-#AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
+if test -n "$ac_tool_prefix"; then
+  # Extract the first word of "${ac_tool_prefix}x86_64-w64-mingw32-gcc", so it can be a program name with args.
+set dummy ${ac_tool_prefix}x86_64-w64-mingw32-gcc; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_CC+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$CC"; then
+  ac_cv_prog_CC="$CC" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_CC="${ac_tool_prefix}x86_64-w64-mingw32-gcc"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi ;;
+esac
+fi
+CC=$ac_cv_prog_CC
+if test -n "$CC"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $CC" >&5
+printf "%s\n" "$CC" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+fi
+if test -z "$ac_cv_prog_CC"; then
+  ac_ct_CC=$CC
+  # Extract the first word of "x86_64-w64-mingw32-gcc", so it can be a program name with args.
+set dummy x86_64-w64-mingw32-gcc; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_ac_ct_CC+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$ac_ct_CC"; then
+  ac_cv_prog_ac_ct_CC="$ac_ct_CC" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_ac_ct_CC="x86_64-w64-mingw32-gcc"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi ;;
+esac
+fi
+ac_ct_CC=$ac_cv_prog_ac_ct_CC
+if test -n "$ac_ct_CC"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_ct_CC" >&5
+printf "%s\n" "$ac_ct_CC" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+  if test "x$ac_ct_CC" = x; then
+    CC="gcc"
+  else
+    case $cross_compiling:$ac_tool_warned in
+yes:)
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+printf "%s\n" "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+ac_tool_warned=yes ;;
+esac
+    CC=$ac_ct_CC
+  fi
+else
+  CC="$ac_cv_prog_CC"
+fi
+ #14.2.0
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}/mingw64/bin/ld.exe", so it can be a program name with args.
 set dummy ${ac_tool_prefix}/mingw64/bin/ld.exe; ac_word=$2
@@ -35336,7 +35369,7 @@ else
   AR="$ac_cv_prog_AR"
 fi
  #2.43.1
-#AC_DEFUN([AC_LIBTOOL_PROG_CC_C_O], [dnl])
+
 
 
 
@@ -35368,7 +35401,7 @@ main (void)
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
 
 printf "%s\n" "#define _GL_HAS_ATTRIBUTE_ALLOC_SIZE 1" >>confdefs.h
@@ -35391,7 +35424,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
                                        return 0;
                                    }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
 
 printf "%s\n" "#define HAVE_FSYNC 1" >>confdefs.h
@@ -35421,7 +35454,7 @@ main (void)
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
 
 printf "%s\n" "#define _GL_HAS_ATTRIBUTE_RETURNS_NONNULL 1" >>confdefs.h
@@ -35455,7 +35488,7 @@ main (void)
 }
 
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
 
         _GL_HAS_ATTRIBUTE=__has_attribute
@@ -35525,7 +35558,7 @@ main (void)
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 printf "%s\n" "yes" >&6; }
@@ -35572,7 +35605,7 @@ main (void)
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 printf "%s\n" "yes" >&6; }
@@ -35637,7 +35670,7 @@ main (void)
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 printf "%s\n" "yes" >&6; }
@@ -35684,7 +35717,7 @@ __attribute__((noreturn)) void x();
   return 0;
 }
 _ACEOF
-if ac_fn_cxx_try_compile "$LINENO"
+if ac_fn_c_try_compile "$LINENO"
 then :
 
 printf "%s\n" "#define _GL_ATTRIBUTE_NORETURN __attribute__((noreturn))" >>confdefs.h
@@ -35751,7 +35784,7 @@ printf "%s\n" "#define DLL_VARIABLE /**/" >>confdefs.h
 fi
  # DLL_VARIABLE macro setting
 
-ac_fn_cxx_check_type "$LINENO" "wchar_t" "ac_cv_type_wchar_t" "$ac_includes_default"
+ac_fn_c_check_type "$LINENO" "wchar_t" "ac_cv_type_wchar_t" "$ac_includes_default"
 if test "x$ac_cv_type_wchar_t" = xyes
 then :
   HAVE_WCHAR_T=1
@@ -35769,7 +35802,7 @@ LIBS=-ltextstyle
   for ac_func in getprogname printf malloc fsync
 do :
   as_ac_var=`printf "%s\n" "ac_cv_func_$ac_func" | sed "$as_sed_sh"`
-ac_fn_cxx_check_func "$LINENO" "$ac_func" "$as_ac_var"
+ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
 if eval test \"x\$"$as_ac_var"\" = x"yes"
 then :
   cat >>confdefs.h <<_ACEOF
@@ -35784,7 +35817,7 @@ done
   for ac_func in xmalloc xrealloc rpl_stpcpy xalloc_die
 do :
   as_ac_var=`printf "%s\n" "ac_cv_func_$ac_func" | sed "$as_sed_sh"`
-ac_fn_cxx_check_func "$LINENO" "$ac_func" "$as_ac_var"
+ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
 if eval test \"x\$"$as_ac_var"\" = x"yes"
 then :
   cat >>confdefs.h <<_ACEOF
@@ -35803,7 +35836,7 @@ done
 
   for ac_func in _get_osfhandle
 do :
-  ac_fn_cxx_check_func "$LINENO" "_get_osfhandle" "ac_cv_func__get_osfhandle"
+  ac_fn_c_check_func "$LINENO" "_get_osfhandle" "ac_cv_func__get_osfhandle"
 if test "x$ac_cv_func__get_osfhandle" = xyes
 then :
   printf "%s\n" "#define HAVE__GET_OSFHANDLE 1" >>confdefs.h
@@ -35835,192 +35868,624 @@ fi
 
 done
 
-# AC_CHECK_FUNC([xmalloc], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([
-#        AC_LANG_PROGRAM([
-#            #include <stdlib.h>
-#            void *xmalloc(size_t size) {
-#                void *ptr = malloc(size);
-#                if (!ptr) {
-#                    exit(EXIT_FAILURE);
-#                }
-#                return ptr;
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xmalloc])
-#    ])
-#    AC_LANG_POP
-# ])
+ac_fn_c_check_func "$LINENO" "xmalloc" "ac_cv_func_xmalloc"
+if test "x$ac_cv_func_xmalloc" = xyes
+then :
 
-# AC_CHECK_FUNC([xrealloc], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([
-#        AC_LANG_PROGRAM([
-#            #include <stdlib.h>
-#            void *xrealloc(void *ptr, size_t size) {
-#                void *new_ptr = realloc(ptr, size);
-#                if (!new_ptr) {
-#                    exit(EXIT_FAILURE);
-#                }
-#                return new_ptr;
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xrealloc])
-#    ])
-#    AC_LANG_POP
-# ])
+else case e in #(
+  e)
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
-# AC_CHECK_FUNC([rpl_stpcpy], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([
-#        AC_LANG_PROGRAM([
-#            #include <string.h>
-#            char *rpl_stpcpy(char *dest, const char *src) {
-#                return stpcpy(dest, src);
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define rpl_stpcpy])
-#    ])
-#    AC_LANG_POP
-# ])
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
 
-# AC_CHECK_FUNC([xalloc_die], [], [
-#    AC_LANG_PUSH([C])
-#    AC_COMPILE_IFELSE([
-#        AC_LANG_PROGRAM([
-#            #include <stdio.h>
-#            void xalloc_die(void) {
-#                fprintf(stderr, "Memory allocation failed\n");
-#                exit(EXIT_FAILURE);
-#            }
-#        ])
-#    ], [], [
-#        AC_MSG_ERROR([Failed to define xalloc_die])
-#    ])
-#    AC_LANG_POP
-# ])
 
-# AC_CHECK_FUNC([safe_write], [], [
-#    AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             #include <unistd.h>
-#             ssize_t safe_write(int fd, const void *buf, size_t count) {
-#                 ssize_t result = write(fd, buf, count);
-#                 if (result < 0) {
-#                     // handle error
-#                 }
-#                 return result;
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define safe_write])
-#     ])
-#     AC_LANG_POP
-# ])
+           #include <stdlib.h>
+           void *xmalloc(size_t size) {
+               void *ptr = malloc(size);
+               if (!ptr) {
+                   exit(EXIT_FAILURE);
+               }
+               return ptr;
+           }
 
-# AC_CHECK_FUNC([at_fatal_signal], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             #include <signal.h>
-#             void at_fatal_signal(void (*handler)(int)) {
-#                 signal(SIGTERM, handler);
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define at_fatal_signal])
-#     ])
-#     AC_LANG_POP
-# ])
+int
+main (void)
+{
 
-# AC_CHECK_FUNC([styled_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void *styled_ostream_create(void) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
+  ;
+  return 0;
+}
 
-# AC_CHECK_FUNC([styled_ostream_begin_use_class], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void styled_ostream_begin_use_class(void) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_begin_use_class])
-#     ])
-#     AC_LANG_POP
-# ])
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
 
-# AC_CHECK_FUNC([styled_ostream_set_hyperlink], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void styled_ostream_set_hyperlink(void *stream, const char *url) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define styled_ostream_set_hyperlink])
-#     ])
-#     AC_LANG_POP
-# ])
+else case e in #(
+  e)
+       as_fn_error $? "Failed to define xmalloc" "$LINENO" 5
+    ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
-# AC_CHECK_FUNC([file_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void *file_ostream_create(const char *filename) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define file_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
+ ;;
+esac
+fi
 
-# AC_CHECK_FUNC([html_styled_ostream_create], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void *html_styled_ostream_create(void) {
-#                 return NULL; // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define html_styled_ostream_create])
-#     ])
-#     AC_LANG_POP
-# ])
 
-# AC_CHECK_FUNC([get_fatal_signals], [], [
-#     AC_LANG_PUSH([C])
-#     AC_COMPILE_IFELSE([
-#         AC_LANG_PROGRAM([
-#             void get_fatal_signals(void) {
-#                 // placeholder implementation
-#             }
-#         ])
-#     ], [], [
-#         AC_MSG_ERROR([Failed to define get_fatal_signals])
-#     ])
-#     AC_LANG_POP
-# ])
+ac_fn_c_check_func "$LINENO" "xrealloc" "ac_cv_func_xrealloc"
+if test "x$ac_cv_func_xrealloc" = xyes
+then :
+
+else case e in #(
+  e)
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+           #include <stdlib.h>
+           void *xrealloc(void *ptr, size_t size) {
+               void *new_ptr = realloc(ptr, size);
+               if (!new_ptr) {
+                   exit(EXIT_FAILURE);
+               }
+               return new_ptr;
+           }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+       as_fn_error $? "Failed to define xrealloc" "$LINENO" 5
+    ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "rpl_stpcpy" "ac_cv_func_rpl_stpcpy"
+if test "x$ac_cv_func_rpl_stpcpy" = xyes
+then :
+
+else case e in #(
+  e)
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+           #include <string.h>
+           char *rpl_stpcpy(char *dest, const char *src) {
+               return stpcpy(dest, src);
+           }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+       as_fn_error $? "Failed to define rpl_stpcpy" "$LINENO" 5
+    ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "xalloc_die" "ac_cv_func_xalloc_die"
+if test "x$ac_cv_func_xalloc_die" = xyes
+then :
+
+else case e in #(
+  e)
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+           #include <stdio.h>
+           void xalloc_die(void) {
+               fprintf(stderr, "Memory allocation failed\n");
+               exit(EXIT_FAILURE);
+           }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+       as_fn_error $? "Failed to define xalloc_die" "$LINENO" 5
+    ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "safe_write" "ac_cv_func_safe_write"
+if test "x$ac_cv_func_safe_write" = xyes
+then :
+
+else case e in #(
+  e)
+   ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            #include <unistd.h>
+            ssize_t safe_write(int fd, const void *buf, size_t count) {
+                ssize_t result = write(fd, buf, count);
+                if (result < 0) {
+                    // handle error
+                }
+                return result;
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define safe_write" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "at_fatal_signal" "ac_cv_func_at_fatal_signal"
+if test "x$ac_cv_func_at_fatal_signal" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            #include <signal.h>
+            void at_fatal_signal(void (*handler)(int)) {
+                signal(SIGTERM, handler);
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define at_fatal_signal" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "styled_ostream_create" "ac_cv_func_styled_ostream_create"
+if test "x$ac_cv_func_styled_ostream_create" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void *styled_ostream_create(void) {
+                return NULL; // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define styled_ostream_create" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "styled_ostream_begin_use_class" "ac_cv_func_styled_ostream_begin_use_class"
+if test "x$ac_cv_func_styled_ostream_begin_use_class" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void styled_ostream_begin_use_class(void) {
+                // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define styled_ostream_begin_use_class" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "styled_ostream_set_hyperlink" "ac_cv_func_styled_ostream_set_hyperlink"
+if test "x$ac_cv_func_styled_ostream_set_hyperlink" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void styled_ostream_set_hyperlink(void *stream, const char *url) {
+                // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define styled_ostream_set_hyperlink" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "file_ostream_create" "ac_cv_func_file_ostream_create"
+if test "x$ac_cv_func_file_ostream_create" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void *file_ostream_create(const char *filename) {
+                return NULL; // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define file_ostream_create" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "html_styled_ostream_create" "ac_cv_func_html_styled_ostream_create"
+if test "x$ac_cv_func_html_styled_ostream_create" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void *html_styled_ostream_create(void) {
+                return NULL; // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define html_styled_ostream_create" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
+
+ac_fn_c_check_func "$LINENO" "get_fatal_signals" "ac_cv_func_get_fatal_signals"
+if test "x$ac_cv_func_get_fatal_signals" = xyes
+then :
+
+else case e in #(
+  e)
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+            void get_fatal_signals(void) {
+                // placeholder implementation
+            }
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+
+else case e in #(
+  e)
+        as_fn_error $? "Failed to define get_fatal_signals" "$LINENO" 5
+     ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+ ;;
+esac
+fi
+
 
 # libxml이 포함되어 있는지 확인 (libxml이 있을 경우에만 활성화)
  if test "x$have_libxml" = "xyes"; then
@@ -36211,7 +36676,7 @@ else
 fi
   # strerror 오버라이드 처리
 
-ac_fn_cxx_check_func "$LINENO" "XGETANAME" "ac_cv_func_XGETANAME"
+ac_fn_c_check_func "$LINENO" "XGETANAME" "ac_cv_func_XGETANAME"
 if test "x$ac_cv_func_XGETANAME" = xyes
 then :
 
