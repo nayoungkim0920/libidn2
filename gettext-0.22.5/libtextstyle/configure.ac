@@ -23,15 +23,15 @@ LT_INIT([win32-dll], [dlopen disable-static])
 LTDL_INIT
 
 AC_PREREQ([2.72])  # autoconf --version
-AC_CAN_COMPILE
+#AC_CAN_COMPILE
 
 AM_GNU_GETTEXT_VERSION([0.22.5]) # gettext --version 0.22.5
 AM_GNU_GETTEXT([external]) # gettext는 external 인자 없이 사용할 수 없음
 
 # m4 패턴 허용
-m4_pattern_allow([AC_CAN_COMPILE])
+#m4_pattern_allow([AC_CAN_COMPILE]) # command not found
 m4_pattern_allow([AC_GNU_LIB_TOOL])
-m4_pattern_allow([AC_CROSS_COMPILER])
+#m4_pattern_allow([AC_CROSS_COMPILER]) # command not found
 m4_pattern_allow([GL_REQUIRE_VERSION])
 m4_pattern_allow([GNULIB_MODULES])
 m4_pattern_allow([AC_MSG_WARN])
@@ -51,7 +51,6 @@ m4_pattern_allow([m4_ifndef])
 # Libtool이 컴파일과 링크 작업을 처리할 수 있게 해주는 설정
 AC_LANG([C])
 AC_LANG([C++])
-AC_LANG([CXX])
 
 AC_PROG_CC
 AC_PROG_CPP
@@ -114,7 +113,7 @@ AC_ARG_WITH([libintl-prefix],
                             [Specify the installation directory of libintl])],
             [libintl_prefix="$withval"], [libintl_prefix="$libintl_prefix"])
 
-AC_CANONICAL_HOST
+AC_CANONICAL_HOST # 환경에 맞는 호스트 유형 감지
 
 AC_CHECK_HEADERS([
 	stdlib.h 
@@ -135,8 +134,7 @@ AC_CANONICAL_HOST
 echo "configure.ac: Configured host OS: $host_os"
 #output : configure.ac: Configured host OS: mingw32
 # 호스트 OS가 mingw32인지 확인하고 관련 플래그와 조건을 설정
-#if test "$host_os" = "mingw32"; then
-if test "$host_os" in  mingw* | cygwin*; then
+if test "$host_os" = "mingw32"; then
     # mingw32가 감지되면 WOE32DLL과 WOE32를 활성화
     AM_CONDITIONAL([WOE32DLL], true)
     AM_CONDITIONAL([WOE32], true)
@@ -150,12 +148,6 @@ if test "$host_os" in  mingw* | cygwin*; then
 
     # MinGW에서 비호환 옵션을 피하기 위해 LDFLAGS 수정
     LDFLAGS=$(echo "$LDFLAGS" | sed 's/-no-undefined//g; s/-export-dynamic//g')
-
-    # 컴파일러 버전 확인 시 불필요한 옵션을 피하도록 설정
-    # autoconf 기본 매크로로 인해 비호환 옵션이 시도되는 것을 방지
-    CC="$CC --version"
-    CXX="$CXX --version"
-
 else
     # mingw32가 아닌 경우 WOE32DLL과 WOE32를 비활성화
     AM_CONDITIONAL([WOE32DLL], false)
@@ -233,7 +225,7 @@ AC_COMPILE_IFELSE([
        }
    ]])
 ], [
-   CXXFLAGS="$CXXFLAGS -std=c++17"
+   #CXXFLAGS="$CXXFLAGS -std=c++17"
    AC_DEFINE([HAVE_CPP17], [1], [Define to 1 if C++17 is supported.])
 ], [
    AC_MSG_ERROR([C++17 지원이 없습니다.])
@@ -241,10 +233,10 @@ AC_COMPILE_IFELSE([
 AC_LANG_POP
 
 
-AC_CROSS_COMPILER # command not found
+#AC_CROSS_COMPILER # command not found
 AC_DEFINE([CROSS_COMPILING], [1], [Define if we are cross compiling])
 
-AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
+#AC_CHECK_TOOL([CC], [x86_64-w64-mingw32-gcc], [gcc]) #14.2.0
 AC_CHECK_TOOL([LD], [/mingw64/bin/ld.exe], [ld]) #2.43.1
 AC_CHECK_TOOL([AR], [/mingw64/bin/ar.exe], [ar]) #2.43.1
 AC_DEFUN([AC_LIBTOOL_PROG_CC_C_O], [dnl])
