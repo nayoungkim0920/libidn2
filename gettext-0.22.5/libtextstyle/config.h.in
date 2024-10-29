@@ -4,155 +4,36 @@
 #define _GL_CONFIG_H_INCLUDED 1
 
 
-/* Define to the number of bits in type 'ptrdiff_t'. */
-#undef BITSIZEOF_PTRDIFF_T
-
-/* Define to the number of bits in type 'sig_atomic_t'. */
-#undef BITSIZEOF_SIG_ATOMIC_T
-
-/* Define to the number of bits in type 'size_t'. */
-#undef BITSIZEOF_SIZE_T
-
-/* Define to the number of bits in type 'wchar_t'. */
-#undef BITSIZEOF_WCHAR_T
-
-/* Define to the number of bits in type 'wint_t'. */
-#undef BITSIZEOF_WINT_T
-
 /* Define if we are cross compiling */
 #undef CROSS_COMPILING
 
-/* Define to 1 if using 'alloca.c'. */
-#undef C_ALLOCA
-
 /* Define to nothing for non-Windows platforms */
 #undef DLL_VARIABLE
-
-/* Define to 1 if // is a file system root distinct from /. */
-#undef DOUBLE_SLASH_IS_DISTINCT_ROOT
 
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
 #undef ENABLE_NLS
 
-/* Define this to 1 if F_DUPFD behavior does not match POSIX */
-#undef FCNTL_DUPFD_BUGGY
-
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module close shall be considered present. */
-#undef GNULIB_CLOSE
-
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module fscanf shall be considered present. */
-#undef GNULIB_FSCANF
-
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module fstat shall be considered present. */
-#undef GNULIB_FSTAT
-
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module msvc-nothrow shall be considered present. */
-#undef GNULIB_MSVC_NOTHROW
-
-/* Define to 1 if printf and friends should be labeled with attribute
-   "__gnu_printf__" instead of "__printf__" */
-#undef GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU
-
 /* Define if safe-write module is used */
 #undef GNULIB_SAFE_WRITE
 
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module scanf shall be considered present. */
-#undef GNULIB_SCANF
+/* Define to 1 when the gnulib module memchr should be tested. */
+#undef GNULIB_TEST_MEMCHR
 
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module stat shall be considered present. */
-#undef GNULIB_STAT
+/* Define to 1 when the gnulib module mempcpy should be tested. */
+#undef GNULIB_TEST_MEMPCPY
 
-/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
-   whether the gnulib module strerror shall be considered present. */
-#undef GNULIB_STRERROR
+/* Define to 1 when the gnulib module stpcpy should be tested. */
+#undef GNULIB_TEST_STPCPY
 
-/* Define to 1 when the gnulib module cloexec should be tested. */
-#undef GNULIB_TEST_CLOEXEC
+/* Define to 1 when the gnulib module strndup should be tested. */
+#undef GNULIB_TEST_STRNDUP
 
-/* Define to 1 when the gnulib module close should be tested. */
-#undef GNULIB_TEST_CLOSE
+/* Define to 1 when the gnulib module strnlen should be tested. */
+#undef GNULIB_TEST_STRNLEN
 
-/* Define to 1 when the gnulib module dup2 should be tested. */
-#undef GNULIB_TEST_DUP2
-
-/* Define to 1 when the gnulib module fcntl should be tested. */
-#undef GNULIB_TEST_FCNTL
-
-/* Define to 1 when the gnulib module fgetc should be tested. */
-#undef GNULIB_TEST_FGETC
-
-/* Define to 1 when the gnulib module fgets should be tested. */
-#undef GNULIB_TEST_FGETS
-
-/* Define to 1 when the gnulib module fprintf should be tested. */
-#undef GNULIB_TEST_FPRINTF
-
-/* Define to 1 when the gnulib module fputc should be tested. */
-#undef GNULIB_TEST_FPUTC
-
-/* Define to 1 when the gnulib module fputs should be tested. */
-#undef GNULIB_TEST_FPUTS
-
-/* Define to 1 when the gnulib module fread should be tested. */
-#undef GNULIB_TEST_FREAD
-
-/* Define to 1 when the gnulib module fscanf should be tested. */
-#undef GNULIB_TEST_FSCANF
-
-/* Define to 1 when the gnulib module fstat should be tested. */
-#undef GNULIB_TEST_FSTAT
-
-/* Define to 1 when the gnulib module fwrite should be tested. */
-#undef GNULIB_TEST_FWRITE
-
-/* Define to 1 when the gnulib module getc should be tested. */
-#undef GNULIB_TEST_GETC
-
-/* Define to 1 when the gnulib module getchar should be tested. */
-#undef GNULIB_TEST_GETCHAR
-
-/* Define to 1 when the gnulib module getdtablesize should be tested. */
-#undef GNULIB_TEST_GETDTABLESIZE
-
-/* Define to 1 when the gnulib module getprogname should be tested. */
-#undef GNULIB_TEST_GETPROGNAME
-
-/* Define to 1 when the gnulib module open should be tested. */
-#undef GNULIB_TEST_OPEN
-
-/* Define to 1 when the gnulib module printf should be tested. */
-#undef GNULIB_TEST_PRINTF
-
-/* Define to 1 when the gnulib module putc should be tested. */
-#undef GNULIB_TEST_PUTC
-
-/* Define to 1 when the gnulib module putchar should be tested. */
-#undef GNULIB_TEST_PUTCHAR
-
-/* Define to 1 when the gnulib module puts should be tested. */
-#undef GNULIB_TEST_PUTS
-
-/* Define to 1 when the gnulib module scanf should be tested. */
-#undef GNULIB_TEST_SCANF
-
-/* Define to 1 when the gnulib module stat should be tested. */
-#undef GNULIB_TEST_STAT
-
-/* Define to 1 when the gnulib module strerror should be tested. */
-#undef GNULIB_TEST_STRERROR
-
-/* Define to 1 when the gnulib module vfprintf should be tested. */
-#undef GNULIB_TEST_VFPRINTF
-
-/* Define to 1 when the gnulib module vprintf should be tested. */
-#undef GNULIB_TEST_VPRINTF
+/* Define to 1 when the gnulib module strstr should be tested. */
+#undef GNULIB_TEST_STRSTR
 
 /* Define if tputs module is used */
 #undef GNULIB_TPUTS
@@ -165,13 +46,6 @@
 
 /* Define if xstrdup module is used */
 #undef GNULIB_XSTRDUP
-
-/* Define to 1 if you have 'alloca' after including <alloca.h>, a header that
-   may be supplied by this distribution. */
-#undef HAVE_ALLOCA
-
-/* Define to 1 if <alloca.h> works. */
-#undef HAVE_ALLOCA_H
 
 /* Define to 1 if you have the 'argz_add' function. */
 #undef HAVE_ARGZ_ADD
@@ -206,6 +80,9 @@
 /* Define if compiler does not support __attribute__((__pure__)) */
 #undef HAVE_ATTRIBUTE_PURE
 
+/* Define to 1 if you have the <bp-sym.h> header file. */
+#undef HAVE_BP_SYM_H
+
 /* Define to 1 if C11 is supported. */
 #undef HAVE_C11
 
@@ -226,12 +103,6 @@
 /* Define to 1 if bool, true and false work as per C2023. */
 #undef HAVE_C_BOOL
 
-/* Define to 1 if the static_assert keyword works. */
-#undef HAVE_C_STATIC_ASSERT
-
-/* Define to 1 if C supports variable-length arrays. */
-#undef HAVE_C_VARARRAYS
-
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
 #undef HAVE_DCGETTEXT
@@ -248,10 +119,6 @@
    don't. */
 #undef HAVE_DECL_EXECVPE
 
-/* Define to 1 if you have the declaration of 'fcloseall', and to 0 if you
-   don't. */
-#undef HAVE_DECL_FCLOSEALL
-
 /* Define to 1 if you have the declaration of 'fcvt', and to 0 if you don't.
    */
 #undef HAVE_DECL_FCVT
@@ -260,33 +127,13 @@
    */
 #undef HAVE_DECL_GCVT
 
-/* Define to 1 if you have the declaration of 'getdtablesize', and to 0 if you
+/* Define to 1 if you have the declaration of 'strndup', and to 0 if you
    don't. */
-#undef HAVE_DECL_GETDTABLESIZE
+#undef HAVE_DECL_STRNDUP
 
-/* Define to 1 if you have the declaration of 'getw', and to 0 if you don't.
-   */
-#undef HAVE_DECL_GETW
-
-/* Define to 1 if you have the declaration of 'program_invocation_name', and
-   to 0 if you don't. */
-#undef HAVE_DECL_PROGRAM_INVOCATION_NAME
-
-/* Define to 1 if you have the declaration of 'program_invocation_short_name',
-   and to 0 if you don't. */
-#undef HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME
-
-/* Define to 1 if you have the declaration of 'putw', and to 0 if you don't.
-   */
-#undef HAVE_DECL_PUTW
-
-/* Define to 1 if you have the declaration of 'strerror_r', and to 0 if you
+/* Define to 1 if you have the declaration of 'strnlen', and to 0 if you
    don't. */
-#undef HAVE_DECL_STRERROR_R
-
-/* Define to 1 if you have the declaration of '__argv', and to 0 if you don't.
-   */
-#undef HAVE_DECL___ARGV
+#undef HAVE_DECL_STRNLEN
 
 /* Define to 1 if you have the <dirent.h> header file. */
 #undef HAVE_DIRENT_H
@@ -309,29 +156,8 @@
 /* Define if you have the _dyld_func_lookup function. */
 #undef HAVE_DYLD
 
-/* Define to 1 if you have the `error' function. */
-#undef HAVE_ERROR
-
-/* Define to 1 if you have the <error.h> header file. */
-#undef HAVE_ERROR_H
-
 /* Define to 1 if the system has the type 'error_t'. */
 #undef HAVE_ERROR_T
-
-/* Define to 1 if you have the 'fchdir' function. */
-#undef HAVE_FCHDIR
-
-/* Define to 1 if you have the 'fcntl' function. */
-#undef HAVE_FCNTL
-
-/* Define to 1 if you have the 'getdtablesize' function. */
-#undef HAVE_GETDTABLESIZE
-
-/* Define to 1 if you have the 'getexecname' function. */
-#undef HAVE_GETEXECNAME
-
-/* Define to 1 if you have the `getprogname' function. */
-#undef HAVE_GETPROGNAME
 
 /* Define if the GNU gettext() function is already present or preinstalled. */
 #undef HAVE_GETTEXT
@@ -357,27 +183,24 @@
 /* Define to 1 if you have the <lib/xgethostname.h> header file. */
 #undef HAVE_LIB_XGETHOSTNAME_H
 
-/* Define to 1 if you have the <limits.h> header file. */
-#undef HAVE_LIMITS_H
-
-/* Define to 1 if the system has the type 'long long int'. */
-#undef HAVE_LONG_LONG_INT
-
-/* Define to 1 if you have the 'lstat' function. */
-#undef HAVE_LSTAT
-
 /* Define this if a modern libltdl is already installed */
 #undef HAVE_LTDL
 
 /* Define to 1 if you have the <mach-o/dyld.h> header file. */
 #undef HAVE_MACH_O_DYLD_H
 
+/* Define to 1 if mmap()'s MAP_ANONYMOUS flag is available after including
+   config.h and <sys/mman.h>. */
+#undef HAVE_MAP_ANONYMOUS
+
+/* Define to 1 if you have the `mempcpy' function. */
+#undef HAVE_MEMPCPY
+
 /* Define to 1 if you have the <minix/config.h> header file. */
 #undef HAVE_MINIX_CONFIG_H
 
-/* Define to 1 on MSVC platforms that have the "invalid parameter handler"
-   concept. */
-#undef HAVE_MSVC_INVALID_PARAMETER_HANDLER
+/* Define to 1 if you have the 'mprotect' function. */
+#undef HAVE_MPROTECT
 
 /* Define to 1 if you have the 'opendir' function. */
 #undef HAVE_OPENDIR
@@ -391,29 +214,11 @@
 /* Define to 1 if you have the 'rpl_stpcpy' function. */
 #undef HAVE_RPL_STPCPY
 
-/* Define to 1 if you have the <sdkddkver.h> header file. */
-#undef HAVE_SDKDDKVER_H
-
-/* Define to 1 if you have the 'setdtablesize' function. */
-#undef HAVE_SETDTABLESIZE
-
 /* Define if you have the shl_load function. */
 #undef HAVE_SHL_LOAD
 
-/* Define to 1 if 'sig_atomic_t' is a signed integer type. */
-#undef HAVE_SIGNED_SIG_ATOMIC_T
-
-/* Define to 1 if 'wchar_t' is a signed integer type. */
-#undef HAVE_SIGNED_WCHAR_T
-
-/* Define to 1 if 'wint_t' is a signed integer type. */
-#undef HAVE_SIGNED_WINT_T
-
 /* Define to 1 if you have the <stdbool.h> header file. */
 #undef HAVE_STDBOOL_H
-
-/* Define to 1 if you have the <stdckdint.h> header file. */
-#undef HAVE_STDCKDINT_H
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
@@ -424,8 +229,8 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-/* Define to 1 if you have the `strerror_r' function. */
-#undef HAVE_STRERROR_R
+/* Define to 1 if you have the `stpcpy' function. */
+#undef HAVE_STPCPY
 
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
@@ -439,50 +244,17 @@
 /* Define to 1 if you have the 'strlcpy' function. */
 #undef HAVE_STRLCPY
 
-/* Define to 1 if 'st_atimensec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_ATIMENSEC
-
-/* Define to 1 if 'st_atimespec.tv_nsec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC
-
-/* Define to 1 if 'st_atim.st__tim.tv_nsec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_ATIM_ST__TIM_TV_NSEC
-
-/* Define to 1 if 'st_atim.tv_nsec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_ATIM_TV_NSEC
-
-/* Define to 1 if 'st_birthtimensec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_BIRTHTIMENSEC
-
-/* Define to 1 if 'st_birthtimespec.tv_nsec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC
-
-/* Define to 1 if 'st_birthtim.tv_nsec' is a member of 'struct stat'. */
-#undef HAVE_STRUCT_STAT_ST_BIRTHTIM_TV_NSEC
-
-/* Define to 1 if you have the 'symlink' function. */
-#undef HAVE_SYMLINK
-
-/* Define to 1 if you have the <sys/bitypes.h> header file. */
-#undef HAVE_SYS_BITYPES_H
+/* Define to 1 if you have the 'strndup' function. */
+#undef HAVE_STRNDUP
 
 /* Define to 1 if you have the <sys/dl.h> header file. */
 #undef HAVE_SYS_DL_H
 
-/* Define to 1 if you have the <sys/inttypes.h> header file. */
-#undef HAVE_SYS_INTTYPES_H
-
-/* Define to 1 if you have the <sys/param.h> header file. */
-#undef HAVE_SYS_PARAM_H
-
-/* Define to 1 if you have the <sys/socket.h> header file. */
-#undef HAVE_SYS_SOCKET_H
+/* Define to 1 if you have the <sys/mman.h> header file. */
+#undef HAVE_SYS_MMAN_H
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H
-
-/* Define to 1 if you have the <sys/time.h> header file. */
-#undef HAVE_SYS_TIME_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
@@ -493,32 +265,14 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to 1 if the system has the type 'unsigned long long int'. */
-#undef HAVE_UNSIGNED_LONG_LONG_INT
-
-/* Define if you have a global __progname variable */
-#undef HAVE_VAR___PROGNAME
-
 /* Define to 1 if you have the <wchar.h> header file. */
 #undef HAVE_WCHAR_H
 
 /* Define to 1 if you have Windows consoles. */
 #undef HAVE_WINDOWS_CONSOLES
 
-/* Define to 1 if you have the <winsock2.h> header file. */
-#undef HAVE_WINSOCK2_H
-
-/* Define if you have the 'wint_t' type. */
-#undef HAVE_WINT_T
-
 /* This value is set to 1 to indicate that the system argz facility works */
 #undef HAVE_WORKING_ARGZ
-
-/* Define to 1 if O_NOATIME works. */
-#undef HAVE_WORKING_O_NOATIME
-
-/* Define to 1 if O_NOFOLLOW works. */
-#undef HAVE_WORKING_O_NOFOLLOW
 
 /* Define to 1 if you have the 'xalloc_die' function. */
 #undef HAVE_XALLOC_DIE
@@ -535,8 +289,15 @@
 /* Define to 1 if you have the '_get_osfhandle' function. */
 #undef HAVE__GET_OSFHANDLE
 
-/* Define to 1 if you have the '_set_invalid_parameter_handler' function. */
-#undef HAVE__SET_INVALID_PARAMETER_HANDLER
+/* Define to 1 if the compiler supports __builtin_expect,
+   and to 2 if <builtins.h> does.  */
+#undef HAVE___BUILTIN_EXPECT
+#ifndef HAVE___BUILTIN_EXPECT
+# define __builtin_expect(e, c) (e)
+#elif HAVE___BUILTIN_EXPECT == 2
+# include <builtins.h>
+#endif
+    
 
 /* Define to 1 if ctype.h defines __header_inline. */
 #undef HAVE___HEADER_INLINE
@@ -648,9 +409,6 @@
 # define _GL_INLINE_HEADER_END
 #endif
 
-/* Define to 1 if you have the '__xpg_strerror_r' function. */
-#undef HAVE___XPG_STRERROR_R
-
 /* Define if the OS needs help to load dependent libraries for dlopen(). */
 #undef LTDL_DLOPEN_DEPLIBS
 
@@ -679,23 +437,11 @@
 /* Define to the shared archive member specification, say "(shr.o)". */
 #undef LT_SHARED_LIB_MEMBER
 
-/* If malloc(0) is != NULL, define this to 1. Otherwise define this to 0. */
-#undef MALLOC_0_IS_NONNULL
-
-/* Use GNU style printf and scanf.  */
-#ifndef __USE_MINGW_ANSI_STDIO
-# undef __USE_MINGW_ANSI_STDIO
-#endif
-
-
-/* Define to 1 on musl libc. */
-#undef MUSL_LIBC
+/* Define to a substitute value for mmap()'s MAP_ANONYMOUS flag. */
+#undef MAP_ANONYMOUS
 
 /* Define if dlsym() requires a leading underscore in symbol names. */
 #undef NEED_USCORE
-
-/* Define to 1 if open() fails to recognize a trailing slash. */
-#undef OPEN_TRAILING_SLASH_BUG
 
 /* Name of package */
 #undef PACKAGE
@@ -718,51 +464,10 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
-/* Define to the type that is the result of default argument promotions of
-   type mode_t. */
-#undef PROMOTED_MODE_T
-
-/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
-   'ptrdiff_t'. */
-#undef PTRDIFF_T_SUFFIX
-
-/* Define to 1 if stat needs help when passed a file name with a trailing
-   slash */
-#undef REPLACE_FUNC_STAT_FILE
-
-/* Define to 1 if strerror(0) does not return a message implying success. */
-#undef REPLACE_STRERROR_0
-
-/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
-   'sig_atomic_t'. */
-#undef SIG_ATOMIC_T_SUFFIX
-
-/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
-   'size_t'. */
-#undef SIZE_T_SUFFIX
-
-/* If using the C implementation of alloca, define if you know the
-   direction of stack growth for your system; otherwise it will be
-   automatically deduced at runtime.
-	STACK_DIRECTION > 0 => grows toward higher addresses
-	STACK_DIRECTION < 0 => grows toward lower addresses
-	STACK_DIRECTION = 0 => direction of growth unknown */
-#undef STACK_DIRECTION
-
-/* Define to 1 if the 'S_IS*' macros in <sys/stat.h> do not work properly. */
-#undef STAT_MACROS_BROKEN
-
 /* Define to 1 if all of the C89 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
    backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
-
-/* Define to 1 if strerror_r returns char *. */
-#undef STRERROR_R_CHAR_P
-
-/* Define to 1 if the type of the st_atim member of a struct stat is struct
-   timespec. */
-#undef TYPEOF_STRUCT_STAT_ST_ATIM_IS_STRUCT_TIMESPEC
 
 /* Define to enable the declarations of ISO C 23 Annex K types and functions.  */
 #if !(defined __STDC_WANT_LIB_EXT1__ && __STDC_WANT_LIB_EXT1__)
@@ -865,17 +570,6 @@
 
 /* Version number of package */
 #undef VERSION
-
-/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
-   'wchar_t'. */
-#undef WCHAR_T_SUFFIX
-
-/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
-   'wint_t'. */
-#undef WINT_T_SUFFIX
-
-/* Number of bits in a file offset, on hosts where this is settable. */
-#undef _FILE_OFFSET_BITS
 
 /* Define as empty if __attribute__((nonnull(1))) is not supported */
 #undef _GL_ARG_NONNULL_1
@@ -991,12 +685,6 @@
 /* Define to enable the declarations of ISO C 11 types and functions. */
 #undef _ISOC11_SOURCE
 
-/* Define to 1 on platforms where this makes off_t a 64-bit type. */
-#undef _LARGE_FILES
-
-/* Define so that AIX headers are more compatible with GNU/Linux. */
-#undef _LINUX_SOURCE_COMPAT
-
 /* The _Noreturn keyword of C11.  */
 #ifndef _Noreturn
 # if (defined __cplusplus \
@@ -1033,24 +721,8 @@
 #endif
 
 
-/* Number of bits in time_t, on hosts where this is settable. */
-#undef _TIME_BITS
-
 /* For standard stat data types on VMS. */
 #undef _USE_STD_STAT
-
-/* Define to 1 on platforms where this makes time_t a 64-bit type. */
-#undef __MINGW_USE_VC2005_COMPAT
-
-/* Define to 1 if the system <stdint.h> predates C++11. */
-#undef __STDC_CONSTANT_MACROS
-
-/* Define to 1 if the system <stdint.h> predates C++11. */
-#undef __STDC_LIMIT_MACROS
-
-/* Define to 1 if C does not support variable-length arrays, and if the
-   compiler does not already define this. */
-#undef __STDC_NO_VLA__
 
 /* Define so that glibc/gnulib argp.h does not typedef error_t. */
 #undef __error_t_defined
@@ -1909,9 +1581,6 @@
 /* Define to 'int' if <sys/types.h> does not define. */
 #undef mode_t
 
-/* Define to the type of st_nlink in struct stat, or a supertype. */
-#undef nlink_t
-
 /* Define as a signed integer type capable of holding a process identifier. */
 #undef pid_t
 
@@ -1929,9 +1598,6 @@
 # define _Restrict
 # define __restrict__
 #endif
-
-/* Define as 'unsigned int' if <stddef.h> doesn't define. */
-#undef size_t
 
 /* Define as a signed type of the same size as size_t. */
 #undef ssize_t
@@ -1951,21 +1617,4 @@
 # if !true
 #  define true (!false)
 # endif
-#endif
-
-#if (!defined HAVE_C_STATIC_ASSERT && !defined assert \
-     && (!defined __cplusplus \
-         || (__cpp_static_assert < 201411 \
-             && __GNUG__ < 6 && __clang_major__ < 6)))
- #include <assert.h>
- #undef/**/assert
- #ifdef __sgi
-  #undef/**/__ASSERT_H__
- #endif
- /* Solaris 11.4 <assert.h> defines static_assert as a macro with 2 arguments.
-    We need it also to be invocable with a single argument.  */
- #if defined __sun && (__STDC_VERSION__ - 0 >= 201112L) && !defined __cplusplus
-  #undef/**/static_assert
-  #define static_assert _Static_assert
- #endif
 #endif

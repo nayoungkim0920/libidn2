@@ -1,4 +1,3 @@
-#include "config.h"
 /* Copyright (C) 1991, 1993, 1996-1997, 1999-2000, 2003-2004, 2006, 2008-2024
    Free Software Foundation, Inc.
 

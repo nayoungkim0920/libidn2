@@ -18,7 +18,7 @@
 
 AUTOMAKE_OPTIONS = 1.13 gnu no-dependencies subdir-objects
 # -I /mingw64/share/aclocal configure.ac 충돌로 주석처리
-ACLOCAL_AMFLAGS = -I m4 -I ../m4 -I gnulib-m4
+ACLOCAL_AMFLAGS = -I m4 -I gnulib-m4
 AM_CPPFLAGS = -I${top_builddir} # 전처리기 플래그 설정 추가
 #CFLAGS = -Wall -Wextra -Wpedantic -fdiagnostics-show-option # 모든 경고와 추가적인 경고를 활성화
 #INCLUDES = -I$(top_srcdir) #AM_CPPFLAGS의 old name
@@ -126,7 +126,7 @@ libltdlc_la_SOURCES = \
 # LIBOBJS=>AC_LIBOBJ로 변경
 #libltdlc_la_LIBOBJS = $(LIBOBJS)
 AC_LIBOBJ([lt__alloc])
-AC_LIBOBJ([lt__argz])
+#AC_LIBOBJ([lt__argz]) # configure.ac에서 선언
 AC_LIBOBJ([lt_dlloader])
 AC_LIBOBJ([lt_error])
 AC_LIBOBJ([ltdl])

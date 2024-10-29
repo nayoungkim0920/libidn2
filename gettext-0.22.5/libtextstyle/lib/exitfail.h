@@ -20,7 +20,8 @@ extern "C" {
 #endif
 
 
-extern int volatile exit_failure;
+//extern int volatile exit_failure;
+extern DLL_VARIABLE int volatile exit_failure;
 
 
 #ifdef __cplusplus

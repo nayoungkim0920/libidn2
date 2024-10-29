@@ -37,16 +37,12 @@
 #  --no-conditional-dependencies \
 #  --no-libtool \
 #  --macro-prefix=gl \
-#  xalloc-die \
-#  xmalloc \
-#  xrealloc
+#  argz
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
-  xalloc-die
-  xmalloc
-  xrealloc
+  argz
 ])
 gl_AVOID([])
 gl_SOURCE_BASE([lib])

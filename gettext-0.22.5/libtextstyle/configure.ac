@@ -56,6 +56,9 @@ AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_CXX
 
+# gnulib 설정을 위한 초기화
+m4_include([gnulib-m4/gnulib-comp.m4])
+
 # GNULIB 초기화
 gl_EARLY
 gl_INIT
@@ -96,6 +99,17 @@ AC_CONFIG_HEADERS([config.h lib/argz.h])
 #echo "error config.h path: $(pwd)/config.h"
 #echo "error lib/argz.h.in path: $(pwd)/lib/argz.h.in"
 #echo "error lib/argz.h path: $(pwd)/lib/argz.h"
+
+# argz.h가 시스템에 있는지 확인
+AC_CHECK_HEADERS([argz.h], [
+  AM_CONDITIONAL([HAVE_SYSTEM_ARGZ_H], [true])
+], [
+  AM_CONDITIONAL([HAVE_SYSTEM_ARGZ_H], [false])
+])
+
+AC_SUBST([ARGZ_H], ["lib/argz.h"])
+
+# Makefile에서 조건을 통해 argz.in.h를 기반으로 lib/argz.h를 생성하도록 설정
 
 
 # Libtool AR, RANLIB 설정 (gl_PROG_AR_RANLIB 호출)
@@ -165,7 +179,7 @@ AC_PROG_INSTALL
 #output:checking for a BSD-compatible install... /usr/bin/install -c
 AC_PROG_MKDIR_P
 #output:checking for a race-free mkdir -p... /usr/bin/mkdir -p
-AC_CONFIG_MACRO_DIRS([m4] [../m4] [gnulib-m4])
+AC_CONFIG_MACRO_DIRS([m4] [gnulib-m4])
 . $srcdir/version.sh
 gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
 AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
@@ -781,6 +795,7 @@ AC_LIBOBJ([lt_dlloader])
 AC_LIBOBJ([lt_error])
 AC_LIBOBJ([ltdl])
 AC_LIBOBJ([slist])
+AC_LIBOBJ([argz])
 
 
 # 컴파일러 경로 출력
