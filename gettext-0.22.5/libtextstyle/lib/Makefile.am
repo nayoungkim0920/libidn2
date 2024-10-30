@@ -73,20 +73,22 @@ HAVE_INCLUDE_NEXT = (__GNUC__ || __clang__ || 60000000 <= __DECC_VER)
 
 ## begin gnulib module argz
 
-BUILT_SOURCES += $(ARGZ_H)
-
-# We need the following in order to create <argz.h> when the system
-# doesn't have one that works with the given compiler.
+# Only generate argz.h if GL_GENERATE_ARGZ_H is defined
 if GL_GENERATE_ARGZ_H
+BUILT_SOURCES += argz.h
+
 argz.h: argz.in.h $(top_builddir)/config.status
 	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/argz.in.h
 	$(AM_V_at)mv $@-t $@
 else
+# Ensure that we remove argz.h if we do not generate it
 argz.h: $(top_builddir)/config.status
 	rm -f $@
 endif
+
 MOSTLYCLEANFILES += argz.h argz.h-t
 
+# Conditionally compile argz.c if GL_COND_OBJ_ARGZ is defined
 if GL_COND_OBJ_ARGZ
 libgnu_a_SOURCES += argz.c
 endif

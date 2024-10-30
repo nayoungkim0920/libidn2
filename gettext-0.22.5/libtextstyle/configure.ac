@@ -16,7 +16,12 @@ dnl along with this program.  If not, see <https://www.gnu.org/licenses/>.
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT([libtextstyle], [1.0], [bug-libtextstyle@example.com]) # 프로젝트 초기화
+AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
+AM_INIT_AUTOMAKE([1.16.5 gnu no-dependencies subdir-objects])
 AC_USE_SYSTEM_EXTENSIONS
+
+# Allow Gnulib macros
+m4_pattern_allow([gl_ARGZ])
 
 LT_CONFIG_LTDL_DIR([libltdl])
 LT_INIT([win32-dll], [dlopen disable-static])
@@ -62,6 +67,7 @@ m4_include([gnulib-m4/gnulib-comp.m4])
 # GNULIB 초기화
 gl_EARLY
 gl_INIT
+gl_ARGZ
 
 # GNULIB 관련 매크로 정의
 GNULIB_MODULES="
@@ -83,6 +89,8 @@ GNULIB_MODULES="
 	m4
 "
 
+AC_GNU_LIB_TOOL
+
 # GNULIB 모듈 활성화
 gl_MODULES([xalloc])
 gl_MODULES([xalloc-die])
@@ -91,6 +99,7 @@ gl_MODULES([fsync])
 gl_MODULES([xstrdup])
 gl_MODULES([xsize])
 gl_MODULES([size_max])
+gl_MODULES([argz])
 
 # AC_CONFIG_HEADERS 호출
 #AC_CONFIG_HEADERS([config.h.in:config.h lib/argz.h.in:lib/argz.h])
@@ -107,9 +116,12 @@ AC_CHECK_HEADERS([argz.h], [
   AM_CONDITIONAL([HAVE_SYSTEM_ARGZ_H], [false])
 ])
 
-AC_SUBST([ARGZ_H], ["lib/argz.h"])
-
 # Makefile에서 조건을 통해 argz.in.h를 기반으로 lib/argz.h를 생성하도록 설정
+AC_SUBST([ARGZ_H], ["lib/argz.h"])
+# Define if we want to generate argz.h
+AC_DEFINE([GL_GENERATE_ARGZ_H], [1], [Define if we want to generate argz.h])
+# argz 필요한 함수들을 체크
+AC_CHECK_FUNCS([argz_add argz_append argz_count argz_create_sep argz_insert argz_next argz_stringify])
 
 
 # Libtool AR, RANLIB 설정 (gl_PROG_AR_RANLIB 호출)
@@ -173,13 +185,12 @@ fi
 
 # AC_CONFIG_SUBDIRS([libltdl]) # LT_CONFIG_LTDL_DIR([libltdl])
 AC_CONFIG_SRCDIR([lib/color.c])  # Primary source file
-AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
 # 컴파일러 설정
 AC_PROG_INSTALL
 #output:checking for a BSD-compatible install... /usr/bin/install -c
 AC_PROG_MKDIR_P
 #output:checking for a race-free mkdir -p... /usr/bin/mkdir -p
-AC_CONFIG_MACRO_DIRS([m4] [gnulib-m4])
+AC_CONFIG_MACRO_DIRS([m4] [gnulib-m4] [build-aux/m4])
 . $srcdir/version.sh
 gl_INIT_PACKAGE([libtextstyle], [$VERSION_NUMBER])
 AM_INIT_AUTOMAKE([1.13 silent-rules]) #gl_INIT_PACKAGE보다 먼저 선언되면 안됨
@@ -245,7 +256,6 @@ AC_COMPILE_IFELSE([
    AC_MSG_ERROR([C++17 지원이 없습니다.])
 ])
 AC_LANG_POP
-
 
 #AC_CROSS_COMPILER # command not found
 AC_DEFINE([CROSS_COMPILING], [1], [Define if we are cross compiling])

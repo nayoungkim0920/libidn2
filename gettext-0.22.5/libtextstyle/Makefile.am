@@ -18,7 +18,7 @@
 
 AUTOMAKE_OPTIONS = 1.13 gnu no-dependencies subdir-objects
 # -I /mingw64/share/aclocal configure.ac 충돌로 주석처리
-ACLOCAL_AMFLAGS = -I m4 -I gnulib-m4
+ACLOCAL_AMFLAGS = -I m4 -I gnulib-m4 -I build-aux/m4
 AM_CPPFLAGS = -I${top_builddir} # 전처리기 플래그 설정 추가
 #CFLAGS = -Wall -Wextra -Wpedantic -fdiagnostics-show-option # 모든 경고와 추가적인 경고를 활성화
 #INCLUDES = -I$(top_srcdir) #AM_CPPFLAGS의 old name
@@ -59,7 +59,8 @@ libtextstyle_la_SOURCES = \ #라이브러리에 포함될 소스 파일 목록�
 	lib/term-style-control.c \
 	lib/fsync.c \
 	lib/xstrdup.c \
-	lib/xgethostname.c
+	lib/xgethostname.c \
+	$(GNULIB_SRCS)
 
 # libtextstyle 라이브러리에 사용할 객체 파일을 지정
 #libtextstyle_la_LDADD = \
@@ -76,6 +77,32 @@ libtextstyle_la_SOURCES = \ #라이브러리에 포함될 소스 파일 목록�
 #    fsync$(EXEEXT) \
 #    xstrdup$(EXEEXT) \
 #    xgethostname$(EXEEXT)
+
+# Here is where to add the argz module
+# Begin Gnulib module argz
+BUILT_SOURCES += argz.h
+
+# We need the following in order to create <argz.h> when the system
+# doesn't have one that works with the given compiler.
+if GL_GENERATE_ARGZ_H
+argz.h: argz.in.h $(top_builddir)/config.status
+	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/argz.in.h
+	$(AM_V_at)mv $@-t $@
+else
+argz.h: $(top_builddir)/config.status
+	rm -f $@
+endif
+
+MOSTLYCLEANFILES += argz.h argz.h-t
+
+# Conditionally include argz.c
+if GL_COND_OBJ_ARGZ
+libtextstyle_la_SOURCES += lib/argz.c
+endif
+
+EXTRA_DIST += argz.in.h
+
+# End Gnulib module argz
 
 # LIBOBJS=>AC_LIBOBJ로 변경
 #libtextstyle_la_LIBOBJS = $(LIBOBJS)
@@ -95,12 +122,12 @@ AC_LIBOBJ([xgethostname])
 #libtextstyle_la_LIBOBJS = $(AC_LIBOBJ(baz) $(AC_LIBOBJ(qux))
 #libtextstyle_la_LIBOBJS = $(AC_LIBOBJ)
 #bin_PROGRAMS = libtextstyle_la 실행가능한 프로그램인 경우
-libtextstyle_la_LIBS = -lncurses $(GNULIB_LIBS) $(GL_LIBOBJS) $(LTDLIBS) $(LT_LIBOBJS) -lltdl # libtextstyle 라이브러리에 링크할 라이브러리들
+libtextstyle_la_LIBS = -lncurses $(GNULIB_LIBS) $(GL_LIBOBJS) $(LTDLIBS) $(LT_LIBOBJS) -lltdl -largz # libtextstyle 라이브러리에 링크할 라이브러리들
 #libtextstyle_la_SOURCES = libtextstyle.o
 #libtextstyle_la_LDADD = libtextstyle.la -L/c/libidn2/gettext-0.22.5/gettext-runtime/intl/.libs -lintl
 libtextstyle_la_LIBADD = $(NCURSES_LIBS) #ncurses 라이브러리를 링크하기 위해 $(NCURSES_LIBS)를 사용# 설치할 라이브러리의 위치
 #libtextstyle_la_LDFLAGS = -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl $(LDFLAGS) #DLL을 생성하기 위한 필수 플래그를 추가
-libtextstyle_la_LDFLAGS = -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl #DLL을 생성하기 위한 필수 플래그를 추가
+libtextstyle_la_LDFLAGS = -largz -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl #DLL을 생성하기 위한 필수 플래그를 추가
 # -shared는 공유 라이브러리를 생성하는 옵션이며, 
 # -Wl, --out-implib=libtextstyle.dll.a는 DLL의 import 라이브러리를 생성
 libtextstyle_la_CFLAGS = -g -02 #포함된 객체 파일의 최적화를 설정
@@ -186,6 +213,7 @@ EXTRA_DIST = \
   autogen.sh \
   lib\argz.h.in \
   m4/gnulib-cache.m4 \
+  build-aux/m4/gnulib-cache.m4 \
   gnulib-local/build-aux/moopp \
   gnulib-local/lib/fd-ostream.oo.c \
   gnulib-local/lib/fd-ostream.oo.h \
@@ -306,7 +334,8 @@ EXTRA_DIST = \
   gnulib-local/modules/term-ostream-tests \
   gnulib-local/modules/term-styled-ostream \
   gnulib-local/tests/test-memory-ostream.c \
-  gnulib-local/tests/test-term-ostream.c
+  gnulib-local/tests/test-term-ostream.c 
+  
 
 # Add the static archive to be installed
 # 정적 라이브러리 설치 코드를 추가(주석제거)

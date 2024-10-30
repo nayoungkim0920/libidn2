@@ -14,6 +14,9 @@
    language is requested. */
 #undef ENABLE_NLS
 
+/* Define if we want to generate argz.h */
+#undef GL_GENERATE_ARGZ_H
+
 /* Define if safe-write module is used */
 #undef GNULIB_SAFE_WRITE
 
@@ -1515,7 +1518,7 @@
 # if __clang_major__ >= 15
 #  define _GL_ATTRIBUTE_CAPABILITY_TYPE(concept) \
      __attribute__ ((__capability__ (concept)))
-#else
+# else
 #  define _GL_ATTRIBUTE_CAPABILITY_TYPE(concept)
 # endif
 #endif
@@ -1602,7 +1605,10 @@
 /* Define as a signed type of the same size as size_t. */
 #undef ssize_t
 
-#ifndef HAVE_C_BOOL
+#if !(defined __cplusplus ? 1 : \
+      defined __clang__ ? __STDC_VERSION__ >= 202000L && __clang_major__ >= 15 : \
+      defined __GNUC__ ? __STDC_VERSION__ >= 202000L && __GNUC__ >= 13 : \
+      defined HAVE_C_BOOL)
 # if !defined __cplusplus && !defined __bool_true_false_are_defined
 #  if HAVE_STDBOOL_H
 #   include <stdbool.h>

@@ -12,6 +12,7 @@
                       [
                         '/usr/share/autoconf-2.72/autoconf/autoconf.m4f',
                         '/usr/share/aclocal-1.16/internal/ac-config-macro-dirs.m4',
+                        '/c/libidn2/gettext-0.22.5/gettext/gnulib-m4/realloc.m4',
                         '/usr/share/aclocal-1.16/amversion.m4',
                         '/usr/share/aclocal-1.16/auxdir.m4',
                         '/usr/share/aclocal-1.16/cond-if.m4',
@@ -655,6 +656,7 @@
                         'gl_FUNC_REALLOCARRAY' => 1,
                         'gl_FUNC_REALLOC_GNU' => 1,
                         'gl_FUNC_REALLOC_POSIX' => 1,
+                        'gl_FUNC_REALLOC_SANITIZED' => 1,
                         'gl_FUNC_SNPRINTF' => 1,
                         'gl_FUNC_SNPRINTF_IS_POSIX' => 1,
                         'gl_FUNC_SNPRINTF_POSIX' => 1,
