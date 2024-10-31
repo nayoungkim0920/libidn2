@@ -5,7 +5,7 @@
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
-   published by the Free Software Foundation; either version 2.1 of the
+   published by the Free Software Foundation; either version 2.1 of thes
    License, or (at your option) any later version.
 
    This file is distributed in the hope that it will be useful,
@@ -23,7 +23,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *my_stpcpy(char *dest, const char *src) { //20241031 지원되지 않기 때문에 직접 구현
+    while ((*dest++ = *src++));
+    return dest - 1; // 마지막 널 문자를 가리키는 포인터 반환
+}
 
+char *my_strndup(const char *s, size_t n) { //20241031 지원되지 않기 때문에 직접 구현
+    size_t len = strnlen(s, n); // 문자열의 길이를 계산
+    char *copy = (char *)malloc(len + 1); // 새로운 메모리 할당
+    if (copy) {
+        strncpy(copy, s, len); // 문자열 복사
+        copy[len] = '\0'; // 널 문자 추가
+    }
+    return copy; // 복사된 문자열 반환
+}
 
 /* Add BUF, of length BUF_LEN to the argz vector in ARGZ & ARGZ_LEN.  */
 error_t
@@ -267,7 +280,9 @@ argz_create (char *const argv[], char **argz, size_t *len)
         return ENOMEM;
 
       for (p = *argz, ap = argv; *ap; ++ap, ++p)
-        p = stpcpy (p, *ap);
+        //p = stpcpy (p, *ap); 
+        p = my_stpcpy (p, *ap); //20241031
+
     }
   *len = tlen;
 
@@ -342,7 +357,8 @@ argz_replace (char **argz, size_t *argz_len, const char *str, const char *with,
             {
               char *from = match + str_len;
               size_t to_len = match - arg;
-              char *to = strndup (arg, to_len);
+              //char *to = strndup (arg, to_len); 
+              char *to = my_strndup (arg, to_len); //20241031
 
               while (to && from)
                 {
@@ -403,4 +419,9 @@ argz_replace (char **argz, size_t *argz_len, const char *str, const char *with,
     }
 
   return err;
+}
+
+//undefined reference to WinMain 20241031
+int main(int argc, char *argv[]) {
+    return 0;
 }

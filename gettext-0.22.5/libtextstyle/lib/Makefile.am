@@ -75,6 +75,7 @@ HAVE_INCLUDE_NEXT = (__GNUC__ || __clang__ || 60000000 <= __DECC_VER)
 
 # Only generate argz.h if GL_GENERATE_ARGZ_H is defined
 if GL_GENERATE_ARGZ_H
+# Ensure argz.h is in BUILT_SOURCES for correct build order
 BUILT_SOURCES += argz.h
 
 argz.h: argz.in.h $(top_builddir)/config.status
@@ -93,9 +94,7 @@ if GL_COND_OBJ_ARGZ
 libgnu_a_SOURCES += argz.c
 endif
 
-EXTRA_DIST += argz.in.h
-
-## end   gnulib module argz
+## end gnulib module argz
 
 ## begin gnulib module gen-header
 

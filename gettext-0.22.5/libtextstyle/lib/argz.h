@@ -33,6 +33,10 @@ extern "C" {
 typedef int error_t;
 #endif
 
+//20241031 지원되지 않기 때문에 직접 구현
+char *my_stpcpy(char *dest, const char *src);
+char *my_strndup(const char *s, size_t n);
+
 /* Make a '\0' separated arg vector from a unix argv vector, returning it in
    ARGZ, and the total length in LEN.  If a memory allocation error occurs,
    ENOMEM is returned, otherwise 0.  The result can be destroyed using free.  */

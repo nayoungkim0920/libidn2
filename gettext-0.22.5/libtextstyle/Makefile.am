@@ -43,7 +43,10 @@ AM_LIBS = $(ITL_LIBS) $(NCURSES_LIBS) $(GLIB_LIBS)
 SUBDIRS = libltdl po lib tests adhoc-tests doc
 
 # 공유 라이브러리로 설정
-lib_LTLIBRARIES = libtextstyle.la libltdlc.la
+lib_LTLIBRARIES = libtextstyle.la libltdlc.la # libargz.la 제거 중복선언
+noinst_LTLIBRARIES = libargz.la 
+libargz_la_SOURCES = lib/argz.c
+libltdlc_la_SOURCES = libltdl/lt__argz.c
 
 # libtextstyle 라이브러리 설정
 libtextstyle_la_SOURCES = \ #라이브러리에 포함될 소스 파일 목록을 나열
@@ -60,6 +63,7 @@ libtextstyle_la_SOURCES = \ #라이브러리에 포함될 소스 파일 목록�
 	lib/fsync.c \
 	lib/xstrdup.c \
 	lib/xgethostname.c \
+	lib/argz.c \
 	$(GNULIB_SRCS)
 
 # libtextstyle 라이브러리에 사용할 객체 파일을 지정
@@ -80,29 +84,27 @@ libtextstyle_la_SOURCES = \ #라이브러리에 포함될 소스 파일 목록�
 
 # Here is where to add the argz module
 # Begin Gnulib module argz
-BUILT_SOURCES += argz.h
+# BUILT_SOURCES = lib/argz.h
+# EXTRA_DIST = lib/argz.in.h lib/argz.h.in # 중복정의
 
-# We need the following in order to create <argz.h> when the system
-# doesn't have one that works with the given compiler.
 if GL_GENERATE_ARGZ_H
-argz.h: argz.in.h $(top_builddir)/config.status
-	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/argz.in.h
+lib/argz.h: lib/argz.in.h $(top_builddir)/config.status
+	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/lib/argz.in.h
 	$(AM_V_at)mv $@-t $@
 else
-argz.h: $(top_builddir)/config.status
+lib/argz.h: $(top_builddir)/config.status
 	rm -f $@
 endif
 
-MOSTLYCLEANFILES += argz.h argz.h-t
+MOSTLYCLEANFILES = lib/argz.h lib/argz.h-t
 
 # Conditionally include argz.c
 if GL_COND_OBJ_ARGZ
 libtextstyle_la_SOURCES += lib/argz.c
 endif
 
-EXTRA_DIST += argz.in.h
-
 # End Gnulib module argz
+
 
 # LIBOBJS=>AC_LIBOBJ로 변경
 #libtextstyle_la_LIBOBJS = $(LIBOBJS)
@@ -127,13 +129,13 @@ libtextstyle_la_LIBS = -lncurses $(GNULIB_LIBS) $(GL_LIBOBJS) $(LTDLIBS) $(LT_LI
 #libtextstyle_la_LDADD = libtextstyle.la -L/c/libidn2/gettext-0.22.5/gettext-runtime/intl/.libs -lintl
 libtextstyle_la_LIBADD = $(NCURSES_LIBS) #ncurses 라이브러리를 링크하기 위해 $(NCURSES_LIBS)를 사용# 설치할 라이브러리의 위치
 #libtextstyle_la_LDFLAGS = -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl $(LDFLAGS) #DLL을 생성하기 위한 필수 플래그를 추가
-libtextstyle_la_LDFLAGS = -largz -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl #DLL을 생성하기 위한 필수 플래그를 추가
+libtextstyle_la_LDFLAGS = -shared -Wl,--out-implib=libtextstyle.dll.a -lltdl #DLL을 생성하기 위한 필수 플래그를 추가
 # -shared는 공유 라이브러리를 생성하는 옵션이며, 
 # -Wl, --out-implib=libtextstyle.dll.a는 DLL의 import 라이브러리를 생성
 libtextstyle_la_CFLAGS = -g -02 #포함된 객체 파일의 최적화를 설정
 
 #libltdlc 라이브러리 설정
-libltdlc_la_SOURCES = \
+libltdlc_la_SOURCES += \
   libltdl/lt__alloc.c \
   libltdl/lt__argz.c \
   libltdl/lt_dlloader.c \
@@ -168,8 +170,8 @@ libltdlc_la_LDFLAGS = -shared -Wl,--out-implib=libltdlc.dll.a
 libltdlc_la_CFLAGS = -g -02 #포함된 객체 파일의 최적화를 설정
 
 # Add this rule to copy argz.in.h to argz.h
-lib/argz.h: lib/argz.h.in
-	cp lib/argz.h.in lib/argz.h
+#lib/argz.h: lib/argz.h.in
+#	cp lib/argz.h.in lib/argz.h
 
 # 헤더 파일을 설치할 디렉토리
 include_HEADERS = \
@@ -207,11 +209,12 @@ if INCLUDED_LIBXML
 endif
 
 EXTRA_DIST = \
+  lib/argz.in.h \
+  lib/argz.h.in \
   version.sh \
   DEPENDENCIES \
   HACKING \
   autogen.sh \
-  lib\argz.h.in \
   m4/gnulib-cache.m4 \
   build-aux/m4/gnulib-cache.m4 \
   gnulib-local/build-aux/moopp \

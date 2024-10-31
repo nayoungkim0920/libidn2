@@ -16,8 +16,6 @@ dnl along with this program.  If not, see <https://www.gnu.org/licenses/>.
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT([libtextstyle], [1.0], [bug-libtextstyle@example.com]) # 프로젝트 초기화
-AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
-AM_INIT_AUTOMAKE([1.16.5 gnu no-dependencies subdir-objects])
 AC_USE_SYSTEM_EXTENSIONS
 
 # Allow Gnulib macros
@@ -118,11 +116,15 @@ AC_CHECK_HEADERS([argz.h], [
 
 # Makefile에서 조건을 통해 argz.in.h를 기반으로 lib/argz.h를 생성하도록 설정
 AC_SUBST([ARGZ_H], ["lib/argz.h"])
+AC_SUBST([LIBARGZ], [libargz.la])
 # Define if we want to generate argz.h
 AC_DEFINE([GL_GENERATE_ARGZ_H], [1], [Define if we want to generate argz.h])
 # argz 필요한 함수들을 체크
 AC_CHECK_FUNCS([argz_add argz_append argz_count argz_create_sep argz_insert argz_next argz_stringify])
-
+# 미리 정의된 매크로 추가
+m4_ifdef([gl_ARGZ], [gl_ARGZ])
+# 필요한 경우 추가 패키지와 라이브러리 설정
+AC_CHECK_LIB([argz], [argz_create_sep], [], [AC_MSG_ERROR([argz library not found])])
 
 # Libtool AR, RANLIB 설정 (gl_PROG_AR_RANLIB 호출)
 gl_PROG_AR_RANLIB
@@ -185,6 +187,7 @@ fi
 
 # AC_CONFIG_SUBDIRS([libltdl]) # LT_CONFIG_LTDL_DIR([libltdl])
 AC_CONFIG_SRCDIR([lib/color.c])  # Primary source file
+AC_CONFIG_AUX_DIR([build-aux])  # Auxiliary files directory (config.rpath, install-sh, config.guess, config.sub, ltmain.sh)
 # 컴파일러 설정
 AC_PROG_INSTALL
 #output:checking for a BSD-compatible install... /usr/bin/install -c
