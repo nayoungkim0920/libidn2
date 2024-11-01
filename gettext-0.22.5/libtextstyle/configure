@@ -27839,14 +27839,15 @@ fi
 # 미리 정의된 매크로 추가
 
 # 필요한 경우 추가 패키지와 라이브러리 설정
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for argz_create_sep in -largz" >&5
-printf %s "checking for argz_create_sep in -largz... " >&6; }
-if test ${ac_cv_lib_argz_argz_create_sep+y}
+# AC_CHECK_LIB([argz], [argz_create_sep], [], [AC_MSG_ERROR([argz library not found])])
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for argz_create_sep in -liberty" >&5
+printf %s "checking for argz_create_sep in -liberty... " >&6; }
+if test ${ac_cv_lib_iberty_argz_create_sep+y}
 then :
   printf %s "(cached) " >&6
 else case e in #(
   e) ac_check_lib_save_LIBS=$LIBS
-LIBS="-largz  $LIBS"
+LIBS="-liberty  $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -27863,9 +27864,9 @@ return conftest::argz_create_sep ();
 _ACEOF
 if ac_fn_cxx_try_link "$LINENO"
 then :
-  ac_cv_lib_argz_argz_create_sep=yes
+  ac_cv_lib_iberty_argz_create_sep=yes
 else case e in #(
-  e) ac_cv_lib_argz_argz_create_sep=no ;;
+  e) ac_cv_lib_iberty_argz_create_sep=no ;;
 esac
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam \
@@ -27873,16 +27874,16 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
 LIBS=$ac_check_lib_save_LIBS ;;
 esac
 fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_argz_argz_create_sep" >&5
-printf "%s\n" "$ac_cv_lib_argz_argz_create_sep" >&6; }
-if test "x$ac_cv_lib_argz_argz_create_sep" = xyes
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_iberty_argz_create_sep" >&5
+printf "%s\n" "$ac_cv_lib_iberty_argz_create_sep" >&6; }
+if test "x$ac_cv_lib_iberty_argz_create_sep" = xyes
 then :
-  printf "%s\n" "#define HAVE_LIBARGZ 1" >>confdefs.h
+  printf "%s\n" "#define HAVE_LIBIBERTY 1" >>confdefs.h
 
-  LIBS="-largz $LIBS"
+  LIBS="-liberty $LIBS"
 
 else case e in #(
-  e) as_fn_error $? "argz library not found" "$LINENO" 5 ;;
+  e) as_fn_error $? "libiberty library not found" "$LINENO" 5 ;;
 esac
 fi
 
@@ -31068,7 +31069,8 @@ esac
 fi
 
 
-LIBS=-ltextstyle
+
+LIBS="$LIBS -liberty -ltextstyle"
 
 
 #AC_CHECK_FUNCS([getprogname printf malloc fsync], [GL_COND_OBJ_FSYNC=1])

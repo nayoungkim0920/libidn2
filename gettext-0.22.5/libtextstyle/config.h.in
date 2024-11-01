@@ -174,14 +174,14 @@
 /* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
 #undef HAVE_LANGINFO_CODESET
 
-/* Define to 1 if you have the 'argz' library (-largz). */
-#undef HAVE_LIBARGZ
-
 /* Define if you have the libdl library or equivalent. */
 #undef HAVE_LIBDL
 
 /* Define if libdlloader will be built on this platform */
 #undef HAVE_LIBDLLOADER
+
+/* Define to 1 if you have the 'iberty' library (-liberty). */
+#undef HAVE_LIBIBERTY
 
 /* Define to 1 if you have the <lib/xgetaname-impl.h> header file. */
 #undef HAVE_LIB_XGETANAME_IMPL_H

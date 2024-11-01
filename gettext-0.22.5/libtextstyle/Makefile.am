@@ -29,8 +29,8 @@ AM_CFLAGS = -Wall -Wextra -Wpedantic -fdiagnostics-show-option \
             $(ITL_CFLAGS) $(NCURSES_CFLAGS) $(GLIB_CFLAGS)
 
 # 링크 시 필요한 라이브러리 추가
-AM_LIBS = $(ITL_LIBS) $(NCURSES_LIBS) $(GLIB_LIBS)
-
+LIBS = -liberty -ltextstyle
+AM_LIBS = $(ITL_LIBS) $(NCURSES_LIBS) $(GLIB_LIBS) $(LIBS)  # LIBS 포함
 
 #TEXI2DVI = texi2dvi # 추가
 #TEXI2PDF = $(TEXI2DVI) --pdf # 추가

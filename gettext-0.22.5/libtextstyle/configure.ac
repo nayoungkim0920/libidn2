@@ -124,7 +124,8 @@ AC_CHECK_FUNCS([argz_add argz_append argz_count argz_create_sep argz_insert argz
 # 미리 정의된 매크로 추가
 m4_ifdef([gl_ARGZ], [gl_ARGZ])
 # 필요한 경우 추가 패키지와 라이브러리 설정
-AC_CHECK_LIB([argz], [argz_create_sep], [], [AC_MSG_ERROR([argz library not found])])
+# AC_CHECK_LIB([argz], [argz_create_sep], [], [AC_MSG_ERROR([argz library not found])])
+AC_CHECK_LIB([iberty], [argz_create_sep], [], [AC_MSG_ERROR([libiberty library not found])])
 
 # Libtool AR, RANLIB 설정 (gl_PROG_AR_RANLIB 호출)
 gl_PROG_AR_RANLIB
@@ -445,7 +446,9 @@ AC_CHECK_TYPE([wchar_t],
  [HAVE_WCHAR_T=0]
 )
 AC_SUBST([HAVE_WCHAR_T])
-AC_SUBST([LIBS], [-ltextstyle])
+
+LIBS="$LIBS -liberty -ltextstyle"
+AC_SUBST([LIBS])
 
 #AC_CHECK_FUNCS([getprogname printf malloc fsync], [GL_COND_OBJ_FSYNC=1])
 

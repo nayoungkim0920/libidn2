@@ -73,18 +73,16 @@ HAVE_INCLUDE_NEXT = (__GNUC__ || __clang__ || 60000000 <= __DECC_VER)
 
 ## begin gnulib module argz
 
-# Only generate argz.h if GL_GENERATE_ARGZ_H is defined
 if GL_GENERATE_ARGZ_H
-# Ensure argz.h is in BUILT_SOURCES for correct build order
-BUILT_SOURCES += argz.h
-
-argz.h: argz.in.h $(top_builddir)/config.status
-	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/argz.in.h
-	$(AM_V_at)mv $@-t $@
+# GL_GENERATE_ARGZ_H가 참일 때 실행할 명령어 또는 변수 설정
+BUILT_SOURCES += lib/argz.h
+lib/argz.h: lib/argz.in.h $(top_builddir)/config.status
+    $(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/lib/argz.in.h
+    $(AM_V_at)mv $@-t $@
 else
-# Ensure that we remove argz.h if we do not generate it
-argz.h: $(top_builddir)/config.status
-	rm -f $@
+# GL_GENERATE_ARGZ_H가 거짓일 때 실행할 명령어 또는 변수 설정
+lib/argz.h: $(top_builddir)/config.status
+    rm -f $@
 endif
 
 MOSTLYCLEANFILES += argz.h argz.h-t
